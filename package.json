@@ -5,15 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run  --headless --reporter mochawesome",
-    "start": "webpack-dev-server --mode development --watch --open --hot --port=3000",
+    "dev": "webpack-dev-server --mode development --watch --open --hot --port=3000",
     "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.15.0"
   },
   "jest": {
     "moduleNameMapper": {
