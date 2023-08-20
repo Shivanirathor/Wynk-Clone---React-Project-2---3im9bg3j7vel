@@ -1,6 +1,6 @@
 
 
-.nav {
+.nav-1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +9,7 @@
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
   }
   
   .logoText {
@@ -51,6 +51,25 @@
   }
 .user{
     margin-left: 80px;
+}
+.nav-2{
+  height: 60px;
+  background-color: rgb(48, 48, 48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-2 select{
+  margin-right: 30px;
+  padding: 8px;
+  border-radius: 10px;
+}
+.nav-2 a {
+   text-decoration: none;
+  color: white;
+  padding: 0px 40px;
+  font-size: 20px;
+
 }
    
   
