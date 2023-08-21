@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/login.css";
-import SignUp from "./SignUp";
-import SignIn from "./SignIn";
+import SignUp from "../components/SignUp";
+import SignIn from "../components/SignIn";
 import { useState } from "react";
 function LoginPage() {
   const [type, setType] = useState("signIn");
@@ -15,7 +15,7 @@ function LoginPage() {
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
     <div className="App">
-      <h2>Sign in/up Form</h2>
+      <h2>Sign in/up Form</h2><br/>
       <div className={containerClass} id="container">
         <SignUp />
         <SignIn />
