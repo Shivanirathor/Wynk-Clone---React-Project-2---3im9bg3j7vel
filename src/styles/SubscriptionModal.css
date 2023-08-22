@@ -1,0 +1,41 @@
+/* SubscriptionModal.css */
+.subscription-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .subscription-cards .MuiCard-root {
+    width: 250px;
+    text-align: center;
+  }
+  
+  .subscription-cards .MuiTypography-h6 {
+    margin-top: 0;
+  }
+  
+  .subscription-cards .MuiTypography-colorTextSecondary {
+    margin-top: 5px;
+  }
+  
+  .subscription-cards .MuiTypography-h4 {
+    margin: 10px 0;
+  }
+  
+  .subscription-cards .MuiButton-root {
+    margin-top: 10px;
+  }
+  .modal-footer {
+    padding: 20px 0;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  .modal-footer p {
+    margin: 5px 0;
+  }
+  
+  .modal-footer .MuiButton-root {
+    margin-top: 10px;
+  }

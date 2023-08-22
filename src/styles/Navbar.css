@@ -33,24 +33,28 @@
   .search {
     display: flex;
     align-items: center;
-    margin-left: 200px;
+    margin-left: 180px;
   }
   
   .search input {
     color: white;
     background-color: transparent;
     font-size: 17px;
-    width: 400px;
+    width: 350px;
     margin-top: 20px;
-    height: 40px;
+    height: 30px;
     margin: 20px;
+    border: 1px solid white;
     border-radius: 50px;
   }
-  .subscription{
+  /* .subscription{
     margin-left: 150px;
-  }
-.user{
-    margin-left: 80px;
+  } */
+
+.loginBtn{
+  margin-left: -70px;
+  margin-right: 20px;
+color: antiquewhite !important;
 }
 .nav-2{
   height: 60px;
