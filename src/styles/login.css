@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-/* body {
+.App {
     background: #f6f5f7;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     font-family: "Montserrat", sans-serif;
     height: 100vh;
     margin: -20px 0 50px;
-  } */
+  }
   
   h1 {
     font-weight: bold;
@@ -31,7 +31,7 @@
     font-size: 12px;
   }
   
-  a {
+  .social {
     color: #333;
     font-size: 14px;
     text-decoration: none;

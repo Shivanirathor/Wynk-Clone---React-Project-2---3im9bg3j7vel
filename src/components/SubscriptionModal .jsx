@@ -86,7 +86,8 @@ const SubscriptionModal = () => {
         <DialogActions>
        
           <Button onClick={handleClose} color="primary">
-            Cancel
+            <h2>Amount to be paid RS.399</h2>
+            Continue 
           </Button>
         </DialogActions>
       </Dialog>
