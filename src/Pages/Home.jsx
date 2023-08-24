@@ -4,8 +4,8 @@ import "../styles/App.css";
 import Category from "../components/Category";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongsList } from "../redux/songsSlice";
-import { Card } from "@mui/material";
-import Footer from "../components/Footer";
+
+import MoviesCard from "../components/MoviesCard";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,31 +13,58 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getSongsList());
-  });
+  }, []);
   return (
     <>
       <Navbar />
-      <Category />
-      {songsList &&
-        songsList.slice(0, 10).map((songs, index) => {
-          return (
-            <div key={index}>
-              <Card title={songs.title} />
-            </div>
-          );
-        })}
-      <Category />
-      {songsList &&
-        songsList.slice(10, 20).map((songs, index) => {
-          return <div key={index}>{songs.title}</div>;
-        })}
-      <Category />
-      {songsList &&
-        songsList.slice(20, 30).map((songs, index) => {
-          return <div key={index}>{songs.title}</div>;
-        })}
-        {/* <Footer/> */}
-   
+      <Category
+        mainTitle={"Recent Release"}
+        songsList={songsList}
+        first={0}
+        last={10}
+      />
+      <Category
+        mainTitle={"Top Charts"}
+        songsList={songsList}
+        first={21}
+        last={30}
+      />
+      <Category
+        mainTitle={"India Music"}
+        songsList={songsList}
+        first={31}
+        last={40}
+      />
+      <Category
+        mainTitle={"Top Release"}
+        songsList={songsList}
+        first={11}
+        last={20}
+      />
+      <Category
+        mainTitle={"Top Podcasts on Wynk"}
+        songsList={songsList}
+        first={41}
+        last={50}
+      />
+      <Category
+        mainTitle={"International Top Hits"}
+        songsList={songsList}
+        first={51}
+        last={60}
+      />
+      <Category
+        mainTitle={"Hindi Top 50"}
+        songsList={songsList}
+        first={61}
+        last={70}
+      />
+      <Category
+        mainTitle={"Trending English"}
+        songsList={songsList}
+        first={71}
+        last={80}
+      />
     </>
   );
 };

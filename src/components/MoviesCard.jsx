@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const MoviesCard = ({title}) => {
+const MoviesCard = ({ thumbnail,title }) => {
   return (
     <div>
-<div>title: {title}</div>
-<div>title: {title}</div>
-<div>title: {title}</div>
+     
+      <div>
+        <img src={thumbnail} alt="" />
+      </div>
+      <div>{title}</div>
     </div>
-  )
-}
+  );
+};
 
-export default MoviesCard
+export default MoviesCard;
