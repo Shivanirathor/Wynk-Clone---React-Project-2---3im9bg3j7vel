@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -11,8 +9,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import "../styles/SubscriptionModal.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const SubscriptionModal = () => {
+  
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -84,11 +84,12 @@ const SubscriptionModal = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-       
+          <h2>Amount to be paid RS.399</h2>
+          <Link to="/payment">
           <Button onClick={handleClose} color="primary">
-            <h2>Amount to be paid RS.399</h2>
-            Continue 
+            close
           </Button>
+            </Link>
         </DialogActions>
       </Dialog>
     </div>
@@ -96,4 +97,3 @@ const SubscriptionModal = () => {
 };
 
 export default SubscriptionModal;
-

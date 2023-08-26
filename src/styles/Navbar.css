@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     /* padding: 0px 10px; */
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(43, 42, 42);
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -57,7 +57,7 @@ color: antiquewhite !important;
 }
 .nav-2{
   height: 60px;
-  background-color: rgb(48, 48, 48);
+  background-color: rgb(32, 30, 30);
   display: flex;
   justify-content: center;
   align-items: center;
