@@ -1,14 +1,13 @@
 
 .nav-1 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    /* padding: 0px 10px; */
-    background-color: rgb(43, 42, 42);
+    background-color: rgb(30, 29, 29);
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    
+    margin-top: 10px;
   }
   
   .logoText {
@@ -31,8 +30,9 @@
   
   .search {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-left: 180px;
+    margin-left: 200px;
   }
   
   .search input {
@@ -40,24 +40,18 @@
     background-color: transparent;
     font-size: 17px;
     width: 350px;
-    margin-top: 20px;
-    height: 30px;
+    height: 45px;
     margin: 20px;
-    border: 1px solid white;
+    border: 1px solid rgb(104, 102, 102);
     border-radius: 50px;
   }
-  /* .subscription{
-    margin-left: 150px;
-  } */
-
+ 
 .loginBtn{
-  margin-left: -70px;
-  margin-right: 20px;
-color: antiquewhite !important;
+  margin-right: 30px;
 }
 .nav-2{
   height: 60px;
-  background-color: rgb(32, 30, 30);
+  background-color: rgb(29, 29, 36);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,65 +1,70 @@
-// PaymentPage.js
-import React, { useState } from "react";
-import { FaCreditCard, FaMobile, FaWallet } from "react-icons/fa";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGooglePay, faPhone, faCreditCard, faAmazon, faMoneyBillWave, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+// import "../styles/Payment&Summary.css";
+// import Summary from "../components/Summary";
 
-const Payment = ({ selectedPlan, handleClose }) => {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+// const Payment = () => {
+//   return (
+//     <div className="payment-summary">
+//       <Summary />
+//       <div className="payment-options">
+//         <h2 style={{ marginBottom: 25, fontSize: 40 }}>Payment Options</h2>
+//         <div className="upi-options">
+//           <div className="upi-option">
+//             <FontAwesomeIcon icon={faGooglePay} /> Google Pay
+//           </div>
+//           <div className="upi-option">
+//             <FontAwesomeIcon icon={faPhone} /> PhonePe
+//           </div>
+//           <div className="upi-option">
+//             <FontAwesomeIcon icon={faMoneyBillWave} /> Paytm
+//           </div>
+//           <div className="upi-option">
+//             <FontAwesomeIcon icon={faAmazon} /> Amazon
+//           </div>
+//           <div className="upi-option">
+//             <FontAwesomeIcon icon={faPhone} /> Airtel
+//           </div>
+//           <div className="upi-option">
+//             <FontAwesomeIcon icon={faPlusCircle} /> Add another UPI ID
+//           </div>
+//         </div>
 
-  const handlePaymentMethodSelect = (method) => {
-    setSelectedPaymentMethod(method);
-  };
 
-  const handleBackToSummary = () => {
-    setSelectedPaymentMethod(null);
-  };
-
-  const handlePaymentConfirm = () => {
-    // Handle payment confirmation and other actions here
-    // You can use selectedPaymentMethod and selectedPlan data
-    handleClose();
-  };
-
+import React from "react";
+import "../styles/Payment&Summary.css";
+import Summary from "../components/Summary";
+const Payment = () => {
   return (
-    <div className="payment-page">
-      {selectedPaymentMethod ? (
-        <div className="payment-details">
-          <h2>Confirm Payment</h2>
-          <div className="payment-method">
-            <h3>Selected Payment Method:</h3>
-            {selectedPaymentMethod === "credit-card" && (
-              <FaCreditCard size={40} />
-            )}
-            {selectedPaymentMethod === "mobile" && <FaMobile size={40} />}
-            {selectedPaymentMethod === "wallet" && <FaWallet size={40} />}
-          </div>
-          <h3>Payment Summary</h3>
-          <div className="plan-details">
-            <h4>{selectedPlan.title}</h4>
-            <p>{selectedPlan.description}</p>
-            <h4>Price: ${selectedPlan.price}</h4>
-          </div>
-          <button onClick={handlePaymentConfirm}>Confirm Payment</button>
+    <div className="payment-summary">
+      <Summary />
+      <div className="payment-options">
+        <h2 style={{ marginBottom: 25, fontSize: 40 }}>Payment Options</h2>
+        <div className="upi-options">
+          <div className="upi-option">Google Pay</div>
+          <div className="upi-option">PhonePe</div>
+          <div className="upi-option">Paytm</div>
+          <div className="upi-option">Amazon</div>
+          <div className="upi-option">Airtel</div>
+          <div className="upi-option">Add another UPI ID</div>
         </div>
-      ) : (
-        <div className="payment-methods">
-          <h2>Select Payment Method</h2>
-          <div className="method-icons">
-            <FaCreditCard
-              size={40}
-              onClick={() => handlePaymentMethodSelect("credit-card")}
-            />
-            <FaMobile
-              size={40}
-              onClick={() => handlePaymentMethodSelect("mobile")}
-            />
-            <FaWallet
-              size={40}
-              onClick={() => handlePaymentMethodSelect("wallet")}
-            />
+        <h2>CREDIT & DEBIT CARDS</h2>
+        <div className="card-form">
+          <input type="text" placeholder="CARD HOLDER'S NAME" />
+          <input type="text" placeholder="CARD NUMBER" />
+          <div className="card-expiry">
+            <input type="text" placeholder="M M" />
+            <span>/</span>
+            <input type="text" placeholder="Y Y" />
           </div>
-          <button onClick={handleBackToSummary}>Back to Summary</button>
+          <input type="text" placeholder="CVV" />
         </div>
-      )}
+          <button className="save-card">Save card</button>
+          <label>
+            <input type="checkbox" className="auto-renew-label"/> Auto-renew
+          </label>
+        <button className="pay-securely">PAY SECURELY</button>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ export const getSongsList = createAsyncThunk(
   "songs/getSongsList",
   async (thunkAPI) => {
     const res = await fetch(
-      "https://academics.newtonschool.co/api/v1/music/song",
+      "https://academics.newtonschool.co/api/v1/music/album",
       {
         headers: {
           projectId: "22pghva8m0p8",

@@ -5,21 +5,30 @@ import Category from "../components/Category";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongsList } from "../redux/songsSlice";
 import Footer from "../components/Footer";
-import Carousal from "../components/Carousal";
+
+import Slider from "../Pages/Slider";
+import Slider2 from "./Slider2";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { songsList } = useSelector((state) => state.songs);
+  const {songsList} = useSelector((state) => state.songs);
+
 
   useEffect(() => {
     dispatch(getSongsList());
   }, []);
 
+
+
   return (
     <>
       <Navbar />
-      <Carousal />
-      <div style={{ background: "rgb(32, 30, 30)", color: "white" }}>
+      <Slider/>
+      <div style={{ background: "rgb(29, 29, 36)", color: "white" }}>
+        <Category
+          mainTitle={"Recent played"}
+         
+        />
         <Category
           mainTitle={"New Release"}
           songsList={songsList}
@@ -29,9 +38,16 @@ const Home = () => {
         <Category
           mainTitle={"Top Charts"}
           songsList={songsList}
+          first={11}
+          last={20}
+        />
+        <Category
+          mainTitle={"Top Charts"}
+          songsList={songsList}
           first={21}
           last={30}
         />
+        
         <Category
           mainTitle={"India Music"}
           songsList={songsList}
@@ -64,13 +80,20 @@ const Home = () => {
           last={80}
         />
         <Category
-          mainTitle={"Trending English"}
+          mainTitle={"Latest Hindi"}
           songsList={songsList}
           first={81}
           last={90}
         />
+        <Category
+          mainTitle={"Latest English"}
+          songsList={songsList}
+          first={91}
+          last={100}
+        />
+     
       </div>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 };

@@ -5,7 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import "../styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
-import LoginPage from "../Pages/LoginPage";
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
@@ -13,6 +13,10 @@ const Navbar = () => {
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
+
+  const login=()=>{
+    navigate('/login')
+  }
 
   return (
     <>
@@ -35,12 +39,12 @@ const Navbar = () => {
           <SubscriptionModal />
         </div>
        
-        <Link to="loginPage">
-        <div className="loginBtn">
+       
+        <div onClick={login} className="loginBtn">
           <PersonIcon style={{marginLeft:20}}/>
             <h2 >Login</h2>
         </div>
-          </Link>
+          
       </nav>
       {/* ================================ */}
       <nav className="nav-2">

@@ -1,0 +1,131 @@
+body{
+  background-color: rgb(25, 25, 25);
+}
+.payment-summary{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 50px;
+
+}
+.summary-container {
+  background: linear-gradient(rgb(227, 46, 45) -20%, rgb(23, 22, 22) 100%);
+
+  width: 350px;
+  height: 350px;
+margin-right: 50px;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  border-radius: 20px;
+box-shadow: 0 0 15px rgb(20, 19, 19);
+  background-color: #fff;
+  color: white;
+  text-align: center;
+}
+
+.plan-details {
+  margin-top: 20px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discounted-price {
+  color: #007bff;
+  font-size: 24px;
+}
+
+.savings,
+.to-pay {
+  font-weight: bold;
+  /* font-size: 40px !important; */
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.final-price {
+  color: #007bff;
+  font-size: 24px;
+}
+/* =================== */
+
+.payment-options {
+  width: 570px;
+  height: 500px;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  border-radius: 20px;
+ color: white;
+ box-shadow: 0 0 15px rgb(4, 4, 4);
+  
+}
+
+.upi-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.upi-option {
+  padding: 10px;
+  border: 1px solid #ccc;
+  
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+margin: 20px 0px 20px 60px;
+  width: 80%;
+  height: 30%;
+  background: rgb(107, 149, 208);
+  border-radius: 30px;
+  color: white !important;
+}
+
+
+.card-form input {
+ background: none;
+ color: white;
+font-size: 20px;
+
+}
+
+.card-expiry {
+  background: rgb(193, 191, 191);
+  display: flex;
+  color: white;
+  width: 300px;
+  align-items: center;
+  
+}
+.save-card {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auto-renew-label {
+  margin-top: 10px;
+}
+
+.pay-securely {
+  width: 90%;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

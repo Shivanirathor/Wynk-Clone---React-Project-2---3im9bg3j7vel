@@ -1,0 +1,84 @@
+.loginSetUp{
+  display: flex;
+  justify-content:center;
+text-align: center;
+margin-top: 50px;
+border-radius: 20px;
+margin-left: 400px;
+box-shadow: 0 0 10px black;
+width: 46%;
+}
+
+.login-signup-container {
+ width: 600px;
+ padding: 20px;
+  color: white;
+  text-align: center;
+
+  border-radius: 10px;
+}
+
+.login-signup-container h2 {
+  font-size: 30px;
+  margin: 30px;
+}
+
+.login-signup-container p {
+  font-size: 16px;
+  color: #a29f9f;
+  margin-bottom: 20px;
+}
+
+.country-code {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.otp-sent-message {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.phone-input-container input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.phone-input-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.download-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.download-link img {
+  width: 200px;
+  height: 80px;
+  /* border: 1px solid white; */
+  margin-top: 200px;
+}

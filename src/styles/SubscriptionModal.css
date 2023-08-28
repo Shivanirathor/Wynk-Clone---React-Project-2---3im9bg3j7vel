@@ -1,41 +1,83 @@
-/* SubscriptionModal.css */
-.subscription-cards {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .subscription-cards .MuiCard-root {
-    width: 250px;
-    text-align: center;
-  }
-  
-  .subscription-cards .MuiTypography-h6 {
-    margin-top: 0;
-  }
-  
-  .subscription-cards .MuiTypography-colorTextSecondary {
-    margin-top: 5px;
-  }
-  
-  .subscription-cards .MuiTypography-h4 {
-    margin: 10px 0;
-  }
-  
-  .subscription-cards .MuiButton-root {
-    margin-top: 10px;
-  }
-  .modal-footer {
-    padding: 20px 0;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.54);
-  }
-  
-  .modal-footer p {
-    margin: 5px 0;
-  }
-  
-  .modal-footer .MuiButton-root {
-    margin-top: 10px;
-  }
+
+.crown-logo img {
+  width: 50px;
+position: absolute;
+margin-top: -55px;
+margin-left: 150px;
+  border-radius: 50px;
+  overflow-y: none;
+}
+
+.premium-offer {
+  text-align: center;
+ 
+}
+
+.benefit-table {
+  margin-top: 20px;
+}
+.benefits-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.benefits-cell {
+  flex: 1;
+  text-align: center;
+}
+
+.tick-mark {
+  color: green;
+}
+
+
+.subscription-plans {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.plan {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid green;
+}
+.plan:hover{
+  box-shadow: 0px 0px 8px rgb(210, 67, 67);
+  border: none;
+  transform: scale(1.22);
+}
+
+.plan-tick {
+  margin-top: 10px;
+  font-size: 20px;
+  color: green;
+}
+.valid-till hr{
+margin-bottom: 20px;
+margin-top: 20px;
+
+}
+
+.gst-message li,
+.terms-policy li {
+ font-weight: bold;
+  text-align: center;
+}
+
+.amount-to-be-paid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.modal-footer{
+  overflow-y: hidden !important;
+}

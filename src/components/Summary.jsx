@@ -1,26 +1,28 @@
-// SummaryPage.js
 import React from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import Logo from "../assets/logo.jpeg";
+import "../styles/Payment&Summary.css";
 
-const SummaryPage = ({ selectedPlan, handleBack, handleContinue }) => {
+const Summary = () => {
   return (
-    <div className="summary-page">
-      <h2>Selected Plan</h2>
+    <div className="summary-container">
+      <h1> <img src={Logo} alt="logo" width={50} style={{position:"absolute", marginLeft:-50,borderRadius:50}}/>WYNK MUSIC</h1>
       <div className="plan-details">
-        <h3>{selectedPlan.title}</h3>
-        <p>{selectedPlan.description}</p>
-        <h4>Price: ${selectedPlan.price}</h4>
+        <h2>Yearly Plan</h2>
+        <p className="original-price">₹999</p>
+        <p className="discounted-price">₹399</p>
       </div>
-      <div className="navigation">
-        <FaAngleLeft size={24} onClick={handleBack} className="navigate-icon" />
-        <FaAngleRight
-          size={24}
-          onClick={handleContinue}
-          className="navigate-icon"
-        />
+      <div className="savings">
+        <p>Discount (Save 60%)</p>
+        <p>- ₹600</p>
+      </div>
+      <div className="to-pay">
+        <p >To pay</p>
+        <p className="final-price">₹399</p>
       </div>
     </div>
   );
 };
 
-export default SummaryPage;
+export default Summary;
+
+
