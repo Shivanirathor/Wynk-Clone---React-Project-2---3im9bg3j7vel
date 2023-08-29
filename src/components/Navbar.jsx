@@ -13,15 +13,17 @@ const Navbar = () => {
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
-
-  const login=()=>{
-    navigate('/login')
-  }
+const navigateHome=()=>{
+  window.location.reload();
+}
+  const login = () => {
+    navigate("/login");
+  };
 
   return (
     <>
       <nav className="nav-1">
-        <div className="logoText">
+        <div className="logoText" onClick={navigateHome}>
           <img src={Logo} alt="img" />
           <h2>Wynk Music</h2>
         </div>
@@ -38,13 +40,11 @@ const Navbar = () => {
         <div>
           <SubscriptionModal />
         </div>
-       
-       
+
         <div onClick={login} className="loginBtn">
-          <PersonIcon style={{marginLeft:20}}/>
-            <h2 >Login</h2>
+          <PersonIcon style={{ marginLeft: 20 }} />
+          <h2>Login</h2>
         </div>
-          
       </nav>
       {/* ================================ */}
       <nav className="nav-2">

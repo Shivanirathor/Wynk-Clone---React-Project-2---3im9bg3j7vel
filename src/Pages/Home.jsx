@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/App.css";
 import Category from "../components/Category";
@@ -7,7 +7,7 @@ import { getSongsList } from "../redux/songsSlice";
 import Footer from "../components/Footer";
 
 import Slider from "../Pages/Slider";
-import Slider2 from "./Slider2";
+import MusicPlayer from "../components/MusicPlayer";
 
 const Home = () => {
   const dispatch = useDispatch();

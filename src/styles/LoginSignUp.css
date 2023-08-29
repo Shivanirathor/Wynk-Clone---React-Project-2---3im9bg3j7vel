@@ -1,4 +1,4 @@
-.loginSetUp{
+ .loginSetUp{
   display: flex;
   justify-content:center;
 text-align: center;
@@ -6,11 +6,11 @@ margin-top: 50px;
 border-radius: 20px;
 margin-left: 400px;
 box-shadow: 0 0 10px black;
-width: 46%;
+width: 48%;
 }
 
 .login-signup-container {
- width: 600px;
+margin-right: 60px;
  padding: 20px;
   color: white;
   text-align: center;
@@ -79,6 +79,38 @@ width: 46%;
 .download-link img {
   width: 200px;
   height: 80px;
-  /* border: 1px solid white; */
-  margin-top: 200px;
+
 }
+
+
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .loginSetUp {
+    width: 80% !important;
+    margin-left: 50px;
+  
+  }
+.login-signup-container{
+  margin-left: 50px;
+}
+
+  .login-image {
+    display: none;
+  }
+}
+
+@media (max-width: 1300px) {
+  .loginSetUp {
+    width: 50%;
+    margin-right: 30px;
+  }
+.login-signup-container{
+  margin-left: 50px;
+}
+.login-image {
+  display: none;
+}
+}
+

@@ -124,7 +124,22 @@ const Footer = () => {
         <h2>JOIN WYNK FOR ARTISTS</h2>
         <p>Wynk Studio | Wynk Studio for Artists</p>
       </div>
-
+      <div className="download-links">
+          <a href="https://www.apple.com/in/app-store/" className="download-link">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq3Srh1hSfdtXFZXcqzeNSSgVex0k2kB6mpw&usqp=CAU"
+              alt="iOS Download"
+           
+            />
+          </a>
+          <a href="https://shorturl.at/bfFU6" className="download-link">
+            <img
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              
+              alt="Android Download"
+            />
+          </a>
+        </div>
       <div className="footer-section">
         <div className="footer-links">
           <hr />
@@ -147,19 +162,21 @@ const Footer = () => {
           <div>
             ABOUT US| PRIVACY POLICY| TERMS OF USE| CONTACT US| HELLOTUNES
           </div>
-          <a href="#" className="icon-link">
+          <a href="https://www.facebook.com/" className="icon-link">
             <FontAwesomeIcon icon={faFacebook} />
           </a>
-          <a href="#" className="icon-link">
+          <a href="https://twitter.com/" className="icon-link">
             <FontAwesomeIcon icon={faTwitter} />
           </a>
-          <a href="#" className="icon-link">
+          <a href="https://www.instagram.com/" className="icon-link">
             <FontAwesomeIcon icon={faInstagram} />
           </a>
-          <a href="#" className="icon-link">
+          <a href="https://www.youtube.com/" className="icon-link">
             <FontAwesomeIcon icon={faYoutube} />
           </a>
+          
         </div>
+        
       </div>
     </footer>
   );

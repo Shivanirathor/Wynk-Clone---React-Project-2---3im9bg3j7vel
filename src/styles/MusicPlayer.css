@@ -1,0 +1,48 @@
+.music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .song-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .song-details img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .controls button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .controls input[type="range"] {
+    width: 80%;
+  }
+  
+  .controls span {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+  }
+  
