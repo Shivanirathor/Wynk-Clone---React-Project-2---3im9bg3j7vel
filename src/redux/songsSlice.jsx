@@ -33,7 +33,6 @@ export const songsSlice = createSlice({
   //for calling api
   extraReducers: {
     [getSongsList.fulfilled]: (state, { payload }) => {
-    
       state.songsList = payload.data;
     },
   

@@ -43,6 +43,7 @@ const navigateHome=()=>{
 
         <div onClick={login} className="loginBtn">
           <PersonIcon style={{ marginLeft: 20 }} />
+         
           <h2>Login</h2>
         </div>
       </nav>

@@ -6,12 +6,11 @@ margin-top: 50px;
 border-radius: 20px;
 margin-left: 400px;
 box-shadow: 0 0 10px black;
-width: 45%;
+width: 48%;
 height: 600px;
 }
 
 .login-signup-container {
-margin-right: 60px;
  padding: 20px;
   color: white;
   text-align: center;
@@ -44,6 +43,7 @@ margin: 20px;
 
 .input-container input {
   flex-grow: 1;
+  width: 80%;
   padding: 10px;
   margin: 2px;
   border-radius: 5px;
@@ -81,9 +81,6 @@ margin: 20px;
 
 }
 
-
-
-/* Media Queries */
 
 @media (max-width: 768px) {
   .loginSetUp {

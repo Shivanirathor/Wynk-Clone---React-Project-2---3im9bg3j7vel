@@ -23,7 +23,8 @@ export const getLogin = createAsyncThunk("login/getLogin", async (payload) => {
 export const getRegister = createAsyncThunk(
   "login/getRegister",
   async (payload) => {
-    const res = await fetch(
+    const res = await axios
+      .post(
         "https://academics.newtonschool.co/api/v1/user/signup",
         {
           name: payload.name,
@@ -70,9 +71,10 @@ export const loginSlice = createSlice({
 
     [getRegister.fulfilled]: (state) => {
       console.log("register"),
-      state.isRegister = true;
+       (state.isRegister = true);
     },
     [getRegister.rejected]: (state) => {
+      console.log("failed");
       state.registerError = "Invalid Register detailes";
     },
   },
