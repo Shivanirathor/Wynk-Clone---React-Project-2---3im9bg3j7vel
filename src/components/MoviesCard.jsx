@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/MoviesCard.css";
-const MoviesCard = ({ title, mood, image }) => {
+const MoviesCard = ({title, mood, image }) => {
   return (
     <>
       <div className="cards">

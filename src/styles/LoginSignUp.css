@@ -6,7 +6,8 @@ margin-top: 50px;
 border-radius: 20px;
 margin-left: 400px;
 box-shadow: 0 0 10px black;
-width: 48%;
+width: 45%;
+height: 600px;
 }
 
 .login-signup-container {
@@ -19,47 +20,43 @@ margin-right: 60px;
 }
 
 .login-signup-container h2 {
-  font-size: 30px;
+  font-size: 40px;
   margin: 30px;
+   color: white;
 }
 
 .login-signup-container p {
   font-size: 16px;
-  color: #a29f9f;
+  color:  white;
   margin-bottom: 20px;
-}
+} 
 
-.country-code {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
 
-.otp-sent-message {
-  color: green;
-  margin-bottom: 10px;
-}
 
-.phone-input-container {
+.input-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
+margin: 20px;
 
-.phone-input-container input {
+}
+  
+
+.input-container input {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  margin: 2px;
   border-radius: 5px;
 }
 
-.phone-input-container button {
+.input-container button {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .download-links {
@@ -77,8 +74,10 @@ margin-right: 60px;
 }
 
 .download-link img {
-  width: 200px;
-  height: 80px;
+  width: 160px;
+  height: 70px;
+  margin-top: 100px;
+  
 
 }
 

@@ -5,6 +5,7 @@ export const getSongsList = createAsyncThunk(
   async (thunkAPI) => {
     const res = await fetch(
       "https://academics.newtonschool.co/api/v1/music/album",
+      // "https://academics.newtonschool.co/api/v1/music/song",
       {
         headers: {
           projectId: "22pghva8m0p8",
@@ -15,21 +16,7 @@ export const getSongsList = createAsyncThunk(
     return res;
   }
 );
-// export const getSongsList = createAsyncThunk(
-//   "songs/getSongsList",
-//   async (thunkAPI) => {
-//     const res = await fetch(
-//       "https://academics.newtonschool.co/api/v1/music/song",
-//       {
-//         headers: {
-//           projectId: "22pghva8m0p8",
-//         },
-//       }
-//     ).then((data) => data.json());
 
-//     return res;
-//   }
-// );
 
 const initialState = {
   songsList: [],

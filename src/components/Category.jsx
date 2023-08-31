@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Slider2 from "../Pages/Slider2";
-import MoviesCard from "./MoviesCard";
+
 
 const Category = ({ mainTitle, songsList, first, last }) => {
   return (

@@ -17,7 +17,7 @@ const navigateHome=()=>{
   window.location.reload();
 }
   const login = () => {
-    navigate("/login");
+    navigate("/signup");
   };
 
   return (

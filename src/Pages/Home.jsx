@@ -7,7 +7,7 @@ import { getSongsList } from "../redux/songsSlice";
 import Footer from "../components/Footer";
 
 import Slider from "../Pages/Slider";
-import MusicPlayer from "../components/MusicPlayer";
+
 
 const Home = () => {
   const dispatch = useDispatch();
