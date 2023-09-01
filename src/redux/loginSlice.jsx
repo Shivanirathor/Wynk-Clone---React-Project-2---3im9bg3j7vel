@@ -62,20 +62,17 @@ export const loginSlice = createSlice({
   },
 
   extraReducers: {
+    [getRegister.fulfilled]: (state) => {
+      state.isRegister = true;
+    },
+    [getRegister.rejected]: (state) => {
+      state.registerError = "Invalid Register detailes";
+    },
     [getLogin.fulfilled]: (state) => {
       state.isLogin = true;
     },
     [getLogin.rejected]: (state) => {
       state.loginError = "Invalid Login Detailes, Try Again";
-    },
-
-    [getRegister.fulfilled]: (state) => {
-      console.log("register"),
-       (state.isRegister = true);
-    },
-    [getRegister.rejected]: (state) => {
-      console.log("failed");
-      state.registerError = "Invalid Register detailes";
     },
   },
 });

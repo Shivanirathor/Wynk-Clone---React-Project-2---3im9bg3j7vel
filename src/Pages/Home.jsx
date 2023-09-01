@@ -5,30 +5,22 @@ import Category from "../components/Category";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongsList } from "../redux/songsSlice";
 import Footer from "../components/Footer";
-
 import Slider from "../Pages/Slider";
-
 
 const Home = () => {
   const dispatch = useDispatch();
-  const {songsList} = useSelector((state) => state.songs);
-
+  const { songsList } = useSelector((state) => state.songs);
 
   useEffect(() => {
     dispatch(getSongsList());
   }, []);
 
-
-
   return (
     <>
       <Navbar />
-      <Slider/>
+      <Slider />
       <div style={{ background: "rgb(29, 29, 36)", color: "white" }}>
-        <Category
-          mainTitle={"Recent played"}
-         
-        />
+        <Category mainTitle={"Recent played"} />
         <Category
           mainTitle={"New Release"}
           songsList={songsList}
@@ -47,7 +39,7 @@ const Home = () => {
           first={21}
           last={30}
         />
-        
+
         <Category
           mainTitle={"India Music"}
           songsList={songsList}
@@ -91,9 +83,8 @@ const Home = () => {
           first={91}
           last={100}
         />
-     
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

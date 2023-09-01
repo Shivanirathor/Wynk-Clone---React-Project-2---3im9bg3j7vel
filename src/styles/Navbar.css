@@ -1,4 +1,4 @@
-
+/* 
 .nav-1 {
     display: flex;
     justify-content: space-around;
@@ -39,34 +39,169 @@
     color: white;
     background-color: transparent;
     font-size: 17px;
-    width: 350px;
+    width: 450px;
     height: 45px;
-    margin: 20px;
+    margin: 10px;
     border: 1px solid rgb(104, 102, 102);
     border-radius: 50px;
   }
  
 .loginBtn{
-  margin-right: 30px;
+  display: flex;
+}
+.loginBtn h2{
+  margin-left: 10px;
 }
 .nav-2{
-  height: 60px;
+  height: 50px;
   background-color: rgb(29, 29, 36);
   display: flex;
-  justify-content: center;
+  justify-content:flex-start;
   align-items: center;
 }
 .nav-2 select{
   margin-right: 30px;
-  padding: 8px;
+  padding: 10px 5px;
   border-radius: 10px;
+  background: transparent;
+  color: white;
+  font-size: 19px;
+  border: none;
+  cursor: pointer;
+}
+.nav-2 select option{
+  cursor: pointer;
+  color: black;
+  border: none;
 }
 .nav-2 a {
    text-decoration: none;
   color: white;
   padding: 0px 40px;
-  font-size: 20px;
+  font-size: 19px;
 
 }
    
-  
+   */
+
+   /* Default styles for larger screens */
+.nav-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(30, 29, 29);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 10px 20px; /* Added padding */
+}
+
+.logoText {
+  display: flex;
+  align-items: center;
+}
+
+.logoText img {
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.logoText h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.search {
+  flex-grow: 1; /* Let it grow to take available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px; /* Reduced margin for smaller screens */
+}
+
+.search input {
+  color: white;
+  background-color: transparent;
+  font-size: 17px;
+  width: 40%; 
+  height: 45px;
+  border: 1px solid rgb(104, 102, 102);
+  border-radius: 50px;
+  padding-left: 20px;
+ margin-left: 55%;
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+}
+
+.loginBtn h2 {
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+
+.logoText h2{
+  display: none;
+}
+.search input{
+
+padding: 0 10px;
+  margin-left: -20px;
+  width: 80px;
+}
+.nav-2 select{
+  display: none;
+}
+
+  .search input {
+    font-size: 14px;
+  }
+}
+
+
+
+.nav-2 {
+  height: 50px;
+  background-color: rgb(29, 29, 36);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-2 select {
+  margin-right: 15px;
+  padding: 8px 5px; 
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-2 select option {
+  cursor: pointer;
+  color: black;
+  border: none;
+
+}
+
+.nav-2 a {
+  text-decoration: none;
+  color: white;
+  padding: 0px 20px;
+  font-size: 18px; 
+}
+
+
+@media (max-width: 768px) {
+  .nav-2 a {
+    font-size: 16px;
+    padding: 0px 10px;
+  }
+}

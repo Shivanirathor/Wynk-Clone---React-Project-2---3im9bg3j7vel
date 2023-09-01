@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRegister } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
-import { width } from "@mui/system";
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -69,24 +69,27 @@ const SignUp = () => {
               placeholder="Username"
               value={name}
               onChange={handleName}
+              required
             />
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={handleEmail}
+              required
             />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={handlePassword}
+              required
             />
             <button onClick={handleSignUp}>Register</button>
           </div>
 
           <p>To create your account, install Wynk app</p>
-          <p ><a href="/login" >Already Have An Account.</a></p>
+          <a href="/login" style={{color:"blue", textDecoration:"none"}}>Already have an account.</a>
           <div className="download-links">
             <a
               href="https://www.apple.com/in/app-store/"

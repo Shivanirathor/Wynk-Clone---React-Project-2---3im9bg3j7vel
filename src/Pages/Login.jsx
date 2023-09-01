@@ -24,7 +24,7 @@ const Login = () => {
     if (loginError) {
       alert(loginError);
     }
-  }, [loginError, navigate]);
+  }, [loginError]);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -44,10 +44,7 @@ const Login = () => {
   return (
     <>
       {isLogin && (
-        <Alert
-          severity="success"
-          sx={{ marginTop: "20px"}}
-        >
+        <Alert severity="success" sx={{ marginTop: "20px" }}>
           Login Successfully!!🎉
         </Alert>
       )}
@@ -77,7 +74,6 @@ const Login = () => {
               onChange={handlePassword}
             />
             <button onClick={handleLogin}>Login</button>
-        
           </div>
 
           <p>To create your account, install Wynk app</p>

@@ -3,23 +3,27 @@ import Logo from "../assets/logo.jpeg";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import "../styles/Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const { isLogin, name } = useSelector((state) => state.login);
+
   const [searchInput, setSearchInput] = useState("");
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
-const navigateHome=()=>{
-  window.location.reload();
-}
+  const navigateHome = () => {
+    window.location.reload();
+  };
   const login = () => {
     navigate("/signup");
   };
-
+  console.log("ddd", name);
   return (
     <>
       <nav className="nav-1">
@@ -43,8 +47,12 @@ const navigateHome=()=>{
 
         <div onClick={login} className="loginBtn">
           <PersonIcon style={{ marginLeft: 20 }} />
-         
-          <h2>Login</h2>
+
+          {isLogin ? (
+            <h2 style={{ color: "white" }}>{name}</h2>
+          ) : (
+            <h2>Login</h2>
+          )}
         </div>
       </nav>
       {/* ================================ */}
