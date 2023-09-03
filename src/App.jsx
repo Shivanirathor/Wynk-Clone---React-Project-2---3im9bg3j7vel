@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import Home from "./Pages/Home";
 import Payment from "./Pages/Payment";
 import Summary from "./components/Summary";
 import SignUp from "./Pages/SignUp";
-import Login from "./pages/Login";
+import Login from "./Pages/Login";
+import UpdatePassword from "./Pages/UpdatePassword";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/update" element={<UpdatePassword />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/summary" element={<Summary />} />
       </Routes>

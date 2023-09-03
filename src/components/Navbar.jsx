@@ -1,18 +1,19 @@
 import React, { useState } from "react";
+import "../styles/Navbar.css";
 import Logo from "../assets/logo.jpeg";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import "../styles/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { isLogin, name } = useSelector((state) => state.login);
 
   const [searchInput, setSearchInput] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
@@ -21,9 +22,17 @@ const Navbar = () => {
     window.location.reload();
   };
   const login = () => {
-    navigate("/signup");
+    if (!isLogin) {
+      navigate("/signup");
+    } else {
+      // Toggle dropdown if user is logged in
+      toggleDropdown();
+    }
   };
-  console.log("ddd", name);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  console.log("name", name);
   return (
     <>
       <nav className="nav-1">
@@ -46,22 +55,27 @@ const Navbar = () => {
         </div>
 
         <div onClick={login} className="loginBtn">
-          <PersonIcon style={{ marginLeft: 20 }} />
+          <PersonIcon
+            style={{ marginLeft: 20, cursor: "pointer" }}
+            onClick={toggleDropdown}
+          />
 
-          {isLogin ? (
-            <h2 style={{ color: "white" }}>{name}</h2>
-          ) : (
-            <h2>Login</h2>
+          {isDropdownOpen && (
+            <div className="dropdown">
+              <span>{name}</span>
+              <button>Logout</button>
+              <button onClick={()=>navigate("/update")}>Update Password</button>
+            </div>
           )}
         </div>
       </nav>
       {/* ================================ */}
       <nav className="nav-2">
         <a href="#">All</a>
-        <a href="">Trending</a>
-        <a href="">Old Song</a>
-        <a href="">New Songs</a>
-        <a href=""></a>
+        <a href="#">Trending</a>
+        <a href="#">Old Song</a>
+        <a href="#">New Songs</a>
+        <a href="#"></a>
         <select>
           <option value="Party Songs">Moods & Genre</option>
           <option value="Party Songs">Party Songs</option>

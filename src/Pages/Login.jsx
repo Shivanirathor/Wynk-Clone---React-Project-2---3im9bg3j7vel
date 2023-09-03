@@ -62,8 +62,8 @@ const Login = () => {
 
           <div className="input-container">
             <input
-              type="text"
-              placeholder="Username"
+              type="email"
+              placeholder="email"
               value={name}
               onChange={handleName}
             />

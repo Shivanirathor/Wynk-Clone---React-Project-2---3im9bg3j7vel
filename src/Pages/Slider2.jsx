@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from "react";
 import "../styles/Slider.css";
 import MoviesCard from "../components/MoviesCard";
@@ -9,7 +8,7 @@ function Slider2({ mainTitle, songsList, first, last }) {
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showLeftIcon, setShowLeftIcon] = useState(false);
-  const [autoScrollInterval, setAutoScrollInterval] = useState(null);
+  // const [autoScrollInterval, setAutoScrollInterval] = useState(null);
 
   const handleScroll = () => {
     if (containerRef.current) {
@@ -71,7 +70,7 @@ function Slider2({ mainTitle, songsList, first, last }) {
             return (
               <div key={songs.id}>
                 <MoviesCard
-                // thumbnail={songs.thumbnail}
+                  // thumbnail={songs.thumbnail}
                   title={songs.title}
                   image={songs.image}
                   mood={songs.mood}
