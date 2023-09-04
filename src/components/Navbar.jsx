@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import Logo from "../assets/logo.jpeg";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,6 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
+import { setUpdateFalse } from "../redux/loginSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,6 +15,10 @@ const Navbar = () => {
 
   const [searchInput, setSearchInput] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    setUpdateFalse();
+  }, []);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
@@ -25,14 +30,22 @@ const Navbar = () => {
     if (!isLogin) {
       navigate("/signup");
     } else {
-      // Toggle dropdown if user is logged in
       toggleDropdown();
     }
   };
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  console.log("name", name);
+  const handleLogout = () => {
+    const confirmed = window.confirm("Are you sure you want to logout?");
+    if (confirmed) {
+      window.location.reload();
+    }
+  };
+  const updatePass=()=>{
+    navigate("/update")
+  }
+
   return (
     <>
       <nav className="nav-1">
@@ -63,8 +76,10 @@ const Navbar = () => {
           {isDropdownOpen && (
             <div className="dropdown">
               <span>{name}</span>
-              <button>Logout</button>
-              <button onClick={()=>navigate("/update")}>Update Password</button>
+              <button onClick={handleLogout}>Logout</button>
+              <button onClick={updatePass}>
+                Update Password
+              </button>
             </div>
           )}
         </div>

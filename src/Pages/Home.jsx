@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSongsList } from "../redux/songsSlice";
 import Footer from "../components/Footer";
 import Slider from "../Pages/Slider";
+import MusicPlayer from "../components/MusicPlayer";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { songsList } = useSelector((state) => state.songs);
+  const { songsList, showMusicPlayer } = useSelector((state) => state.songs);
+  
 
   useEffect(() => {
     dispatch(getSongsList());
@@ -18,6 +20,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
+      {showMusicPlayer && <MusicPlayer/>}
       <Slider />
       <div style={{ background: "rgb(29, 29, 36)", color: "white" }}>
         <Category mainTitle={"Recent played"} />

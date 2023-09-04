@@ -3,12 +3,12 @@ import "../styles/LoginSignUp.css";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUpdate } from "../redux/loginSlice";
+import { getUpdate, setUpdateFalse } from "../redux/loginSlice";
 
 const UpdatePassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isUpate } = useSelector((state) => state.login);
+  const { isUpdate } = useSelector((state) => state.login);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,10 +16,15 @@ const UpdatePassword = () => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (isUpate) {
+    if (isUpdate === true) {
+      alert("password is updated!!");
+      
       navigate("/");
     }
-  }, [isUpate]);
+    return () => {
+      setUpdateFalse();
+    };
+  }, [isUpdate]);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -44,7 +49,6 @@ const UpdatePassword = () => {
       })
     );
   };
-  console.log("first update")
 
   return (
     <>

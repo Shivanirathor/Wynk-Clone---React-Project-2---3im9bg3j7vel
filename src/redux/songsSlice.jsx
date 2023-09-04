@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getUpdate } from "./loginSlice";
 
 export const getSongsList = createAsyncThunk(
   "songs/getSongsList",
@@ -17,9 +18,10 @@ export const getSongsList = createAsyncThunk(
   }
 );
 
-
 const initialState = {
   songsList: [],
+  currentSongUrl: {},
+  showMusicPlayer: false,
 };
 
 export const songsSlice = createSlice({
@@ -29,17 +31,22 @@ export const songsSlice = createSlice({
     // setSelectedMovieName: (state, {payload}) =>{
     //   state.selectedMovieName = payload;
     // }
+    setCurrentSongUrl: (state, { payload }) => {
+      state.currentSongUrl = payload;
+    },
+    setShowMusicPlayer: (state, { payload }) => {
+      state.showMusicPlayer = payload;
+    },
   },
   //for calling api
   extraReducers: {
     [getSongsList.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
-  
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {} = songsSlice.actions;
+export const { setCurrentSongUrl, setShowMusicPlayer } = songsSlice.actions;
 
 export default songsSlice.reducer;

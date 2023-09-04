@@ -1,24 +1,39 @@
-/* Music Player Container */
-.music-player {
+.music-player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.controls {
   display: flex;
   align-items: center;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  gap: 20px;
 }
 
-/* Album Art */
-.album-art img {
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
-  margin-right: 20px;
+.control-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  transition: color 0.3s ease;
 }
 
-/* Song Details */
+.control-button:hover {
+  color:rgb(227, 46, 45) ;
+}
+
 .song-details {
-  flex-grow: 1;
+  text-align: center;
 }
 
 .song-title {
@@ -26,47 +41,57 @@
   margin: 0;
 }
 
-.artist,
-.album {
+.artist {
   font-size: 14px;
-  margin: 5px 0;
+  margin: 0;
 }
 
-/* Controls */
-.controls button {
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  margin-right: 10px;
+.album {
+  font-size: 12px;
+  margin: 0;
 }
 
-.controls button:hover {
-  background-color: #0056b3;
+.slider-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Volume Slider */
-.controls input[type="range"] {
-  -webkit-appearance: none;
-  width: 100px;
-  height: 5px;
-  background: #ccc;
-  border-radius: 5px;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  margin-right: 10px;
+.rc-slider {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.controls input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  background: #007BFF;
-  border-radius: 50%;
-  cursor: pointer;
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 5px auto;
+  font-size: 12px;
+}
+
+/* Adjust the slider handle style */
+.rc-slider-handle {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(227, 46, 45);
+  background-color: rgb(227, 46, 45);
+}
+
+/* Adjust the slider track style */
+.rc-slider-track {
+  background-color: rgb(227, 46, 45);
+}
+
+/* Adjust the slider rail style */
+.rc-slider-rail {
+  background-color: #333;
+}
+
+/* Style the album art image */
+.album-art img {
+  max-width: 100px;
+  max-height: 100px;
 }

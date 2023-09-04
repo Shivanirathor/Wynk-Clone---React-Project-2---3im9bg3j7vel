@@ -4,11 +4,10 @@ import MoviesCard from "../components/MoviesCard";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-function Slider2({ mainTitle, songsList, first, last }) {
+function Slider2({ songsList, first, last }) {
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showLeftIcon, setShowLeftIcon] = useState(false);
-  // const [autoScrollInterval, setAutoScrollInterval] = useState(null);
 
   const handleScroll = () => {
     if (containerRef.current) {
@@ -33,17 +32,17 @@ function Slider2({ mainTitle, songsList, first, last }) {
     }
   };
 
-  const startAutoScroll = () => {
-    setAutoScrollInterval(
-      setInterval(() => {
-        slideRight2();
-      }, 3000) // Auto-scroll interval
-    );
-  };
+  // const startAutoScroll = () => {
+  //   setAutoScrollInterval(
+  //     setInterval(() => {
+  //       slideRight2();
+  //     }, 3000) // Auto-scroll interval
+  //   );
+  // };
 
-  const stopAutoScroll = () => {
-    clearInterval(autoScrollInterval);
-  };
+  // const stopAutoScroll = () => {
+  //   clearInterval(autoScrollInterval);
+  // };
 
   return (
     <div className="slider-container-2">
@@ -62,8 +61,8 @@ function Slider2({ mainTitle, songsList, first, last }) {
         ref={containerRef}
         className="image-container-2"
         onScroll={handleScroll}
-        onMouseEnter={startAutoScroll}
-        onMouseLeave={stopAutoScroll}
+        // onMouseEnter={startAutoScroll}
+        // onMouseLeave={stopAutoScroll}
       >
         {songsList &&
           songsList.slice(first, last).map((songs) => {
@@ -74,6 +73,10 @@ function Slider2({ mainTitle, songsList, first, last }) {
                   title={songs.title}
                   image={songs.image}
                   mood={songs.mood}
+                  audio={
+                    songs?.songs[0]?.audio_url ||
+                    "https://newton-project-resume-backend.s3.amazonaws.com/audio/64cf90b747ae38c3e33a1d37.mp3"
+                  }
                 />
               </div>
             );

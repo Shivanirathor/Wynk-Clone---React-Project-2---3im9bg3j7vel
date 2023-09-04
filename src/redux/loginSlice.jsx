@@ -17,19 +17,22 @@ export const getLogin = createAsyncThunk("login/getLogin", async (payload) => {
         },
       }
     )
-  //   .then((data) => data);
-  // return res;
-    // Check if the login is successful
-    if (res.data.success) {
-      // Include the user's name in the payload
-      return {
-        ...res.data,
-        name: payload.name,
-      };
-    } else {
-      return res.data;
-    }
+    .then((data) => data);
+
+  localStorage.setItem("token", res.data.token);
+  return res;
 });
+// Check if the login is successful
+// if (res.data.success) {
+//   // Include the user's name in the payload
+//   return {
+//     ...res.data,
+//     name: payload.name,
+//   };
+// } else {
+//   return res.data;
+//    }
+// });
 export const getRegister = createAsyncThunk(
   "login/getRegister",
   async (payload) => {
@@ -57,19 +60,21 @@ export const getRegister = createAsyncThunk(
 export const getUpdate = createAsyncThunk(
   "login/getUpdate",
   async (payload) => {
+    const token = localStorage.getItem("token");
     const res = await axios
       .patch(
         "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
         {
           name: payload.name,
           email: payload.email,
-          passwordCurrent: payload.currentPassword,
+          passwordCurrent: payload.currPassword,
           password: payload.password,
           appType: "music",
         },
 
         {
           headers: {
+            Authorization: `Bearer ${token}`,
             projectId: "22pghva8m0p8",
           },
         }
@@ -85,8 +90,8 @@ const initialState = {
   loginError: "",
   isRegister: false,
   registerError: "",
-  name:"",
-  isUpdate:"false",
+  name: "",
+  isUpdate: "false",
 };
 
 export const loginSlice = createSlice({
@@ -96,6 +101,9 @@ export const loginSlice = createSlice({
     // setSelectedMovieName: (state, {payload}) =>{
     //   state.selectedMovieName = payload;
     // }
+    setUpdateFalse: (state) => {
+      state.isUpdate = false;
+    },
   },
 
   extraReducers: {
@@ -118,5 +126,5 @@ export const loginSlice = createSlice({
   },
 });
 
-export const {} = loginSlice.actions;
+export const {setUpdateFalse} = loginSlice.actions;
 export default loginSlice.reducer;
