@@ -21,6 +21,7 @@ export const getSongsList = createAsyncThunk(
 const initialState = {
   songsList: [],
   currentSongUrl: {},
+  addToRecent: [],
   showMusicPlayer: false,
 };
 
@@ -37,6 +38,9 @@ export const songsSlice = createSlice({
     setShowMusicPlayer: (state, { payload }) => {
       state.showMusicPlayer = payload;
     },
+    setAddToRecent: (state, { payload }) => {
+      state.addToRecent = [...state.addToRecent, ...payload];
+    },
   },
   //for calling api
   extraReducers: {
@@ -47,6 +51,7 @@ export const songsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCurrentSongUrl, setShowMusicPlayer } = songsSlice.actions;
+export const { setCurrentSongUrl, setShowMusicPlayer, setAddToRecent } =
+  songsSlice.actions;
 
 export default songsSlice.reducer;

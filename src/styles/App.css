@@ -4,3 +4,18 @@
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
+.recent-played-list{
+    margin: 20px;
+    display: flex;
+    justify-content:left;
+   align-items: center;
+}
+.recent-played-list img{
+    border-radius: 10%; 
+    margin: 20px;  
+}
+.recent-played-list img:hover{
+      transform:scale(1.1);
+      margin-bottom: 10px;
+      cursor: pointer;
+}

@@ -1,15 +1,18 @@
 .cards{
     width: 200px;
-height: 230px;
-border-radius:15px;
-display: flex;
-justify-content:center;
-overflow: hidden;
-position: relative;
-margin: 30px 0px 10px 15px;
-cursor: pointer;
+    height: 230px;
+    border-radius:15px;
+    display: flex;
+    justify-content:center;
+    overflow: hidden;
+    position: relative;
+    margin: 30px 0px 10px 15px;
+    cursor: pointer;
 }
 .title{
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
     text-align: center;
 }
 .cards-body{
@@ -31,7 +34,18 @@ cursor: pointer;
    transform: scale(1.1);
 }
 .cards:hover .cards-body{
-right: 0;
-background-color: transparent;
+    right: 0;
+    background-color: transparent;
 
 }
+.control-button-centerM{
+    width: 40px;
+    margin-left: 40%;
+    border: 1px solid rgb(227, 46, 45);
+    background: white;
+    border-radius: 50%;
+    color: red;
+    cursor: pointer;
+    padding: 5px;   
+  }
+  

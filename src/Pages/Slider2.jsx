@@ -73,6 +73,7 @@ function Slider2({ songsList, first, last }) {
                   title={songs.title}
                   image={songs.image}
                   mood={songs.mood}
+                  name={songs.artists[0].name}
                   audio={
                     songs?.songs[0]?.audio_url ||
                     "https://newton-project-resume-backend.s3.amazonaws.com/audio/64cf90b747ae38c3e33a1d37.mp3"

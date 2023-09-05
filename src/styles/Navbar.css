@@ -1,90 +1,4 @@
-/* 
-.nav-1 {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgb(30, 29, 29);
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .logoText {
-    display: flex;
-    align-items: center;
 
-  }
-  
-  .logoText img {
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
-  }
-  
-  .logoText h2 {
-    margin: 0;
-    font-size: 2rem;
-  }
-  
-  .search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 200px;
-  }
-  
-  .search input {
-    color: white;
-    background-color: transparent;
-    font-size: 17px;
-    width: 450px;
-    height: 45px;
-    margin: 10px;
-    border: 1px solid rgb(104, 102, 102);
-    border-radius: 50px;
-  }
- 
-.loginBtn{
-  display: flex;
-}
-.loginBtn h2{
-  margin-left: 10px;
-}
-.nav-2{
-  height: 50px;
-  background-color: rgb(29, 29, 36);
-  display: flex;
-  justify-content:flex-start;
-  align-items: center;
-}
-.nav-2 select{
-  margin-right: 30px;
-  padding: 10px 5px;
-  border-radius: 10px;
-  background: transparent;
-  color: white;
-  font-size: 19px;
-  border: none;
-  cursor: pointer;
-}
-.nav-2 select option{
-  cursor: pointer;
-  color: black;
-  border: none;
-}
-.nav-2 a {
-   text-decoration: none;
-  color: white;
-  padding: 0px 40px;
-  font-size: 19px;
-
-}
-   
-   */
-
-   /* Default styles for larger screens */
 .nav-1 {
   display: flex;
   justify-content: space-between;
@@ -166,6 +80,7 @@ padding: 0 10px;
 
 
 .nav-2 {
+  margin-bottom: auto;
   height: 50px;
   background-color: rgb(29, 29, 36);
   display: flex;
@@ -175,11 +90,9 @@ padding: 0 10px;
 
 .nav-2 select {
   margin-right: 15px;
-  padding: 8px 5px; 
-  border-radius: 10px;
   background: transparent;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   border: none;
   cursor: pointer;
 }

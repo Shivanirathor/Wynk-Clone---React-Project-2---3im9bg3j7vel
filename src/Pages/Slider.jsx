@@ -1,86 +1,4 @@
-// import React, { useRef, useState, useEffect } from "react";
-// import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-// import "../styles/Slider.css";
 
-// function Slider() {
-//   const elementRef = useRef(null);
-//   const imageContainerRef = useRef(null);
-//   const [data, setData] = useState([]);
-//   const [scrolling, setScrolling] = useState(true);
-
-//   useEffect(() => {
-//     fetch("https://academics.newtonschool.co/api/v1/music/album", {
-//       headers: {
-//         projectId: "22pghva8m0p8",
-//       },
-//     })
-//       .then((data) => data.json())
-//       .then((data) => {
-//         setData(data.data);
-//         console.log("data", data);
-//       });
-//   }, []);
-
-//   const slideRight = () => {
-//     setScrolling(false);
-//     elementRef.current.scrollLeft += 500;
-//   };
-
-//   const slideLeft = () => {
-//     setScrolling(false);
-//     elementRef.current.scrollLeft -= 500;
-//   };
-
-//   useEffect(() => {
-//     if (scrolling) {
-//       const interval = setInterval(() => {
-//         if (imageContainerRef.current) {
-//           imageContainerRef.current.scrollLeft += 1; // Adjust the scrolling speed if needed
-//         }
-//       }, 50); // Adjust the interval if needed
-
-//       return () => {
-//         clearInterval(interval);
-//       };
-//     }
-//   }, [scrolling]);
-
-//   return (
-//     <div className="slider-container" >
-//       <ArrowBackIosNewIcon
-//         fontSize="large"
-//         onClick={slideLeft}
-//         className="slider-icon left"
-//       />
-
-//       <div
-//         className="image-container"
-       
-//         ref={(el) => {
-//           elementRef.current = el;
-//           imageContainerRef.current = el;
-//         }}
-//         onMouseEnter={() => setScrolling(false)}
-//         onMouseLeave={() => setScrolling(true)}
-//       >
-//         {data.map((album) => (
-//           <div key={album._id}>
-//             <img className="images" key={album.id} src={album.image} />
-//           </div>
-//         ))}
-//       </div>
-
-//       <ArrowForwardIosIcon
-//         fontSize="large"
-//         onClick={slideRight}
-//         className="slider-icon right"
-//       />
-//     </div>
-//   );
-// }
-
-// export default Slider;
 
 import React, { useRef, useState, useEffect } from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -93,8 +11,7 @@ function Slider() {
   const [scrolling, setScrolling] = useState(true);
 
   const imageUrls = [
-    // ... (your image URLs)
-    'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64e36d2e7834a419eacdc272/BANNER_249951858683914.jpg',
+        'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64e36d2e7834a419eacdc272/BANNER_249951858683914.jpg',
     'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64e870ebff46893ec5b1d98a/BANNER_112477299433624.jpeg',
     'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64dc60e770bc860d198b3ccf/BANNER_8860818721177.png',
     'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64c390dcc140c7113bd5e39d/BANNER_7435851371242.jpeg',
@@ -106,6 +23,8 @@ function Slider() {
     'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64e870ebff46893ec5b1d98a/BANNER_112477299433624.jpeg',
 
   ];
+
+  const scrollSpeed = 1; 
 
   const slideRight = () => {
     setScrolling(false);
@@ -121,15 +40,30 @@ function Slider() {
     if (scrolling) {
       const interval = setInterval(() => {
         if (imageContainerRef.current) {
-          imageContainerRef.current.scrollLeft += 1; // Adjust the scrolling speed if needed
+          imageContainerRef.current.scrollLeft += scrollSpeed; 
         }
-      }, 50); // Adjust the interval if needed
+      }, 50);
 
       return () => {
         clearInterval(interval);
       };
     }
   }, [scrolling]);
+
+
+  useEffect(() => {
+    const container = imageContainerRef.current;
+    const handleScroll = () => {
+      if (container.scrollLeft === 0 || container.scrollLeft === container.scrollWidth - container.clientWidth) {
+        setScrolling(true);
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="slider-container">
@@ -144,16 +78,15 @@ function Slider() {
           elementRef.current = el;
           imageContainerRef.current = el;
         }}
-        onMouseEnter={() => setScrolling(false)}
-        onMouseLeave={() => setScrolling(true)}
+        onMouseEnter={() => setScrolling(true)}
+        onMouseLeave={() => setScrolling(true)} 
       >
         {imageUrls.map((imageUrl, index) => (
           <img
-          className='images'
+            className='images'
             key={index}
             src={imageUrl}
             alt={`Image ${index}`}
-           
           />
         ))}
       </div>
@@ -167,4 +100,3 @@ function Slider() {
 }
 
 export default Slider;
-

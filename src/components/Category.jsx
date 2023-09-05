@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Slider2 from "../Pages/Slider2";
 
 
@@ -13,18 +13,7 @@ const Category = ({ mainTitle, songsList, first, last }) => {
           first={first}
           last={last}
         />
-        {/* {songsList &&
-          songsList.slice(first, last).map((songs) => {
-            return (
-              <div key={songs.id}>
-                <MoviesCard
-                  title={songs.title}
-                  thumbnail={songs.thumbnail}
-                  mood={songs.mood}
-                />
-              </div>
-            );
-          })} */}
+     
       </div>
     </>
   );

@@ -87,32 +87,30 @@ const MusicPlayer = () => {
   }, [isPlaying]);
 
   return (
-    <>
- 
-   
     <div className="music-player-container">
-      
-      <div className="controls">
-        <button className="control-button">
-          <SkipPreviousIcon />
-        </button>
-        <button className="control-button" onClick={togglePlayPause}>
-          {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-        </button>
-        <button className="control-button">
-          <SkipNextIcon />
-        </button>
+      <div>
+        <img
+          className="image"
+          src={currentSongUrl.image}
+          alt={currentSongUrl.title}
+          width={50}
+          height={50}
+        />
+        <h2 className="song-title">{currentSongUrl.title}</h2>
+        <p className="artist">({currentSongUrl.name})</p>
       </div>
-
       <div className="slider-container">
-      <Slider
+        <Slider
           value={currentTime}
           min={0}
           max={duration}
           onChange={handleSliderChange}
           railStyle={{ backgroundColor: "rgb(29, 29, 36)" }}
           trackStyle={{ backgroundColor: "rgb(227, 46, 45)" }}
-          handleStyle={{ borderColor: "rgb(227, 46, 45)", backgroundColor: "rgb(227, 46, 45)" }}
+          handleStyle={{
+            borderColor: "rgb(227, 46, 45)",
+            backgroundColor: "rgb(227, 46, 45)",
+          }}
         />
 
         <div className="time-display">
@@ -120,6 +118,7 @@ const MusicPlayer = () => {
           <span>{formatTime(duration)}</span>
         </div>
       </div>
+
       <audio
         ref={audioRef}
         onTimeUpdate={handleTimeUpdate}
@@ -127,14 +126,18 @@ const MusicPlayer = () => {
       >
         <source src={currentSongUrl.audio} type="audio/mpeg" />
       </audio>
-        
-      <div className="song-details">
-      <h2 className="song-title">{currentSongUrl.title}</h2>
-        <p className="artist">{currentSongUrl.artists}</p>
-
+      <div className="controls">
+        <button className="control-button">
+          <SkipPreviousIcon />
+        </button>
+        <button className="control-button-center" onClick={togglePlayPause}>
+          {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+        </button>
+        <button className="control-button">
+          <SkipNextIcon />
+        </button>
       </div>
     </div>
-    </>
   );
 };
 
