@@ -8,18 +8,19 @@ import {
   setShowMusicPlayer,
 } from "../redux/songsSlice";
 
+
 const MoviesCard = ({ title, image, audio, name }) => {
   const dispatch = useDispatch();
   const musicCardHandler = () => {
     dispatch(setCurrentSongUrl({ audio, title, name, image }));
     dispatch(setShowMusicPlayer(true));
 
-    const recentlyPlayedSong = { title, name, image }; 
+    const recentlyPlayedSong = { title, name, image };
     dispatch(setAddToRecent([recentlyPlayedSong]));
   };
   return (
     <>
-
+     
       <div className="cards" onClick={musicCardHandler}>
         <img title={title} src={image} alt={title} width={205} height={230} />
         <div className="cards-body">
