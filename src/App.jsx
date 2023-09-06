@@ -7,6 +7,8 @@ import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import UpdatePassword from "./Pages/UpdatePassword";
 
+
+
 function App() {
   return (
     <BrowserRouter>

@@ -5,14 +5,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { setUpdateFalse } from "../redux/loginSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { isLogin, name } = useSelector((state) => state.login);
-
   const [searchInput, setSearchInput] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -42,9 +40,10 @@ const Navbar = () => {
       window.location.reload();
     }
   };
-  const updatePass=()=>{
-    navigate("/update")
-  }
+  const updatePass = () => {
+    navigate("/update");
+  };
+  
 
   return (
     <>
@@ -71,15 +70,15 @@ const Navbar = () => {
           <PersonIcon
             style={{ marginLeft: 20, cursor: "pointer" }}
             onClick={toggleDropdown}
-          />
-
+            />
+          <span style={{ textAlign:"center"}}>
+              Welcome
+            <br />🎉{name}🎉
+          </span>
           {isDropdownOpen && (
             <div className="dropdown">
-              <span>{name}</span>
               <button onClick={handleLogout}>Logout</button>
-              <button onClick={updatePass}>
-                Update Password
-              </button>
+              <button onClick={updatePass}>Update Password</button>
             </div>
           )}
         </div>

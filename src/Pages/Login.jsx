@@ -3,7 +3,7 @@ import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogin } from "../redux/loginSlice";
+import { getLogin, loginSuccess } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
 const Login = () => {
@@ -39,6 +39,8 @@ const Login = () => {
         password,
       })
     );
+    const user = { name };
+    dispatch(loginSuccess(user));
   };
 
   return (
@@ -62,8 +64,8 @@ const Login = () => {
 
           <div className="input-container">
             <input
-              type="email"
-              placeholder="email"
+              type="text"
+              placeholder="Username"
               value={name}
               onChange={handleName}
             />

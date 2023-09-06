@@ -32,23 +32,11 @@ function Slider2({ songsList, first, last }) {
     }
   };
 
-  // const startAutoScroll = () => {
-  //   setAutoScrollInterval(
-  //     setInterval(() => {
-  //       slideRight2();
-  //     }, 3000) // Auto-scroll interval
-  //   );
-  // };
-
-  // const stopAutoScroll = () => {
-  //   clearInterval(autoScrollInterval);
-  // };
-
   return (
     <div className="slider-container-2">
+       
       {showLeftIcon && (
         <ArrowBackIosNewIcon
-          fontSize="large"
           onClick={() => {
             slideLeft2();
             stopAutoScroll();
@@ -61,28 +49,28 @@ function Slider2({ songsList, first, last }) {
         ref={containerRef}
         className="image-container-2"
         onScroll={handleScroll}
-        // onMouseEnter={startAutoScroll}
-        // onMouseLeave={stopAutoScroll}
       >
-        {songsList &&
-          songsList.slice(first, last).map((songs) => {
-            return (
-              <div key={songs.id}>
-                <MoviesCard
-                  // thumbnail={songs.thumbnail}
-                  title={songs.title}
-                  image={songs.image}
-                  mood={songs.mood}
-                  name={songs.artists[0].name}
-                  audio={
-                    songs?.songs[0]?.audio_url ||
-                    "https://newton-project-resume-backend.s3.amazonaws.com/audio/64cf90b747ae38c3e33a1d37.mp3"
-                  }
-                />
-              </div>
-            );
-          })}
-      </div>
+       
+     
+          {songsList &&
+            songsList.slice(first, last).map((songs, index) => {
+              return (
+                <div key={songs.id || index}>
+                  <MoviesCard
+                    title={songs.title}
+                    image={songs.image}
+                    mood={songs.mood}
+                    name={songs.artists[0].name}
+                    audio={
+                      songs?.songs[0]?.audio_url ||
+                      "https://newton-project-resume-backend.s3.amazonaws.com/audio/64cf90b747ae38c3e33a1d37.mp3"
+                    }
+                  />
+                </div>
+              );
+            })}
+        </div>
+    
 
       <ArrowForwardIosIcon
         fontSize="large"

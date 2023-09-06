@@ -5,7 +5,7 @@
   right: 0;
   background-color: rgb(82, 80, 80);
   color: #fff;
-  padding: 5px 5px 15px 0;
+  padding: 15px 5px 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,12 +20,12 @@ border-style:groove;
 
 .song-title{
   margin-left: 60px;
-  
+  font-size: 15px;
 }
 .artist{
   margin-left: 70px;
-font-size: 12px;
-color: #090909;
+font-size: 13px;
+color: black;
 }
 
 .controls {
@@ -55,46 +55,37 @@ color: #090909;
 .slider-container {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-left: 30px;
+  
+  margin-left: 16px !important;
+  margin-right: 15px !important;
+
 }
 
-.rc-slider {
-  width: 80%;
-  margin: 0 auto;
-}
+
 
 .time-display {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 5px auto;
   font-size: 12px;
+  width: 8%;
 }
 
-/* Adjust the slider handle style */
+
 .rc-slider-handle {
-  width: 16px;
-  height: 16px;
+
   border: 2px solid rgb(227, 46, 45);
   background-color: rgb(227, 46, 45);
 }
 
-/* Adjust the slider track style */
 .rc-slider-track {
   background-color: rgb(227, 46, 45);
 }
 
-/* Adjust the slider rail style */
+
 .rc-slider-rail {
   background-color: #333;
 }
 
-/* Style the album art image */
-.album-art img {
+
+/* .album-art img {
   max-width: 100px;
   max-height: 100px;
-}
+} */

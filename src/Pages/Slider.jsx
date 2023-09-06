@@ -1,14 +1,16 @@
-
-
 import React, { useRef, useState, useEffect } from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import "../styles/Slider.css";
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Slider() {
+  const navigate = useNavigate();
   const elementRef = useRef(null);
   const imageContainerRef = useRef(null);
   const [scrolling, setScrolling] = useState(true);
+  const { isLogin } = useSelector((state) => state.login);
 
   const imageUrls = [
         'https://img.wynk.in/unsafe/880x307/filters:no_upscale():strip_exif():format(webp)/https://s3.ap-south-1.amazonaws.com/discovery-prod-arsenal/arsenal/artworks/64e36d2e7834a419eacdc272/BANNER_249951858683914.jpg',
@@ -24,7 +26,7 @@ function Slider() {
 
   ];
 
-  const scrollSpeed = 1; 
+  const scrollSpeed = 1;
 
   const slideRight = () => {
     setScrolling(false);
@@ -40,7 +42,7 @@ function Slider() {
     if (scrolling) {
       const interval = setInterval(() => {
         if (imageContainerRef.current) {
-          imageContainerRef.current.scrollLeft += scrollSpeed; 
+          imageContainerRef.current.scrollLeft += scrollSpeed;
         }
       }, 50);
 
@@ -49,7 +51,6 @@ function Slider() {
       };
     }
   }, [scrolling]);
-
 
   useEffect(() => {
     const container = imageContainerRef.current;
@@ -65,6 +66,13 @@ function Slider() {
     };
   }, []);
 
+  const handleImageClick=()=>{
+    if(!isLogin){
+    navigate("/signup");
+  }else{
+    navigate("/")
+  }
+}
   return (
     <div className="slider-container">
       <ArrowBackIosNewIcon fontSize="large"
@@ -79,7 +87,8 @@ function Slider() {
           imageContainerRef.current = el;
         }}
         onMouseEnter={() => setScrolling(true)}
-        onMouseLeave={() => setScrolling(true)} 
+        onMouseLeave={() => setScrolling(true)}
+        onClick={handleImageClick}
       >
         {imageUrls.map((imageUrl, index) => (
           <img
@@ -87,6 +96,7 @@ function Slider() {
             key={index}
             src={imageUrl}
             alt={`Image ${index}`}
+            
           />
         ))}
       </div>
@@ -100,3 +110,5 @@ function Slider() {
 }
 
 export default Slider;
+
+  

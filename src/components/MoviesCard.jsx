@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/MoviesCard.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import NotStartedIcon from "@mui/icons-material/NotStarted";
 import {
   setAddToRecent,
@@ -14,14 +14,14 @@ const MoviesCard = ({ title, image, audio, name }) => {
     dispatch(setCurrentSongUrl({ audio, title, name, image }));
     dispatch(setShowMusicPlayer(true));
 
-    const recentlyPlayedSong = { title, name, image }; // Customize this based on your data structure
+    const recentlyPlayedSong = { title, name, image }; 
     dispatch(setAddToRecent([recentlyPlayedSong]));
   };
   return (
     <>
+
       <div className="cards" onClick={musicCardHandler}>
-        {/* <img title={title} src={thumbnail}alt={title} width={200} height={230}/> */}
-        <img title={title} src={image} alt={title} width={250} height={230} />
+        <img title={title} src={image} alt={title} width={205} height={230} />
         <div className="cards-body">
           <button className="control-button-centerM">
             <NotStartedIcon />

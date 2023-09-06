@@ -1,19 +1,19 @@
 .cards{
-    width: 200px;
-    height: 230px;
-    border-radius:15px;
+    border-radius:16px;
     display: flex;
     justify-content:center;
     overflow: hidden;
     position: relative;
-    margin: 30px 0px 10px 15px;
+    margin: 5px 0 10px 10px;
     cursor: pointer;
 }
 .title{
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    margin-top: 15px;
+    font-size: 17px;
     text-align: center;
+    font-family: Cambria;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 100;
 }
 .cards-body{
     width: 100%;
@@ -31,6 +31,7 @@
     transition: 1s;
 }
 .cards:hover{
+ 
    transform: scale(1.1);
 }
 .cards:hover .cards-body{
