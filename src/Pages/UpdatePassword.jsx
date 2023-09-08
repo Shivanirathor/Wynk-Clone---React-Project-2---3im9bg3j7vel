@@ -18,7 +18,7 @@ const UpdatePassword = () => {
   useEffect(() => {
     if (isUpdate === true) {
       alert("password is updated!!");
-      
+
       navigate("/");
     }
     return () => {

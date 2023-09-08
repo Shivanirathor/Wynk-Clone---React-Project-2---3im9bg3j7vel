@@ -65,7 +65,7 @@ import Summary from "../components/Summary";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [cardHolderName, setCardHolderName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -147,11 +147,9 @@ const Payment = () => {
           PAY SECURELY
         </button>
 
-   
         {paymentSuccess && (
           <div className="success-message">
             <p>Your payment is successful!</p>
-      
           </div>
         )}
       </div>

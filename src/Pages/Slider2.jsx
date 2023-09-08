@@ -4,8 +4,7 @@ import MoviesCard from "../components/MoviesCard";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-
-function Slider2({ songsList, first, last }) {
+function Slider2({ songsList, first = 0, last = 10 }) {
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showLeftIcon, setShowLeftIcon] = useState(false);
@@ -56,11 +55,11 @@ function Slider2({ songsList, first, last }) {
               <div key={songs.id || index}>
                 <MoviesCard
                   title={songs.title}
-                  image={songs.image}
+                  image={songs.thumbnail}
                   mood={songs.mood}
-                  name={songs.artists[0].name}
+                  name={songs?.artist[0]?.name}
                   audio={
-                    songs?.songs[0]?.audio_url ||
+                    songs?.audio_url ||
                     "https://newton-project-resume-backend.s3.amazonaws.com/audio/64cf90b747ae38c3e33a1d37.mp3"
                   }
                 />

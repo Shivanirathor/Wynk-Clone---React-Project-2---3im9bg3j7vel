@@ -81,7 +81,7 @@ const initialState = {
   isRegister: false,
   registerError: "",
   name: "",
-  isUpdate: "false",
+  isUpdate: false,
 };
 
 export const loginSlice = createSlice({

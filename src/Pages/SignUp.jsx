@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRegister } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
-
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,7 +14,6 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   useEffect(() => {
     if (isRegister) {
@@ -44,12 +42,14 @@ const SignUp = () => {
 
   return (
     <>
-      {
-      registerError &&
-        <Alert severity="warning" sx={{marginTop:"20px" ,width:"350px", marginLeft:"38%"}}>
+      {registerError && (
+        <Alert
+          severity="warning"
+          sx={{ marginTop: "20px", width: "350px", marginLeft: "38%" }}
+        >
           Please Register First!!
         </Alert>
-      }
+      )}
 
       <div className="loginSetUp">
         <img
@@ -89,7 +89,9 @@ const SignUp = () => {
           </div>
 
           <p>To create your account, install Wynk app</p>
-          <a href="/login" style={{color:"blue", textDecoration:"none"}}>Already have an account.</a>
+          <a href="/login" style={{ color: "blue", textDecoration: "none" }}>
+            Already have an account.
+          </a>
           <div className="download-links">
             <a
               href="https://www.apple.com/in/app-store/"

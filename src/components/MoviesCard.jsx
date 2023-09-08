@@ -8,7 +8,6 @@ import {
   setShowMusicPlayer,
 } from "../redux/songsSlice";
 
-
 const MoviesCard = ({ title, image, audio, name }) => {
   const dispatch = useDispatch();
   const musicCardHandler = () => {
@@ -20,9 +19,8 @@ const MoviesCard = ({ title, image, audio, name }) => {
   };
   return (
     <>
-     
       <div className="cards" onClick={musicCardHandler}>
-        <img title={title} src={image} alt={title} width={205} height={230} />
+        <img title={title} src={image} alt={title} width={200} height={210} />
         <div className="cards-body">
           <button className="control-button-centerM">
             <NotStartedIcon />

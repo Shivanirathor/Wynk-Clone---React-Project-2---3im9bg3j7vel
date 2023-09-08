@@ -5,11 +5,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUpdateFalse } from "../redux/loginSlice";
+import { getSearch, getTrendingSongsList } from "../redux/songsSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { isLogin, name } = useSelector((state) => state.login);
   const [searchInput, setSearchInput] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -43,7 +45,15 @@ const Navbar = () => {
   const updatePass = () => {
     navigate("/update");
   };
-  
+  const handleAll=()=>{
+   navigate("/")
+  }
+  const handleTrending = () => {
+   dispatch(getTrendingSongsList())
+  };
+  const handleSearch = () => {
+    dispatch(getSearch(searchInput));
+  };
 
   return (
     <>
@@ -59,7 +69,7 @@ const Navbar = () => {
             value={searchInput}
             onChange={handleChange}
           />
-          <SearchIcon />
+          <SearchIcon onClick={handleSearch} />
         </div>
 
         <div>
@@ -70,10 +80,11 @@ const Navbar = () => {
           <PersonIcon
             style={{ marginLeft: 20, cursor: "pointer" }}
             onClick={toggleDropdown}
-            />
-          <span style={{ textAlign:"center"}}>
-              Welcome
-            <br />🎉{name}🎉
+          />
+          <span style={{ textAlign: "center" }}>
+            Welcome
+            <br />
+            🎉{name}🎉
           </span>
           {isDropdownOpen && (
             <div className="dropdown">
@@ -85,11 +96,11 @@ const Navbar = () => {
       </nav>
       {/* ================================ */}
       <nav className="nav-2">
-        <a href="#">All</a>
-        <a href="#">Trending</a>
-        <a href="#">Old Song</a>
-        <a href="#">New Songs</a>
-        <a href="#"></a>
+        <div onClick={handleAll}>All</div>
+        <div onClick={handleTrending}>Trending</div>
+        <div>Old Song</div>
+        <div>New Songs</div>
+        <div></div>
         <select>
           <option value="Party Songs">Moods & Genre</option>
           <option value="Party Songs">Party Songs</option>
@@ -106,11 +117,11 @@ const Navbar = () => {
           <option value="Party Songs">Party Songs</option>
           <option value="Party Songs">Dance Songs</option>
         </select>
-        <a href="">Top Artist</a>
+        <div>Top Artist</div>
         <select>
           <option value="Party Songs">Top Playlists</option>
         </select>
-        <a href="">Podcast</a>
+        <div>Podcast</div>
       </nav>
     </>
   );

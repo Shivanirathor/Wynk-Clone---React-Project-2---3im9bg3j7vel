@@ -1,14 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/MusicPlayer.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import { useNavigate } from "react-router-dom";
+import { addLikedSong, removeLikedSong } from "../redux/likedSongsSlice";
+
+
+
 
 const MusicPlayer = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const audioRef = useRef(null);
   const { currentSongUrl } = useSelector((state) => state.songs);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -45,6 +52,27 @@ const MusicPlayer = () => {
     }
   }, [isPlaying]);
 
+  const handleLikedSong = () => {
+    // Assuming currentSongUrl contains song information
+    const songToAdd = {
+      id: currentSongUrl.id,
+      title: currentSongUrl.title,
+      artist: currentSongUrl.name,
+      audio: currentSongUrl.audio,
+      image: currentSongUrl.image,
+    };
+
+    // Check if the song is already liked
+    const isLiked = likedSongs.some((song) => song.id === songToAdd.id);
+
+    if (isLiked) {
+      // Remove the song from liked songs
+      dispatch(removeLikedSong(songToAdd));
+    } else {
+      // Add the song to liked songs
+      dispatch(addLikedSong(songToAdd));
+    }
+  };
   return (
     <div className="music-player-container">
       <div>
@@ -74,7 +102,7 @@ const MusicPlayer = () => {
 
         <div className="time-display">
           <span>{formatTime(currentTime)}</span>
-         <span>  /  </span>
+          <span> / </span>
           <span>{formatTime(duration)}</span>
         </div>
       </div>
@@ -87,15 +115,21 @@ const MusicPlayer = () => {
         <source src={currentSongUrl.audio} type="audio/mpeg" />
       </audio>
       <div className="controls">
-        <button className="control-button">
+        {/* <button className="control-button">
           <SkipPreviousIcon />
-        </button>
+        </button> */}
+        <div
+          style={{ fontSize: 25, cursor: "pointer" }}
+          onClick={handleLikedSong}
+        >
+          🤍
+        </div>
         <button className="control-button-center" onClick={togglePlayPause}>
           {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
         </button>
-        <button className="control-button">
+        {/* <button className="control-button">
           <SkipNextIcon />
-        </button>
+        </button> */}
       </div>
     </div>
   );

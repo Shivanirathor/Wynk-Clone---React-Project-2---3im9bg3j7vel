@@ -1,0 +1,80 @@
+/* CSS for the .trending-song container */
+.trending-song {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    color: white;
+    padding: 10px;
+}
+.item1{
+    padding: 30px 40px;
+}
+.item2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.top-menu{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+/* CSS for the image */
+.trending-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+.button-list{
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.trending-song .top-menu h2 {
+    font-size: 2.3rem;
+}
+
+.play-btn {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.follow-btn{
+    background-color: transparent;
+    color: white;
+    border: 2px solid grey;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+/* CSS for the main-menu (table) */
+.trending-song .main-menu table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+}
+
+.trending-song .main-menu th, .trending-song .main-menu td {
+    padding: 10px;
+    text-align: left;
+
+
+}
+
+.trending-song .main-menu th {
+    color: white;
+}
+.table-row:hover{
+    border-radius: 50px !important;
+    border: 1px solid darkgrey;
+}
+/* Additional styles can be added as needed */
