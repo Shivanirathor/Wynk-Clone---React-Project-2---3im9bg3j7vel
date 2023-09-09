@@ -24,7 +24,7 @@ const SubscriptionModal = () => {
   return (
     <div>
       <Button variant="" onClick={handleOpen}>
-        $ Manage Subscription
+        💲Manage Subscription
       </Button>
       <Dialog
         open={open}

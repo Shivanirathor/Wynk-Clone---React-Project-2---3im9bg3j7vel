@@ -56,7 +56,7 @@ const Navbar = () => {
   };
   const handleTrending = () => {
     navigate("/trending");
-    //  dispatch(getTrendingSongsList())
+  
   };
 
   const handleSearch = () => {
@@ -127,17 +127,13 @@ const Navbar = () => {
         <div>
           <SubscriptionModal />
         </div>
-        <div onClick={()=>navigate("/liked")}>WishList</div>
+        <div onClick={() => navigate("/liked")}>🤍</div>
         <div onClick={login} className="loginBtn">
           <PersonIcon
             style={{ marginLeft: 20, cursor: "pointer" }}
             onClick={toggleDropdown}
           />
-          <span style={{ textAlign: "center" }}>
-            Welcome
-            <br />
-            🎉{name}🎉
-          </span>
+          {name}
           {isDropdownOpen && (
             <div className="dropdown">
               <button onClick={handleLogout}>Logout</button>
@@ -158,7 +154,7 @@ const Navbar = () => {
           <option value="Excited Songs">Excited Songs</option>
           <option value="Happy Songs">Happy Songs</option>
         </select>
-        <div onClick={()=>navigate("/topAlbum")}>Top Album</div>
+        <div onClick={() => navigate("/topAlbum")}>Top Album</div>
         <div onClick={handdleArtistImg}>Top Artist</div>
       </nav>
     </>
