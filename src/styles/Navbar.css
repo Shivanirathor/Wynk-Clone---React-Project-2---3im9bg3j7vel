@@ -62,19 +62,14 @@
 .logoText h2{
   display: none;
 }
-.search input{
 
-padding: 0 10px;
-  margin-left: -20px;
-  width: 80px;
+.search{
+  display: none;
 }
 .nav-2 select{
   display: none;
 }
 
-  .search input {
-    font-size: 14px;
-  }
 }
 
 
