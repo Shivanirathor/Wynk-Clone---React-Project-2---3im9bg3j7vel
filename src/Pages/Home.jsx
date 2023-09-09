@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getSongsList());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

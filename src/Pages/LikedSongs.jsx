@@ -1,34 +1,45 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-
+import React, { useEffect } from "react";
 
 const LikedSongs = () => {
-  //   const {favoriteSongs} = useSelector((state) => state.favorites);
-  const favoriteSongs = useSelector((state) => state.favorites.favoriteSongs);
-  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
 
-  const handleAddToFavorites = (song) => {
-    dispatch(handleAddToFavorites(song));
+  const jwtToken = token;
+  const projectID = "22pghva8m0p8";
+
+  const apiUrl =
+    "https://academics.newtonschool.co/api/v1/music/favorites/like";
+  const headers = {
+    Authorization: `Bearer ${jwtToken}`,
+    projectID: projectID,
+    appType: "music",
   };
 
-  const handleRemoveFromFavorites = (song) => {
-    dispatch(removeFromFavorites(song));
-  };
+  useEffect(() => {
+    fetch(apiUrl, {
+      method: "GET",
+      headers: headers,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Failed to like the song.");
+        }
+      })
+      .then((data) => {
+        // Handle the data here
+        console.log("Data from the API:", data);
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
+  }, []);
 
   return (
-    <div style={{ color: "white" }}>
-      <h1>Liked Songs</h1>
-      <ul>
-        {favoriteSongs.map((song) => (
-          <li key={song.id}>
-            {song.title}
-            <button onClick={() => handleRemoveFromFavorites(song)}>
-              Remove from Favorites
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <h1 style={{color:"white"}}>Favourite Songs</h1>
+     
+    </>
   );
 };
 

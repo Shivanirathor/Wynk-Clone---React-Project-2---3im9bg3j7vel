@@ -17,10 +17,49 @@ export const getSongsList = createAsyncThunk(
   }
 );
 
-export const getTrendingSongsList = createAsyncThunk(
-  "songs/getTrendingSongsList",
+export const getRomanticSong = createAsyncThunk(
+  "songs/getRomanticSong",
   async (thunkAPI) => {
-    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"featured":"Trending songs"}`;
+    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"romantic"}`;
+    const res = await fetch(url, {
+      headers: {
+        projectId: "22pghva8m0p8",
+      },
+    }).then((data) => data.json());
+
+    return res;
+  }
+);
+export const getSadSong = createAsyncThunk(
+  "songs/getSadSong",
+  async (thunkAPI) => {
+    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"sad"}`;
+    const res = await fetch(url, {
+      headers: {
+        projectId: "22pghva8m0p8",
+      },
+    }).then((data) => data.json());
+
+    return res;
+  }
+);
+export const getExcitedSong = createAsyncThunk(
+  "songs/getExcitedSong",
+  async (thunkAPI) => {
+    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"excited"}`;
+    const res = await fetch(url, {
+      headers: {
+        projectId: "22pghva8m0p8",
+      },
+    }).then((data) => data.json());
+
+    return res;
+  }
+);
+export const getHappySong = createAsyncThunk(
+  "songs/getHappySong",
+  async (thunkAPI) => {
+    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"happy"}`;
     const res = await fetch(url, {
       headers: {
         projectId: "22pghva8m0p8",
@@ -31,7 +70,7 @@ export const getTrendingSongsList = createAsyncThunk(
   }
 );
 export const getSearch = createAsyncThunk(
-  "songs/getTrendingSongsList",
+  "songs/getSearch",
   async (searchInput) => {
     const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"title":"${searchInput}"}`;
     const res = await fetch(url, {
@@ -46,7 +85,6 @@ export const getSearch = createAsyncThunk(
 
 const initialState = {
   songsList: [],
-
   currentSongUrl: {},
   addToRecent: [],
   showMusicPlayer: false,
@@ -56,7 +94,6 @@ export const songsSlice = createSlice({
   name: "songs",
   initialState,
   reducers: {
-  
     setCurrentSongUrl: (state, { payload }) => {
       state.currentSongUrl = payload;
     },
@@ -72,13 +109,21 @@ export const songsSlice = createSlice({
     [getSongsList.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
-    [getTrendingSongsList.fulfilled]: (state, { payload }) => {
+    [getRomanticSong.fulfilled]: (state, { payload }) => {
+      state.songsList = payload.data;
+    },
+    [getSadSong.fulfilled]: (state, { payload }) => {
+      state.songsList = payload.data;
+    },
+    [getExcitedSong.fulfilled]: (state, { payload }) => {
+      state.songsList = payload.data;
+    },
+    [getHappySong.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
     [getSearch.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
-   
   },
 });
 

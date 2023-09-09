@@ -7,7 +7,13 @@ import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
 import { setUpdateFalse } from "../redux/loginSlice";
-import { getSearch, getTrendingSongsList } from "../redux/songsSlice";
+import {
+  getExcitedSong,
+  getHappySong,
+  getRomanticSong,
+  getSadSong,
+  getSearch,
+} from "../redux/songsSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -45,14 +51,60 @@ const Navbar = () => {
   const updatePass = () => {
     navigate("/update");
   };
-  const handleAll=()=>{
-   navigate("/")
-  }
-  const handleTrending = () => {
-   dispatch(getTrendingSongsList())
+  const handleAll = () => {
+    navigate("/");
   };
+  const handleTrending = () => {
+    navigate("/trending");
+    //  dispatch(getTrendingSongsList())
+  };
+
   const handleSearch = () => {
     dispatch(getSearch(searchInput));
+  };
+
+  const handleRomanticSongs = () => {
+    dispatch(getRomanticSong());
+    console.log("Romantic Songs");
+  };
+  const handleSadSongs = () => {
+    dispatch(getSadSong());
+    console.log("Sad Songs");
+  };
+
+  const handleExcitedSongs = () => {
+    dispatch(getExcitedSong());
+    console.log("Excited Songs");
+  };
+
+  const handleHappySongs = () => {
+    dispatch(getHappySong());
+    console.log("Happy Songs");
+  };
+
+  const handleSelectChange = (event) => {
+    const selectedOption = event.target.value;
+    switch (selectedOption) {
+      case "Romantic Songs":
+        handleRomanticSongs();
+        break;
+      case "Sad Songs":
+        handleSadSongs();
+        break;
+      case "Excited Songs":
+        handleExcitedSongs();
+        break;
+      case "Happy Songs":
+        handleHappySongs();
+        break;
+
+      default:
+        console.log("Unknown option");
+    }
+  };
+  const handdleArtistImg = () => {
+    console.log("topArtist");
+    navigate("/topArtist");
   };
 
   return (
@@ -75,7 +127,7 @@ const Navbar = () => {
         <div>
           <SubscriptionModal />
         </div>
-
+        <div onClick={()=>navigate("/liked")}>WishList</div>
         <div onClick={login} className="loginBtn">
           <PersonIcon
             style={{ marginLeft: 20, cursor: "pointer" }}
@@ -98,30 +150,16 @@ const Navbar = () => {
       <nav className="nav-2">
         <div onClick={handleAll}>All</div>
         <div onClick={handleTrending}>Trending</div>
-        <div>Old Song</div>
-        <div>New Songs</div>
-        <div></div>
-        <select>
-          <option value="Party Songs">Moods & Genre</option>
-          <option value="Party Songs">Party Songs</option>
-          <option value="Party Songs">Dance Songs</option>
-          <option value="Party Songs">Bollywood Songs</option>
-          <option value="Party Songs">Romantic Songs</option>
-          <option value="Party Songs">90's Hits</option>
-          <option value="Party Songs">Ghazals</option>
-          <option value="Party Songs">Bhakti Songs</option>
-          <option value="Party Songs">loFi Songs</option>
+
+        <select onChange={handleSelectChange}>
+          <option value="Moods & Genre">Moods & Genre</option>
+          <option value="Romantic Songs">Romantic Songs</option>
+          <option value="Sad Songs">Sad Songs</option>
+          <option value="Excited Songs">Excited Songs</option>
+          <option value="Happy Songs">Happy Songs</option>
         </select>
-        <select>
-          <option value="Party Songs">Top Album</option>
-          <option value="Party Songs">Party Songs</option>
-          <option value="Party Songs">Dance Songs</option>
-        </select>
-        <div>Top Artist</div>
-        <select>
-          <option value="Party Songs">Top Playlists</option>
-        </select>
-        <div>Podcast</div>
+        <div>Top Album</div>
+        <div onClick={handdleArtistImg}>Top Artist</div>
       </nav>
     </>
   );

@@ -31,7 +31,7 @@ function Slider2({ songsList, first = 0, last = 10 }) {
       setShowLeftIcon(false);
     }
   };
-
+ 
   return (
     <div className="slider-container-2">
       {showLeftIcon && (
@@ -54,6 +54,7 @@ function Slider2({ songsList, first = 0, last = 10 }) {
             return (
               <div key={songs.id || index}>
                 <MoviesCard
+                  id={songs._id}
                   title={songs.title}
                   image={songs.thumbnail}
                   mood={songs.mood}

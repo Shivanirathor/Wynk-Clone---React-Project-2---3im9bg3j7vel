@@ -1,9 +1,10 @@
 import React from "react";
 import "../styles/MoviesCard.css";
 
+
 const ArtistImage = ({ songsList, first, last }) => {
   return (
-    <div className="artistImg">
+    <div className="artistImg" style={{ color: "white" }}>
       {songsList &&
         songsList.slice(first, last).map((songs, index) => {
           return (
@@ -14,7 +15,7 @@ const ArtistImage = ({ songsList, first, last }) => {
                 width={210}
                 height={210}
               />
-              <h2 className="artistName">{songs.artist[0].name}</h2>
+              <h2 className="artistName">{songs?.artist[0]?.name}</h2>
             </div>
           );
         })}

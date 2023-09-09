@@ -10,9 +10,6 @@ import "rc-slider/assets/index.css";
 import { useNavigate } from "react-router-dom";
 import { addLikedSong, removeLikedSong } from "../redux/likedSongsSlice";
 
-
-
-
 const MusicPlayer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -53,26 +50,40 @@ const MusicPlayer = () => {
   }, [isPlaying]);
 
   const handleLikedSong = () => {
-    // Assuming currentSongUrl contains song information
-    const songToAdd = {
-      id: currentSongUrl.id,
-      title: currentSongUrl.title,
-      artist: currentSongUrl.name,
-      audio: currentSongUrl.audio,
-      image: currentSongUrl.image,
+    const token = localStorage.getItem("token");
+    const songId = currentSongUrl.id;
+    const jwtToken = token;
+    const projectID = "22pghva8m0p8";
+    const apiUrl =
+      "https://academics.newtonschool.co/api/v1/music/favorites/like";
+
+    const headers = {
+      Authorization: `Bearer ${jwtToken}`,
+      projectID: projectID,
+      appType: "music",
     };
 
-    // Check if the song is already liked
-    const isLiked = likedSongs.some((song) => song.id === songToAdd.id);
+    const requestBody = JSON.stringify({
+      songId: songId,
+    });
 
-    if (isLiked) {
-      // Remove the song from liked songs
-      dispatch(removeLikedSong(songToAdd));
-    } else {
-      // Add the song to liked songs
-      dispatch(addLikedSong(songToAdd));
-    }
+    fetch(apiUrl, {
+      method: "POST",
+      headers: headers,
+      body: requestBody,
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Song liked successfully.");
+        } else {
+          console.error("Failed to like the song.");
+        }
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
   };
+  console.log("current", currentSongUrl);
   return (
     <div className="music-player-container">
       <div>
