@@ -1,11 +1,12 @@
 import React from "react";
+import "../styles/App.css"
 import { useSelector } from "react-redux";
 
 const RecentPlayed = () => {
   const recentSongs = useSelector((state) => state.songs.addToRecent);
 
   return (
-    <div>
+    <div className="recent">
       <h2 style={{ marginLeft: 30, fontSize: 25 }}>Recent Played</h2>
       <div className="recent-played-list">
         {recentSongs.map((song) => (
