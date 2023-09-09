@@ -9,6 +9,7 @@ import UpdatePassword from "./Pages/UpdatePassword";
 import LikedSongs from "./Pages/LikedSongs";
 import Trending from "./Pages/Trending";
 import TopArtist from "./Pages/TopArtist";
+import TopAlbum from "./Pages/TopAlbum";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/topArtist" element={<TopArtist />} />
+        <Route path="/topAlbum" element={<TopAlbum />} />
         <Route path="/liked" element={<LikedSongs />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />

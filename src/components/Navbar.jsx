@@ -158,7 +158,7 @@ const Navbar = () => {
           <option value="Excited Songs">Excited Songs</option>
           <option value="Happy Songs">Happy Songs</option>
         </select>
-        <div>Top Album</div>
+        <div onClick={()=>navigate("/topAlbum")}>Top Album</div>
         <div onClick={handdleArtistImg}>Top Artist</div>
       </nav>
     </>
