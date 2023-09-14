@@ -28,7 +28,7 @@ function Slider2({ songsList, first = 0, last = 10 }) {
     if (containerRef.current) {
       const scrollAmount = containerRef.current.clientWidth;
       containerRef.current.scrollLeft -= scrollAmount;
-      setShowLeftIcon(false);
+      // setShowLeftIcon(false);
     }
   };
  

@@ -89,9 +89,7 @@ const SignUp = () => {
           </div>
 
           <p>To create your account, install Wynk app</p>
-          <a href="/login" style={{ color: "blue", textDecoration: "none" }}>
-            Already have an account.
-          </a>
+         
           <div className="download-links">
             <a
               href="https://www.apple.com/in/app-store/"

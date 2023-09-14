@@ -3,15 +3,15 @@ import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogin, loginSuccess } from "../redux/loginSlice";
-import Alert from "@mui/material/Alert";
+import { getLogin } from "../redux/loginSlice";
+
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin, loginError } = useSelector((state) => state.login);
 
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
@@ -26,8 +26,8 @@ const Login = () => {
     }
   }, [loginError]);
 
-  const handleName = (event) => {
-    setName(event.target.value);
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
   };
   const handlePassword = (event) => {
     setPassword(event.target.value);
@@ -35,21 +35,15 @@ const Login = () => {
   const handleLogin = () => {
     dispatch(
       getLogin({
-        name,
+        email,
         password,
       })
     );
-    const user = { name };
-    dispatch(loginSuccess(user));
+    
   };
 
   return (
     <>
-      {isLogin && (
-        <Alert severity="success" sx={{ marginTop: "20px" }}>
-          Login Successfully!!🎉
-        </Alert>
-      )}
       <div className="loginSetUp">
         <img
           src={loginImg}
@@ -64,10 +58,10 @@ const Login = () => {
 
           <div className="input-container">
             <input
-              type="text"
-              placeholder="Username"
-              value={name}
-              onChange={handleName}
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={handleEmail}
             />
             <input
               type="password"
@@ -79,6 +73,9 @@ const Login = () => {
           </div>
 
           <p>To create your account, install Wynk app</p>
+          <a href="/signup" style={{ color: "lightblue", textDecoration: "none" }}>
+            create an account.
+          </a>
           <div className="download-links">
             <a
               href="https://www.apple.com/in/app-store/"

@@ -5,7 +5,7 @@ export const getSongsList = createAsyncThunk(
   async (thunkAPI) => {
     const res = await fetch(
       // "https://academics.newtonschool.co/api/v1/music/album",
-      "https://academics.newtonschool.co/api/v1/music/song",
+      "https://academics.newtonschool.co/api/v1/music/song?limit=100",
       {
         headers: {
           projectId: "22pghva8m0p8",
@@ -20,7 +20,7 @@ export const getSongsList = createAsyncThunk(
 export const getRomanticSong = createAsyncThunk(
   "songs/getRomanticSong",
   async (thunkAPI) => {
-    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"romantic"}`;
+    const url = `https://academics.newtonschool.co/api/v1/music/song?limit=100&filter={"mood":"romantic"}`;
     const res = await fetch(url, {
       headers: {
         projectId: "22pghva8m0p8",
@@ -33,7 +33,7 @@ export const getRomanticSong = createAsyncThunk(
 export const getSadSong = createAsyncThunk(
   "songs/getSadSong",
   async (thunkAPI) => {
-    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"sad"}`;
+    const url = `https://academics.newtonschool.co/api/v1/music/song?limit=100&filter={"mood":"sad"}`;
     const res = await fetch(url, {
       headers: {
         projectId: "22pghva8m0p8",
@@ -46,7 +46,7 @@ export const getSadSong = createAsyncThunk(
 export const getExcitedSong = createAsyncThunk(
   "songs/getExcitedSong",
   async (thunkAPI) => {
-    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"excited"}`;
+    const url = `https://academics.newtonschool.co/api/v1/music/song?limit=100&filter={"mood":"excited"}`;
     const res = await fetch(url, {
       headers: {
         projectId: "22pghva8m0p8",
@@ -59,7 +59,7 @@ export const getExcitedSong = createAsyncThunk(
 export const getHappySong = createAsyncThunk(
   "songs/getHappySong",
   async (thunkAPI) => {
-    const url = `https://academics.newtonschool.co/api/v1/music/song?filter={"mood":"happy"}`;
+    const url = `https://academics.newtonschool.co/api/v1/music/song?limit=100&filter={"mood":"happy"}`;
     const res = await fetch(url, {
       headers: {
         projectId: "22pghva8m0p8",

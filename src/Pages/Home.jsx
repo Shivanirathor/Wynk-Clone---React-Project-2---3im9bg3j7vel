@@ -9,17 +9,41 @@ import MusicPlayer from "../components/MusicPlayer";
 import RecentPlayed from "../Pages/RecentPlayed";
 import Slider2 from "./Slider2";
 import ArtistImage from "../components/ArtistImage";
+import Alert from "@mui/material/Alert";
+import {
+  setLoginAlert,
+  setLoginFalse,
+  setPaymentFalse,
+} from "../redux/loginSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { isLogin, showLoginAlert } = useSelector((state) => state.login);
   const { songsList, showMusicPlayer } = useSelector((state) => state.songs);
 
   useEffect(() => {
     dispatch(getSongsList());
   }, [dispatch]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(setLoginAlert());
+    }, 2000);
+  }, [isLogin]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(setPaymentFalse());
+  //   }, 2000);
+  // }, [isLogin]);
+  console.log("alert", showLoginAlert);
   return (
     <>
+      {showLoginAlert && (
+        <Alert severity="success" sx={{ marginLeft: "300px" }}>
+          Login Successfully!!🎉
+        </Alert>
+      )}
       <Navbar />
       {showMusicPlayer && <MusicPlayer />}
       <Slider />

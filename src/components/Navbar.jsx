@@ -33,8 +33,9 @@ const Navbar = () => {
     window.location.reload();
   };
   const login = () => {
+    console.log("first", isLogin);
     if (!isLogin) {
-      navigate("/signup");
+      navigate("/login");
     } else {
       toggleDropdown();
     }
@@ -56,7 +57,6 @@ const Navbar = () => {
   };
   const handleTrending = () => {
     navigate("/trending");
-  
   };
 
   const handleSearch = () => {

@@ -6,7 +6,7 @@ export const getLogin = createAsyncThunk("login/getLogin", async (payload) => {
     .post(
       "https://academics.newtonschool.co/api/v1/user/login",
       {
-        name: payload.name,
+        email: payload.email,
         password: payload.password,
         appType: "music",
       },
@@ -82,6 +82,7 @@ const initialState = {
   registerError: "",
   name: "",
   isUpdate: false,
+  showLoginAlert: false,
 };
 
 export const loginSlice = createSlice({
@@ -95,9 +96,14 @@ export const loginSlice = createSlice({
       state.isUpdate = false;
     },
 
-    loginSuccess: (state, action) => {
-      state.isLogin = true;
-      state.name = action.payload.name;
+    setLoginFalse: (state) => {
+      state.isLogin = false;
+    },
+    setPaymentFalse: (state) => {
+      state.isLogin = false;
+    },
+    setLoginAlert: (state) => {
+      state.showLoginAlert = false;
     },
   },
 
@@ -108,8 +114,10 @@ export const loginSlice = createSlice({
     [getRegister.rejected]: (state) => {
       state.registerError = "Invalid Register detailes";
     },
-    [getLogin.fulfilled]: (state) => {
+    [getLogin.fulfilled]: (state, action) => {
       state.isLogin = true;
+      state.showLoginAlert = true;
+      state.name = action.payload.data.data.name;
     },
     [getLogin.rejected]: (state) => {
       state.loginError = "Invalid Login Detailes, Try Again";
@@ -120,5 +128,6 @@ export const loginSlice = createSlice({
   },
 });
 
-export const { setUpdateFalse, loginSuccess } = loginSlice.actions;
+export const { setUpdateFalse, setLoginFalse, setLoginAlert, setPaymentFalse } =
+  loginSlice.actions;
 export default loginSlice.reducer;

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const LikedSongs = () => {
+  const [likedData, setLikedData] = useState([]);
   const token = localStorage.getItem("token");
 
   const jwtToken = token;
@@ -11,7 +12,6 @@ const LikedSongs = () => {
   const headers = {
     Authorization: `Bearer ${jwtToken}`,
     projectID: projectID,
-    appType: "music",
   };
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const LikedSongs = () => {
         }
       })
       .then((data) => {
-        // Handle the data here
         console.log("Data from the API:", data);
+        setLikedData(data.data.songs);
       })
       .catch((error) => {
         console.error("An error occurred:", error);
@@ -37,8 +37,33 @@ const LikedSongs = () => {
 
   return (
     <>
-      <h1 style={{color:"white"}}>Favourite Songs</h1>
-     
+      <h1
+        style={{
+          color: "white",
+          textAlign: "center",
+          fontSize: 50,
+          margin: 20,
+        }}
+      >
+        Favourite Songs
+      </h1>
+      <div className="liked-container">
+        {likedData.length > 0 ? (
+          likedData.map((song, index) => (
+            <div key={index} className="image">
+              <img
+                src={song.thumbnail}
+                alt={song.title}
+                width={200}
+                height={210}
+              />
+              <p style={{color:"white"}}>{song.title}</p>
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </>
   );
 };

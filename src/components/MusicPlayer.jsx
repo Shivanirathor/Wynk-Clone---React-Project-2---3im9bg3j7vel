@@ -8,7 +8,8 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useNavigate } from "react-router-dom";
-import { addLikedSong, removeLikedSong } from "../redux/likedSongsSlice";
+import axios from "axios";
+// import { addLikedSong, removeLikedSong } from "../redux/likedSongsSlice";
 
 const MusicPlayer = () => {
   const navigate = useNavigate();
@@ -60,21 +61,18 @@ const MusicPlayer = () => {
     const headers = {
       Authorization: `Bearer ${jwtToken}`,
       projectID: projectID,
-      appType: "music",
     };
 
-    const requestBody = JSON.stringify({
+    const requestBody = {
       songId: songId,
-    });
-
-    fetch(apiUrl, {
-      method: "POST",
-      headers: headers,
-      body: requestBody,
-    })
+    };
+    console.log("songid123", songId);
+    axios
+      .patch(apiUrl, requestBody, { headers })
       .then((response) => {
         if (response.ok) {
           console.log("Song liked successfully.");
+          
         } else {
           console.error("Failed to like the song.");
         }
@@ -82,8 +80,10 @@ const MusicPlayer = () => {
       .catch((error) => {
         console.error("An error occurred:", error);
       });
+      alert("Song Saved Successfully!!")
   };
-  console.log("current", currentSongUrl);
+ 
+
   return (
     <div className="music-player-container">
       <div>

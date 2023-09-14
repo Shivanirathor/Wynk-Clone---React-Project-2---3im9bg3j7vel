@@ -70,7 +70,7 @@ function Slider() {
 
   const handleImageClick = () => {
     if (!isLogin) {
-      navigate("/signup");
+      navigate("/login");
     } else {
       navigate("/");
     }
