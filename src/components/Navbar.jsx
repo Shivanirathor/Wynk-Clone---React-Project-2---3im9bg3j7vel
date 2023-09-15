@@ -121,14 +121,16 @@ const Navbar = () => {
             value={searchInput}
             onChange={handleChange}
           />
-          <SearchIcon onClick={handleSearch} />
+          <SearchIcon title="Search" onClick={handleSearch} />
         </div>
 
         <div>
           <SubscriptionModal />
         </div>
-        <div onClick={() => navigate("/liked")}>🤍</div>
-        <div onClick={login} className="loginBtn">
+        <div title="Favourite Songs" onClick={() => navigate("/liked")}>
+          🤍
+        </div>
+        <div title="Login" onClick={login} className="loginBtn">
           <PersonIcon
             style={{ marginLeft: 20, cursor: "pointer" }}
             onClick={toggleDropdown}

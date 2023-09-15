@@ -89,7 +89,7 @@ const SignUp = () => {
           </div>
 
           <p>To create your account, install Wynk app</p>
-         
+
           <div className="download-links">
             <a
               href="https://www.apple.com/in/app-store/"

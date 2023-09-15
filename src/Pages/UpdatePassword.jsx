@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/LoginSignUp.css";
-
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUpdate, setUpdateFalse } from "../redux/loginSlice";

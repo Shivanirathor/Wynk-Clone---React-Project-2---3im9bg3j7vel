@@ -31,7 +31,7 @@ function Slider2({ songsList, first = 0, last = 10 }) {
       // setShowLeftIcon(false);
     }
   };
- 
+
   return (
     <div className="slider-container-2">
       {showLeftIcon && (

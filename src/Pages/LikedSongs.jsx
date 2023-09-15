@@ -57,7 +57,7 @@ const LikedSongs = () => {
                 width={200}
                 height={210}
               />
-              <p style={{color:"white"}}>{song.title}</p>
+              <p style={{ color: "white" }}>{song.title}</p>
             </div>
           ))
         ) : (

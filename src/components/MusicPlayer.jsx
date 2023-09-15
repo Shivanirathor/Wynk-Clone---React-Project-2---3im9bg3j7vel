@@ -3,13 +3,10 @@ import "../styles/MusicPlayer.css";
 import { useDispatch, useSelector } from "react-redux";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { addLikedSong, removeLikedSong } from "../redux/likedSongsSlice";
 
 const MusicPlayer = () => {
   const navigate = useNavigate();
@@ -72,7 +69,6 @@ const MusicPlayer = () => {
       .then((response) => {
         if (response.ok) {
           console.log("Song liked successfully.");
-          
         } else {
           console.error("Failed to like the song.");
         }
@@ -80,9 +76,8 @@ const MusicPlayer = () => {
       .catch((error) => {
         console.error("An error occurred:", error);
       });
-      alert("Song Saved Successfully!!")
+    alert("Song Saved Successfully!!");
   };
- 
 
   return (
     <div className="music-player-container">
@@ -130,12 +125,17 @@ const MusicPlayer = () => {
           <SkipPreviousIcon />
         </button> */}
         <div
+          title="Add Your Fav Song"
           style={{ fontSize: 25, cursor: "pointer" }}
           onClick={handleLikedSong}
         >
           🤍
         </div>
-        <button className="control-button-center" onClick={togglePlayPause}>
+        <button
+          title="Play Song"
+          className="control-button-center"
+          onClick={togglePlayPause}
+        >
           {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
         </button>
         {/* <button className="control-button">

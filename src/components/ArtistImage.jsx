@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/MoviesCard.css";
 
-
 const ArtistImage = ({ songsList, first, last }) => {
   return (
     <div className="artistImg" style={{ color: "white" }}>
@@ -10,6 +9,7 @@ const ArtistImage = ({ songsList, first, last }) => {
           return (
             <div key={songs.id || index}>
               <img
+                title={songs?.artist[0]?.name}
                 src={songs?.artist[0]?.image}
                 alt="artist"
                 width={210}

@@ -10,11 +10,7 @@ import RecentPlayed from "../Pages/RecentPlayed";
 import Slider2 from "./Slider2";
 import ArtistImage from "../components/ArtistImage";
 import Alert from "@mui/material/Alert";
-import {
-  setLoginAlert,
-  setLoginFalse,
-  setPaymentFalse,
-} from "../redux/loginSlice";
+import { setLoginAlert } from "../redux/loginSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,20 +24,14 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(setLoginAlert());
-    }, 2000);
+    }, 3000);
   }, [isLogin]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     dispatch(setPaymentFalse());
-  //   }, 2000);
-  // }, [isLogin]);
-  console.log("alert", showLoginAlert);
   return (
     <>
       {showLoginAlert && (
-        <Alert severity="success" sx={{ marginLeft: "300px" }}>
-          Login Successfully!!🎉
+        <Alert severity="success" sx={{ marginLeft: "40%", width: "300px" }}>
+          Login Successfully!!
         </Alert>
       )}
       <Navbar />

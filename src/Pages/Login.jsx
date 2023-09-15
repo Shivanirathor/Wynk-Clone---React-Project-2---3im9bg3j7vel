@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogin } from "../redux/loginSlice";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,7 +38,6 @@ const Login = () => {
         password,
       })
     );
-    
   };
 
   return (
@@ -73,7 +71,10 @@ const Login = () => {
           </div>
 
           <p>To create your account, install Wynk app</p>
-          <a href="/signup" style={{ color: "lightblue", textDecoration: "none" }}>
+          <a
+            href="/signup"
+            style={{ color: "lightblue", textDecoration: "none" }}
+          >
             create an account.
           </a>
           <div className="download-links">

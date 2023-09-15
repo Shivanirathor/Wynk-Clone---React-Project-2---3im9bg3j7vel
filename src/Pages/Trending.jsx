@@ -4,7 +4,6 @@ import trendingimg from "../assets/trending.jpeg";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-
 function Trending() {
   const [trending, setTrending] = useState([]);
   useEffect(() => {
@@ -72,7 +71,7 @@ function Trending() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

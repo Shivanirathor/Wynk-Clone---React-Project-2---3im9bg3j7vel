@@ -48,7 +48,7 @@ function TopAlbum() {
                         className="top-img"
                         src={song.image}
                         alt="song-img"
-                    width={100}
+                        width={100}
                       />
                     </td>
                     <td>{song.title}</td>
