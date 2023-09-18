@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const LikedSongs = () => {
   const [likedData, setLikedData] = useState([]);
+
   const token = localStorage.getItem("token");
 
   const jwtToken = token;
@@ -47,11 +48,12 @@ const LikedSongs = () => {
       >
         Favourite Songs
       </h1>
-      <div className="liked-container">
+      <div style={{ display: "flex",  flexWrap:"wrap",gap: "20px" }}>
         {likedData.length > 0 ? (
           likedData.map((song, index) => (
-            <div key={index} className="image">
+            <div key={index}>
               <img
+                style={{ borderRadius: "20px" }}
                 src={song.thumbnail}
                 alt={song.title}
                 width={200}
