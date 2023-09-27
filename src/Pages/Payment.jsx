@@ -29,7 +29,7 @@ const Payment = () => {
 
     if (!cardExpiryMM.trim() || !cardExpiryYY.trim()) {
       errors.cardExpiry = "Expiry date is required.";
-    } else if (!/^\d{1}$/.test(cardExpiryMM) || !/^\d{2}$/.test(cardExpiryYY)) {
+    } else if (!/^\d{2}$/.test(cardExpiryMM) || !/^\d{2}$/.test(cardExpiryYY)) {
       errors.cardExpiry = "Invalid expiry date format.";
     }
 

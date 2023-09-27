@@ -5,79 +5,95 @@ position: absolute;
 margin-top: -55px;
 margin-left: 150px;
   border-radius: 50px;
-  overflow-y: none;
+
 }
 
 .premium-offer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
- 
 }
 
-.benefit-table {
-  margin-top: 20px;
-}
 .benefits-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .benefits-cell {
   flex: 1;
-  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bold;
 }
 
 .tick-mark {
   color: green;
 }
 
-
 .subscription-plans {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  justify-content: space-around;
+  margin: 20px 0;
 }
 
 .plan {
-  text-align: center;
-  border: 1px solid #ccc;
+  margin: 10px;
+  flex: 1;
   padding: 20px;
-  border-radius: 5px;
-  border: 2px solid green;
-}
-.plan:hover{
-  box-shadow: 0px 0px 8px rgb(210, 67, 67);
-  border: none;
-  transform: scale(1.22);
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgb(223, 149, 196);
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+
 }
 
-.plan-tick {
-  margin-top: 10px;
-  font-size: 20px;
-  color: green;
-}
-.valid-till hr{
-margin-bottom: 20px;
-margin-top: 20px;
 
+
+.plan:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.plan h6 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.valid-till {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.gst-message,
+.terms-policy {
+  text-align: left;
+  margin-top: 20px;
+  list-style: none;
+  color: #666;
 }
 
 .gst-message li,
 .terms-policy li {
- font-weight: bold;
-  text-align: center;
+  margin: 5px 0;
+  font-size: 14px;
 }
 
+
 .amount-to-be-paid {
+ 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
   font-weight: bold;
 }
 .modal-footer{
+  margin-bottom: 10px;
   overflow-y: hidden !important;
 }

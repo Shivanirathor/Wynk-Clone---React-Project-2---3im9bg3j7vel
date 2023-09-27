@@ -44,10 +44,10 @@ const SignUp = () => {
     <>
       {registerError && (
         <Alert
-          severity="warning"
-          sx={{ marginTop: "20px", width: "350px", marginLeft: "38%" }}
+          severity="info"
+          sx={{ marginTop: "20px",width:"500px", marginLeft:"33%"}}
         >
-          Please Register First!!
+         Registration failed. Please ensure all fields are filled out correctly.
         </Alert>
       )}
 

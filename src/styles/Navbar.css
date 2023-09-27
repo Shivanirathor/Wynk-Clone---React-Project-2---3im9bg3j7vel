@@ -1,4 +1,3 @@
-
 .nav-1 {
   display: flex;
   justify-content: space-between;
@@ -7,8 +6,8 @@
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  margin-top: 10px;
-  padding: 10px 20px; /* Added padding */
+
+  padding: 10px 20px;
 }
 
 .logoText {
@@ -29,23 +28,27 @@
 }
 
 .search {
-  flex-grow: 1; /* Let it grow to take available space */
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 20px; /* Reduced margin for smaller screens */
+  margin-left: 20px;
 }
+.searchIcon{
+  position:absolute;
+  right: 21rem;
 
+}
 .search input {
   color: white;
   background-color: transparent;
   font-size: 17px;
-  width: 40%; 
+  width: 40%;
   height: 45px;
   border: 1px solid rgb(104, 102, 102);
   border-radius: 50px;
   padding-left: 20px;
- margin-left: 55%;
+  margin-left: 55%;
 }
 
 .loginBtn {
@@ -57,23 +60,61 @@
   margin-left: 10px;
 }
 
-@media (max-width: 768px) {
+@media only screen and (min-width: 200px) and (max-width: 400px) {
 
-.logoText h2{
-  display: none;
+  .nav-1 {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+  .logoText img{
+    width: 50px;
+    height: 50px;
+  }
+  .logoText h2{
+    font-size: 20px !important;
+  }
+
+  .search{
+position: absolute;
+right: 20px;
+  width: 100%;
+  margin-top: -35px;
+  }
+.searchIcon{
+ position: absolute;
+ right: 10px;
+}
+ 
+}
+@media only screen and (min-width: 400px) and (max-width: 700px) {
+
+  .nav-1 {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    
+  }
+
+  .search input{
+margin: auto;
+width: 100% ;
+}
+.searchIcon{
+  position: absolute;
+  left: 25rem;
+ }
+ 
 }
 
-.search{
-  display: none;
-}
-.nav-2 select{
-  display: none;
-}
-
-}
 
 
-
+/* =================== */
 .nav-2 {
   margin-bottom: auto;
   height: 50px;
@@ -117,6 +158,9 @@
 
 .loginBtn {
   position: relative; 
+}
+.nav-2 select{
+  display: none;
 }
 
 .dropdown {

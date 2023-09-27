@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
+
 const LikedSongs = () => {
   const [likedData, setLikedData] = useState([]);
 
   const token = localStorage.getItem("token");
-
   const jwtToken = token;
   const projectID = "22pghva8m0p8";
 
@@ -22,6 +22,7 @@ const LikedSongs = () => {
     })
       .then((response) => {
         if (response.ok) {
+        
           return response.json();
         } else {
           throw new Error("Failed to like the song.");
@@ -31,6 +32,8 @@ const LikedSongs = () => {
         console.log("Data from the API:", data);
         setLikedData(data.data.songs);
       })
+      
+
       .catch((error) => {
         console.error("An error occurred:", error);
       });
@@ -48,7 +51,7 @@ const LikedSongs = () => {
       >
         Favourite Songs
       </h1>
-      <div style={{ display: "flex",  flexWrap:"wrap",gap: "20px" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "40px" ,marginLeft:"10rem"}}>
         {likedData.length > 0 ? (
           likedData.map((song, index) => (
             <div key={index}>
@@ -59,11 +62,12 @@ const LikedSongs = () => {
                 width={200}
                 height={210}
               />
+
               <p style={{ color: "white" }}>{song.title}</p>
             </div>
           ))
         ) : (
-          <p>Loading...</p>
+          <p style={{ color: "white" }}>Loading...</p>
         )}
       </div>
     </>

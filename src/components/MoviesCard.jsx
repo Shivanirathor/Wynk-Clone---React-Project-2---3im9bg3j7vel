@@ -11,9 +11,9 @@ import {
 const MoviesCard = ({ title, image, audio, name, id }) => {
   const dispatch = useDispatch();
   const musicCardHandler = () => {
-    dispatch(setCurrentSongUrl({ audio, title, name, image, id }));
+    dispatch(setCurrentSongUrl({ audio, title, name, image, id}));
     dispatch(setShowMusicPlayer(true));
-    console.log("curr", setCurrentSongUrl);
+    // console.log("curr", setCurrentSongUrl);
     const recentlyPlayedSong = { title, name, image };
     dispatch(setAddToRecent([recentlyPlayedSong]));
   };

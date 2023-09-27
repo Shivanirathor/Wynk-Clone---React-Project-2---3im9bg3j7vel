@@ -1,39 +1,58 @@
+
 .music-player-container {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 60px;
   background-color: rgb(82, 80, 80);
   color: #fff;
   padding: 15px 5px 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-border-style:groove;
+  border-style: groove;
   z-index: 1;
-}
-.image{
-  position: absolute;
-  border-radius: 20%;
-  margin-left: 5px;
+  cursor: pointer;
 }
 
-.song-title{
-  margin-left: 60px;
-  font-size: 15px;
+.image {
+  border-radius: 20%;
+
+  max-width: 50px; 
+  max-height: 50px; 
 }
-.artist{
-  margin-left: 70px;
-font-size: 13px;
-color: black;
+
+.song-title {
+  font-size: 15px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-size: 13px;
+  color: black;
+}
+
+.span {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.like-span {
+  color: red;
 }
 
 .controls {
   display: flex;
   gap: 5px;
-
 }
 
+.volume-controls{
+  display: flex;
+  
+}
 .control-button {
   background-color: transparent;
   border: none;
@@ -42,7 +61,8 @@ color: black;
   color: #fff;
   transition: color 0.3s ease;
 }
-.control-button-center{
+
+.control-button-center {
   background-color: rgb(227, 46, 45);
   border: none;
   padding: 5px;
@@ -55,22 +75,16 @@ color: black;
 .slider-container {
   flex: 1;
   display: flex;
-  
   margin-left: 16px !important;
   margin-right: 15px !important;
-
 }
-
-
 
 .time-display {
   font-size: 12px;
   width: 8%;
 }
 
-
 .rc-slider-handle {
-
   border: 2px solid rgb(227, 46, 45);
   background-color: rgb(227, 46, 45);
 }
@@ -79,13 +93,30 @@ color: black;
   background-color: rgb(227, 46, 45);
 }
 
-
 .rc-slider-rail {
   background-color: #333;
 }
+@media (max-width: 600px) {
+  .slider-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
 
+  .time-display {
+    display: flex;
+    margin-top: 5px;
+    margin-left: -40px;
+  }
+}
+@media (max-width: 1000px) {
+  .slider-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
 
-/* .album-art img {
-  max-width: 100px;
-  max-height: 100px;
-} */
+  .time-display {
+    display: flex;
+    margin-top: 5px;
+    margin-left: -40px;
+  }
+}

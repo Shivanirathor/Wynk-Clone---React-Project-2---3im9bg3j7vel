@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const getSongsList = createAsyncThunk(
   "songs/getSongsList",
@@ -81,12 +82,32 @@ export const getSearch = createAsyncThunk(
     return res;
   }
 );
+export const getLike = createAsyncThunk("songs/getLike", async (showId) => {
+  console.log("getliked", showId);
+  const token = localStorage.getItem("token");
+  console.log("token", token);
+  const res = await axios
+    .patch(
+      "https://academics.newtonschool.co/api/v1/music/favorites/like",
+      { showId: showId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          projectId: "22pghva8m0p8",
+        },
+      }
+    )
+    .then((data) => data.json());
+
+  return res;
+});
 
 const initialState = {
   songsList: [],
   currentSongUrl: {},
   addToRecent: [],
   showMusicPlayer: false,
+  // likedSong:[],
 };
 
 export const songsSlice = createSlice({
@@ -123,10 +144,12 @@ export const songsSlice = createSlice({
     [getSearch.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
+    // [getLike.fulfilled]: (state, { payload }) => {
+    //   state.likedSong = payload.data;
+    // },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { setCurrentSongUrl, setShowMusicPlayer, setAddToRecent } =
   songsSlice.actions;
 

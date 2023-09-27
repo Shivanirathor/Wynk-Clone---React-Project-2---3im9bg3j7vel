@@ -6,7 +6,7 @@ body{
   justify-content: center;
   text-align: center;
   margin-top: 50px;
-  flex-wrap: wrap; /* Allow for wrapping on smaller screens */
+  flex-wrap: wrap; 
 }
 
 .summary-container {
@@ -14,7 +14,7 @@ body{
   width: 100%;
   max-width: 350px;
   height: 350px;
-  margin: 0 auto 20px; /* Center horizontally and add spacing at the bottom */
+  margin: 0 auto 20px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgb(20, 19, 19);
@@ -23,7 +23,7 @@ body{
   text-align: center;
 }
 
-/* Rest of the styles remain the same */
+
 
 .plan-details {
   margin-top: 20px;
@@ -32,18 +32,21 @@ body{
 .original-price {
   text-decoration: line-through;
   color: #999;
+  margin-top: 30px;
 }
 
 .discounted-price {
   color: #007bff;
   font-size: 24px;
+  margin-top: 100px;
+
+
 }
 
 .savings,
 .to-pay {
   font-weight: bold;
-  /* font-size: 40px !important; */
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -51,6 +54,7 @@ body{
 .final-price {
   color: #007bff;
   font-size: 24px;
+
 }
 /* =================== */
 
@@ -84,34 +88,45 @@ body{
 .card-form {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  background: rgb(107, 149, 208);
-  border-radius: 30px;
-  color: white !important;
-  padding: 30px; 
-  margin: 30px;
-  box-shadow: 0 0 5px rgb(180, 179, 179);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #007bff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .card-form input {
- background: none;
- color: black;
-font-size: 20px;
-padding: 10px;
-border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-.card-form input:focus{
-  border: none;
-}
+
 .card-expiry {
   display: flex;
-  background: rgb(209, 206, 206);
-border-radius: 5px;
+  justify-content: space-between;
   align-items: center;
-  
 }
+
+.card-expiry input {
+  flex: 1;
+  margin-right: 5px;
+}
+
+.card-expiry span {
+  margin: 0 5px;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
 .save-card {
+  margin-top: 20px;
   padding: 10px;
   background-color: #007bff;
   color: #fff;

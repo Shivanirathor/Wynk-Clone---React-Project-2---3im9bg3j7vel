@@ -30,8 +30,8 @@ const Home = () => {
   return (
     <>
       {showLoginAlert && (
-        <Alert severity="success" sx={{ marginLeft: "40%", width: "300px" }}>
-          Login Successfully!!
+        <Alert severity="success" sx={{ marginLeft: "40%", width: "350px", marginTop:"20px",position:"absolute" }}>
+        Login successfully! Welcome to our platform!!!
         </Alert>
       )}
       <Navbar />

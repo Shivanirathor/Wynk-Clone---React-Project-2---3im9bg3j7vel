@@ -4,6 +4,7 @@ import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogin } from "../redux/loginSlice";
+import Alert from "@mui/material/Alert";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,11 +20,11 @@ const Login = () => {
     }
   }, [isLogin]);
 
-  useEffect(() => {
-    if (loginError) {
-      alert(loginError);
-    }
-  }, [loginError]);
+  // useEffect(() => {
+  //   if (loginError) {
+  //     alert(loginError);
+  //   }
+  // }, [loginError]);
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -42,6 +43,14 @@ const Login = () => {
 
   return (
     <>
+       {loginError && (
+        <Alert
+          severity="error"
+          sx={{ marginTop: "20px", width: "400px", marginLeft: "35%" }}
+        >
+         Login failed. Please check your email and password!!
+        </Alert>
+      )}
       <div className="loginSetUp">
         <img
           src={loginImg}

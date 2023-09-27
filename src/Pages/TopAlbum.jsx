@@ -33,7 +33,6 @@ function TopAlbum() {
             <table>
               <thead>
                 <tr>
-                  {/* <th>#</th> */}
                   <th>Track</th>
                   <th>Album</th>
                   <th>Artist</th>
@@ -42,7 +41,6 @@ function TopAlbum() {
               <tbody>
                 {trending.map((song, index) => (
                   <tr className="table-row" key={song._id}>
-                    {/* <td>{index + 1}</td> */}
                     <td>
                       <img
                         className="top-img"

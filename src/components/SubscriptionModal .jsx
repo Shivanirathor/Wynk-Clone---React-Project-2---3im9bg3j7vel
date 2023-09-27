@@ -11,6 +11,34 @@ import Logo from "../assets/logo.jpeg";
 const SubscriptionModal = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  // Define your subscription plans data
+  const plans = [
+    {
+      duration: "Yearly",
+      originalPrice: "₹999",
+      discountedPrice: "₹399",
+      savings: "Save 60%",
+    },
+    {
+      duration: "3 Months",
+      originalPrice: "₹289",
+      discountedPrice: "₹129",
+      savings: "Save 55%",
+    },
+    {
+      duration: "Monthly",
+      originalPrice: "₹99",
+      discountedPrice: "₹49",
+      savings: "Save 50%",
+    },
+  ];
+
+
+  const handlePlanSelect = (index) => {
+    setSelectedPlan(index);
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,7 +60,7 @@ const SubscriptionModal = () => {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"WYNKMUSIC"}</DialogTitle>
+        <DialogTitle style={{textAlign:"center"}} id="alert-dialog-slide-title">{"WYNKMUSIC"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <div className="crown-logo">
@@ -64,24 +92,21 @@ const SubscriptionModal = () => {
               </div>
 
               <div className="subscription-plans">
-                <div className="plan">
-                  <Typography variant="h6">Yearly</Typography>
-                  <Typography>₹999</Typography>
-                  <Typography>₹399</Typography>
-                  <Typography>Save 60%</Typography>
-                </div>
-                <div className="plan">
-                  <Typography variant="h6">3 Months</Typography>
-                  <Typography>₹289</Typography>
-                  <Typography>₹129</Typography>
-                  <Typography>Save 55%</Typography>
-                </div>
-                <div className="plan">
-                  <Typography variant="h6">Monthly</Typography>
-                  <Typography>₹99</Typography>
-                  <Typography>₹49</Typography>
-                  <Typography>Save 50%</Typography>
-                </div>
+                {plans.map((plan, index) => (
+                  <div
+                    key={index}
+                    className="plan"
+                    style={{
+                      border: selectedPlan === index ? '3px solid green' : '1px solid #ccc',
+                    }}
+                    onClick={() => handlePlanSelect(index)}
+                  >
+                    <h2>{plan.duration}</h2>
+                    <p>{plan.originalPrice}</p>
+                    <p>{plan.discountedPrice}</p>
+                    <p>{plan.savings}</p>
+                  </div>
+                ))}
               </div>
               <Typography className="valid-till">
                 <hr />
