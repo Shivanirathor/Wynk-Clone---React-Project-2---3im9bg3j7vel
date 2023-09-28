@@ -3,6 +3,14 @@ import "../styles/Payment&Summary.css";
 import Summary from "../components/Summary";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import googlePay from "../assets/googlePay.jpeg";
+import amazon from "../assets/amazon.jpeg";
+import paytm from "../assets/paytm.jpeg";
+import phonePay from "../assets/phonePay.jpeg";
+import airtel from "../assets/airtel.jpeg";
+import payPal from "../assets/payPal.jpeg";
+import Logo from "../assets/logo.jpeg";
+
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -56,19 +64,42 @@ const Payment = () => {
           Payment Successfully!!🎉
         </Alert>
       )}
-
+      <div>
+      <img
+          src={Logo}
+          alt="logo"
+          width={50}
+          style={{ position: "absolute", borderRadius: 50, marginLeft:"39%" }}
+        />
+    <h2 style={{textAlign:"center", color:"white", fontSize:"40px", marginTop:"10px"}}>Wynk Music</h2>
+      </div>
       <div className="payment-summary">
         <Summary />
 
         <div className="payment-options">
           <h2 style={{ marginBottom: 25, fontSize: 40 }}>Payment Options</h2>
           <div className="upi-options">
-            <div className="upi-option">Google Pay</div>
-            <div className="upi-option">PhonePe</div>
-            <div className="upi-option">Paytm</div>
-            <div className="upi-option">Amazon</div>
-            <div className="upi-option">Airtel</div>
-            <div className="upi-option">Add another UPI ID</div>
+            <div className="upi-option">
+              <img src={googlePay} alt="" />
+            </div>
+            <div className="upi-option">
+              <img src={amazon} alt="" />
+            </div>
+            <div className="upi-option">
+              <img src={paytm} alt="" />
+            </div>
+
+            <div className="upi-option">
+              <img src={phonePay} alt="" width={50}/>
+            </div>
+
+            <div className="upi-option">
+              <img src={airtel} alt="" width={50}/>
+            </div>
+            <div className="upi-option">
+              <img src={payPal} alt="" width={50} />
+            </div>
+          
           </div>
           <div className="card-form">
             <input
@@ -122,11 +153,6 @@ const Payment = () => {
             PAY SECURELY
           </button>
 
-          {/* {payementAlert && (
-          <div className="success-message">
-            <p>Your payment is successful!</p>
-          </div>
-        )} */}
         </div>
       </div>
     </>

@@ -86,7 +86,7 @@ right: 20px;
   }
 .searchIcon{
  position: absolute;
- right: 10px;
+ right: 12px;
 }
  
 }
@@ -134,7 +134,7 @@ width: 100% ;
 }
 
 .nav-2 select option {
-  cursor: pointer;
+  cursor: pointer !important;
   color: black;
   border: none;
 
@@ -159,9 +159,9 @@ width: 100% ;
 .loginBtn {
   position: relative; 
 }
-.nav-2 select{
+/* .nav-2 select{
   display: none;
-}
+} */
 
 .dropdown {
   position: absolute; 

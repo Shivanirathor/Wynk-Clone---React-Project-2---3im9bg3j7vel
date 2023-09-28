@@ -8,12 +8,13 @@ import Typography from "@mui/material/Typography";
 import "../styles/SubscriptionModal.css";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.jpeg";
+import { useSelector } from "react-redux";
 const SubscriptionModal = () => {
   const navigate = useNavigate();
+  const { isLogin} = useSelector((state) => state.login);
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
-  // Define your subscription plans data
   const plans = [
     {
       duration: "Yearly",
@@ -41,7 +42,11 @@ const SubscriptionModal = () => {
   };
 
   const handleOpen = () => {
-    setOpen(true);
+    if(isLogin){
+      setOpen(true);
+    }else{
+      navigate("/login");
+    }
   };
 
   const handleClose = () => {
@@ -54,6 +59,7 @@ const SubscriptionModal = () => {
       <Button variant="" onClick={handleOpen}>
         💲Manage Subscription
       </Button>
+   
       <Dialog
         open={open}
         onClose={handleClose}

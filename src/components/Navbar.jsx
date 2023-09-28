@@ -49,22 +49,26 @@ const Navbar = () => {
   const navigateHome = () => {
     window.location.reload();
   };
+  const handleLikedSaved = () => {
+    if (isLogin) {
+      navigate("/liked");
+    } else {
+      navigate("/login");
+    }
+  };
 
   const handleLogout = () => {
     const confirmed = window.confirm("Are you sure you want to logout?");
     if (confirmed) {
-      // Show the logout confirmation alert
       setLogoutAlertOpen(true);
     }
   };
 
   const handleCloseLogoutAlert = () => {
-    // Close the logout confirmation alert
     setLogoutAlertOpen(false);
   };
 
   const handleConfirmLogout = () => {
-    // Perform the logout action here
     window.location.reload();
   };
   // const handleLogout = () => {
@@ -178,7 +182,7 @@ const Navbar = () => {
         <div>
           <SubscriptionModal />
         </div>
-        <div title="Favourite Songs" onClick={() => navigate("/liked")}>
+        <div title="Favourite Songs" onClick={handleLikedSaved}>
           🤍
         </div>
         <div
