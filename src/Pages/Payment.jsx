@@ -64,13 +64,22 @@ const Payment = () => {
         </Alert>
       )}
       <div>
-      <img
+        <img
           src={Logo}
           alt="logo"
           width={50}
-          style={{ position: "absolute", borderRadius: 50, marginLeft:"39%" }}
+          style={{ position: "absolute", borderRadius: 50, marginLeft: "39%" }}
         />
-    <h2 style={{textAlign:"center", color:"white", fontSize:"40px", marginTop:"10px"}}>Wynk Music</h2>
+        <h2
+          style={{
+            textAlign: "center",
+            color: "white",
+            fontSize: "40px",
+            marginTop: "10px",
+          }}
+        >
+          Wynk Music
+        </h2>
       </div>
       <div className="payment-summary">
         <Summary />
@@ -89,16 +98,15 @@ const Payment = () => {
             </div>
 
             <div className="upi-option">
-              <img src={phonePay} alt="" width={50}/>
+              <img src={phonePay} alt="" width={50} />
             </div>
 
             <div className="upi-option">
-              <img src={airtel} alt="" width={50}/>
+              <img src={airtel} alt="" width={50} />
             </div>
             <div className="upi-option">
               <img src={payPal} alt="" width={50} />
             </div>
-          
           </div>
           <div className="card-form">
             <input
@@ -151,7 +159,6 @@ const Payment = () => {
           <button className="pay-securely" onClick={handlePayment}>
             PAY SECURELY
           </button>
-
         </div>
       </div>
     </>
