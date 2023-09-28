@@ -8,7 +8,7 @@ import amazon from "../assets/amazon.jpeg";
 import paytm from "../assets/paytm.jpeg";
 import phonePay from "../assets/phonePay.jpeg";
 import airtel from "../assets/airtel.jpeg";
-import payPal from "../assets/payPal.jpeg";
+import payPal from "../assets/paypal.jpeg";
 import Logo from "../assets/logo.jpeg";
 
 const Payment = () => {
