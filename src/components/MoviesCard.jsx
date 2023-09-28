@@ -13,14 +13,13 @@ const MoviesCard = ({ title, image, audio, name, id }) => {
   const musicCardHandler = () => {
     dispatch(setCurrentSongUrl({ audio, title, name, image, id}));
     dispatch(setShowMusicPlayer(true));
-    // console.log("curr", setCurrentSongUrl);
     const recentlyPlayedSong = { title, name, image };
     dispatch(setAddToRecent([recentlyPlayedSong]));
   };
   return (
     <>
       <div className="cards" onClick={musicCardHandler}>
-        <img title={title} src={image} alt={title} width={200} height={210} />
+        <img title={title} src={image} alt={title} width={217} height={215} />
         <div className="cards-body">
           <button className="control-button-centerM">
             <NotStartedIcon />

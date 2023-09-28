@@ -4,8 +4,9 @@
     justify-content:center;
     overflow: hidden;
     position: relative;
-    margin: 5px 0 10px 10px;
+    margin: 5px -15px 10px 10px;
     cursor: pointer;
+   
 }
 .title ,.artistName{
     font-size: 17px;
