@@ -89,9 +89,6 @@ export const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    // setSelectedMovieName: (state, {payload}) =>{
-    //   state.selectedMovieName = payload;
-    // }
     setUpdateFalse: (state) => {
       state.isUpdate = false;
     },

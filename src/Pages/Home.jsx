@@ -24,6 +24,7 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(setLoginAlert());
+      console.log("loginTrue")
     }, 3000);
   }, [isLogin]);
 

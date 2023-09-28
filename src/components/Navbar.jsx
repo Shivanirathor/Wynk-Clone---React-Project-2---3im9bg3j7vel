@@ -70,26 +70,27 @@ const Navbar = () => {
     }
   };
 
-  const handleLogout = () => {
-    const confirmed = window.confirm("Are you sure you want to logout?");
-    if (confirmed) {
-      setLogoutAlertOpen(true);
-    }
-  };
-
-  const handleCloseLogoutAlert = () => {
-    setLogoutAlertOpen(false);
-  };
-
-  const handleConfirmLogout = () => {
-    window.location.reload();
-  };
   // const handleLogout = () => {
   //   const confirmed = window.confirm("Are you sure you want to logout?");
   //   if (confirmed) {
-  //     window.location.reload();
+     
+  //     setLogoutAlertOpen(true);
   //   }
   // };
+
+  // const handleCloseLogoutAlert = () => {
+  //   setLogoutAlertOpen(false);
+  // };
+
+  // const handleConfirmLogout = () => {
+  //   window.location.reload();
+  // };
+  const handleLogout = () => {
+    const confirmed = window.confirm("Are you sure you want to logout?");
+    if (confirmed) {
+      window.location.reload();
+    }
+  };
   const updatePass = () => {
     navigate("/update");
   };
@@ -150,7 +151,7 @@ const Navbar = () => {
 
   return (
     <>
-      {logoutAlertOpen && (
+      {/* {logoutAlertOpen && (
         <Alert
           open={logoutAlertOpen}
           onClose={handleCloseLogoutAlert}
@@ -172,7 +173,8 @@ const Navbar = () => {
             Logout
           </Button>
         </Alert>
-      )}
+        
+      )} */}
       <div className="navbar">
         <nav className="nav-1">
           <div className="logoText" onClick={navigateHome}>
@@ -216,9 +218,9 @@ const Navbar = () => {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem>Welcome:🎉{name}🎉 </MenuItem>
+              <MenuItem>Welcome : {name}</MenuItem>
               <MenuItem onClick={updatePass}>Update Password</MenuItem>
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout} >Logout</MenuItem>
             </Menu>
           )}
         </nav>

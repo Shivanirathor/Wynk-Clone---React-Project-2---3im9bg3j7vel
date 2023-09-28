@@ -9,12 +9,12 @@ import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import axios from "axios";
+
 import { getLike } from "../redux/songsSlice";
+import { useNavigate } from "react-router-dom";
 
 const MusicPlayer = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const audioRef = useRef(null);
   const { currentSongUrl } = useSelector((state) => state.songs);
@@ -23,7 +23,7 @@ const MusicPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [like, setLike] = useState(false);
-  const [showLoginAlert, setShowLoginAlert] = useState(false);
+ 
   const [volume, setVolume] = useState(50);
   const [isMuted, setIsMuted] = useState(false);
 
@@ -116,27 +116,25 @@ const MusicPlayer = () => {
   const handleLikedSong = () => {
     const token = localStorage.getItem("token");
     if (isLogin) {
-      console.log("login", isLogin)
+     
       const songId = currentSongUrl.id;
       dispatch(getLike(songId));
     } else {
-      setShowLoginAlert(true);
+    navigate("/login")
     }
     setLike(!like);
   };
 
-  const handleAlertClose = () => {
-    setShowLoginAlert(false);
-  };
+
 
   return (
     <>
-      {showLoginAlert && (
+      {/* {showLoginAlert && (
         <Alert severity="warning" onClose={handleAlertClose}>
           <AlertTitle>Please log in</AlertTitle>
           You need to log in to access your Liked Songs.
         </Alert>
-      )}
+      )} */}
       <div className="music-player-container">
         <div>
           <img
