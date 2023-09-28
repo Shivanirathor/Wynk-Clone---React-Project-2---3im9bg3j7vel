@@ -11,7 +11,6 @@ import airtel from "../assets/airtel.jpeg";
 import payPal from "../assets/payPal.jpeg";
 import Logo from "../assets/logo.jpeg";
 
-
 const Payment = () => {
   const navigate = useNavigate();
   const [cardHolderName, setCardHolderName] = useState("");
