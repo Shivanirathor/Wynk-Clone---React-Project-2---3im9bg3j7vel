@@ -113,7 +113,7 @@ const MusicPlayer = () => {
               {showVolumeSlider ? (
                 <VolumeMuteIcon onClick={toggleMute}/>
               ) : isMuted ? (
-                <VolumeMuteIcon />
+                <VolumeMuteIcon onClick={toggleMute}/>
               ) : volume > 50 ? (
                 <VolumeUpIcon onClick={handleVolumeUp} />
               ) : (

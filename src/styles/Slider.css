@@ -16,8 +16,7 @@ margin-top: 20px;
 }
 
 .images {
-  width: 80%; 
-  height: auto; 
+  width: 100%; 
   border-radius: 10px;
   cursor: pointer;
 }

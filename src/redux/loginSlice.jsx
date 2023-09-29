@@ -20,7 +20,10 @@ export const getLogin = createAsyncThunk("login/getLogin", async (payload) => {
     .then((data) => data);
 
   localStorage.setItem("token", res.data.token);
+  // localStorage.setItem("email", res.data.email);
+  // localStorage.setItem("password", res.data.password);
   return res;
+
 });
 
 export const getRegister = createAsyncThunk(
@@ -96,9 +99,9 @@ export const loginSlice = createSlice({
     setLoginFalse: (state) => {
       state.isLogin = false;
     },
-    setPaymentFalse: (state) => {
-      state.isLogin = false;
-    },
+    // setPaymentFalse: (state) => {
+    //   state.isLogin = false;
+    // },
     setLoginAlert: (state) => {
       state.showLoginAlert = false;
     },

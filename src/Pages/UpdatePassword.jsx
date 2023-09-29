@@ -19,10 +19,10 @@ const UpdatePassword = () => {
       window.location.reload();
       navigate("/");
     }
-    return () => {
-      setUpdateFalse();
-    };
-  }, [isUpdate, navigate]);
+    // return () => {
+    //   setUpdateFalse();
+    // };
+  }, [isUpdate]);
 
   const handleName = (event) => {
     setName(event.target.value);

@@ -4,19 +4,28 @@
     font-family:Arial, Helvetica, sans-serif;
 
 }
+
 .recent-played-list{
-    margin: 20px;
+    margin: 10px;
     display: flex;
     justify-content:left;
    align-items: center;
 }
-.recent-played-list img{
-    border-radius: 10%; 
-    margin: 20px;  
+.recent-played-song p{
+font-size: 15px;
+margin-left: 20px;
+
 }
+.recent-played-list img {
+    box-shadow: 0 2px 5px white;
+    border-radius: 10%;
+    margin: 20px;
+
+  }
+  
 .recent-played-list img:hover{
       transform:scale(1.1);
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       cursor: pointer;
 }
 .textTitle{
@@ -32,3 +41,4 @@
 .liked-container{
     display: flex;
 }
+

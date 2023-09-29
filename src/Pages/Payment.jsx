@@ -9,7 +9,7 @@ import paytm from "../assets/paytm.jpeg";
 import phonePay from "../assets/phonePay.jpeg";
 import airtel from "../assets/airtel.jpeg";
 import payPal from "../assets/paypal.jpeg";
-import Logo from "../assets/logo.jpeg";
+
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -63,24 +63,7 @@ const Payment = () => {
           Payment Successfully!!🎉
         </Alert>
       )}
-      <div>
-        <img
-          src={Logo}
-          alt="logo"
-          width={50}
-          style={{ position: "absolute", borderRadius: 50, marginLeft: "39%" }}
-        />
-        <h2
-          style={{
-            textAlign: "center",
-            color: "white",
-            fontSize: "40px",
-            marginTop: "10px",
-          }}
-        >
-          Wynk Music
-        </h2>
-      </div>
+ 
       <div className="payment-summary">
         <Summary />
 

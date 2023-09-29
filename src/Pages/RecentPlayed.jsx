@@ -11,7 +11,7 @@ const RecentPlayed = () => {
       <div className="recent-played-list">
         {recentSongs.map((song) => (
           <div key={song.title} className="recent-played-song">
-            <img src={song.image} alt={song.title} width={200} height={210} />
+            <img src={song.image} alt={song.title} width={205} height={215} />
             <br />
             <p>Title : {song.title}</p>
             <p>Artist Name : ({song.name})</p>

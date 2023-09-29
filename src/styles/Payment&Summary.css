@@ -1,12 +1,18 @@
-body{
+
+body {
   background-color: rgb(25, 25, 25);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
+
+
 .payment-summary {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-top: 40px;
-
+  padding: 20px;
 }
 
 .summary-container {
@@ -22,9 +28,6 @@ body{
   color: white;
   text-align: center;
 }
-
-
-
 .plan-details {
   margin-top: 20px;
 }
@@ -56,39 +59,36 @@ body{
   font-size: 24px;
 
 }
-/* =================== */
 
 .payment-options {
   width: 100%;
-  height: 60%;
-  max-width: 570px;
-  padding:30px;
+ margin-top: 40px !important;
+  max-width: 400px;
+  padding: 50px;
   border-radius: 20px;
   color: white;
-  box-shadow: 0 0 15px rgb(4, 4, 4);
-  margin: 0 auto; 
+  box-shadow: 0 0 15px rgba(4, 4, 4, 0.7);
+  margin: 0 auto;
 }
 
 .upi-options {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 30px;
-  padding: 20px;
-  cursor: pointer;
-  transition: transform 1.2s ease; 
+  margin-bottom: 20px;
 }
 
-.upi-option:focus{
-background: wheat;
+.upi-option {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
+
 .upi-option:hover {
-  transform:scale(1.2);
+  transform: scale(1.1);
 }
 
 .card-form {
-  display: flex;
-  flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -99,6 +99,7 @@ background: wheat;
 }
 
 .card-form input {
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -134,6 +135,7 @@ background: wheat;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 30%;
 }
 
 .auto-renew-label {
@@ -151,6 +153,34 @@ background: wheat;
   cursor: pointer;
   font-size: 15px;
 }
-.pay-securely:hover{
-  transform: scale(1.1);
+
+/* Larger screens (desktops) */
+@media screen and (min-width: 768px) {
+ 
+  .payment-summary {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .summary-container {
+    max-width: 350px;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  .discounted-price {
+    margin-top: 100px;
+  }
+
+  .payment-options {
+    max-width: 570px;
+  }
+
+  .upi-options {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .card-form {
+    max-width: 400px;
+  }
 }
