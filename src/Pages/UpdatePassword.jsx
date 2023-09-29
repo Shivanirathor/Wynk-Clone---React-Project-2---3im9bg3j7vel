@@ -8,7 +8,6 @@ const UpdatePassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isUpdate } = useSelector((state) => state.login);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [currPassword, setCurrPassword] = useState("");
@@ -16,14 +15,14 @@ const UpdatePassword = () => {
 
   useEffect(() => {
     if (isUpdate === true) {
-      alert("password is updated!!");
-
+      alert("Your password is updated successfully!!");
+      window.location.reload();
       navigate("/");
     }
     return () => {
       setUpdateFalse();
     };
-  }, [isUpdate]);
+  }, [isUpdate, navigate]);
 
   const handleName = (event) => {
     setName(event.target.value);

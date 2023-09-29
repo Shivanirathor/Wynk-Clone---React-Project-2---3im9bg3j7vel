@@ -5,11 +5,10 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PauseIcon from "@mui/icons-material/Pause";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
-import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-
 import { getLike } from "../redux/songsSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -23,15 +22,23 @@ const MusicPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [like, setLike] = useState(false);
- 
   const [volume, setVolume] = useState(50);
   const [isMuted, setIsMuted] = useState(false);
+  const [showVolumeSlider, setShowVolumeSlider] = useState(false);
 
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    setVolume(isMuted ? 50 : 0);
+  };
+
+  const handleVolumeChange = (event) => {
+    setVolume(event.target.value);
+    setIsMuted(event.target.value === "0");
+  };
   const handleVolumeUp = () => {
     if (volume < 100) {
       setVolume(volume + 10);
       setIsMuted(false);
-      audioRef.current.volume = (volume + 10) / 100;
     }
   };
 
@@ -39,15 +46,8 @@ const MusicPlayer = () => {
     if (volume > 0) {
       setVolume(volume - 10);
       setIsMuted(false);
-      audioRef.current.volume = (volume - 10) / 100;
     }
   };
-
-  const handleMute = () => {
-    setIsMuted(!isMuted);
-    audioRef.current.muted = !audioRef.current.muted;
-  };
-
   const togglePlayPause = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -78,63 +78,19 @@ const MusicPlayer = () => {
     }
   }, [isPlaying]);
 
-  // const handleLikedSong = () => {
-  //   if (isLogin) {
-  //     const token = localStorage.getItem("token");
-  //     const songId = currentSongUrl.id;
-  //     const jwtToken = token;
-  //     const projectID = "22pghva8m0p8";
-  //     const apiUrl =
-  //       "https://academics.newtonschool.co/api/v1/music/favorites/like";
-
-  //     const headers = {
-  //       Authorization: `Bearer ${jwtToken}`,
-  //       projectID: projectID,
-  //     };
-
-  //     const requestBody = {
-  //       songId: songId,
-  //     };
-
-  //     axios
-  //       .patch(apiUrl, requestBody, { headers })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           console.log("Song liked successfully.");
-  //         } else {
-  //           console.error("Failed to like the song.");
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error("An error occurred:", error);
-  //       });
-  //   } else {
-  //     setShowLoginAlert(true);
-  //   }
-  //   setLike(!like);
-  // };
   const handleLikedSong = () => {
     const token = localStorage.getItem("token");
     if (isLogin) {
-     
       const songId = currentSongUrl.id;
       dispatch(getLike(songId));
     } else {
-    navigate("/login")
+      navigate("/login");
     }
     setLike(!like);
   };
 
-
-
   return (
     <>
-      {/* {showLoginAlert && (
-        <Alert severity="warning" onClose={handleAlertClose}>
-          <AlertTitle>Please log in</AlertTitle>
-          You need to log in to access your Liked Songs.
-        </Alert>
-      )} */}
       <div className="music-player-container">
         <div>
           <img
@@ -150,26 +106,29 @@ const MusicPlayer = () => {
         <div className="controls">
           <div className="volume-controls">
             <button
-              title="Volume down"
+              title="Volume"
               className="control-button"
-              onClick={handleVolumeDown}
+              onClick={() => setShowVolumeSlider(!showVolumeSlider)}
             >
-              <VolumeDownIcon />
+              {showVolumeSlider ? (
+                <VolumeMuteIcon onClick={toggleMute}/>
+              ) : isMuted ? (
+                <VolumeMuteIcon />
+              ) : volume > 50 ? (
+                <VolumeUpIcon onClick={handleVolumeUp} />
+              ) : (
+                <VolumeDownIcon onClick={handleVolumeDown} />
+              )}
             </button>
-            <button
-              title="Mute"
-              className="control-button"
-              onClick={handleMute}
-            >
-              {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
-            </button>
-            <button
-              title="Volume up"
-              className="control-button"
-              onClick={handleVolumeUp}
-            >
-              <VolumeUpIcon />
-            </button>
+            {showVolumeSlider && (
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={volume}
+                onChange={handleVolumeChange}
+              />
+            )}
           </div>
         </div>
         <div className="slider-container">
@@ -204,7 +163,7 @@ const MusicPlayer = () => {
         <div
           className={`span ${like && "like-span"}`}
           title="Add Your Fav Song"
-          onClick={ handleLikedSong}
+          onClick={handleLikedSong}
         >
           <FavoriteIcon
             title="Add to favorite page"

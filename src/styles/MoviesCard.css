@@ -48,14 +48,3 @@
     cursor: pointer;
     padding: 5px;   
   }
-  
-  .artistImg img{
-margin: 13px;
-border-radius: 50%;
-
-  }
-
-  .artistImg img:hover{
-    transform: scale(1.1);
-  }
-

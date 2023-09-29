@@ -6,7 +6,7 @@ margin-top: 20px;
 }
 
 .image-container {
-  margin-top: 120px;
+  margin-top: 130px;
   display: flex;
   gap: 1rem;
   padding: 1rem 0.75rem;
@@ -68,6 +68,7 @@ margin-top: 20px;
     cursor: pointer;
   }
   .image-container-2{
+   
     display: flex;
     gap: 2rem;
     scroll-behavior: smooth;

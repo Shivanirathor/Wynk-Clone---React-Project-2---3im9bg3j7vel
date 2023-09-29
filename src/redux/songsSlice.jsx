@@ -89,7 +89,7 @@ export const getLike = createAsyncThunk("songs/getLike", async (showId) => {
   const res = await axios
     .patch(
       "https://academics.newtonschool.co/api/v1/music/favorites/like",
-      { showId: showId },
+      { songId: showId },
       {
         headers: {
           Authorization: `Bearer ${token}`,

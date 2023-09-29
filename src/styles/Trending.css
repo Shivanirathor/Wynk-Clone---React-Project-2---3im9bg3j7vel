@@ -1,5 +1,6 @@
-/* CSS for the .trending-song container */
+
 .trending-song {
+    margin-top: 0px;
     display: flex;
     /* flex-wrap: wrap; */
     gap: 30px;
@@ -8,8 +9,11 @@
     padding: 10px;
     background-color: rgb(29, 29, 36);
 }
-
+table{
+    margin-top: 40px;
+}
 .item1 {
+    margin-top: 150px;
     padding: 30px 40px;
 }
 
@@ -33,6 +37,7 @@
 }
 
 .button-list {
+    margin-top: 50px;
     padding: 20px;
     width: 100%;
     display: flex;
@@ -108,3 +113,14 @@
         width: 100%;
     }
 }
+
+  .artistImg img{
+margin: 13px;
+border-radius: 50%;
+
+  }
+
+  .artistImg img:hover{
+    transform: scale(1.1);
+  }
+

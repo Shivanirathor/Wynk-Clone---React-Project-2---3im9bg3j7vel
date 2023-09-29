@@ -43,17 +43,21 @@
 .like-span {
   color: red;
 }
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 .controls {
   display: flex;
-  gap: 5px;
+  align-items: center;
 }
 
-.volume-controls{
-  display: flex;
-  
-}
+
 .control-button {
+ 
+  max-width: auto;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -73,15 +77,15 @@
 }
 
 .slider-container {
-  flex: 1;
+    width: 60%;
   display: flex;
-  margin-left: 16px !important;
-  margin-right: 15px !important;
+
 }
 
 .time-display {
+  display: flex;
   font-size: 12px;
-  width: 8%;
+margin-left: 20px;
 }
 
 .rc-slider-handle {
