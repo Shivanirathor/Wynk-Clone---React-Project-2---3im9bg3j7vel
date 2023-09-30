@@ -107,7 +107,7 @@ const initialState = {
   currentSongUrl: {},
   addToRecent: [],
   showMusicPlayer: false,
-  // likedSong:[],
+ 
 };
 
 export const songsSlice = createSlice({
@@ -123,6 +123,13 @@ export const songsSlice = createSlice({
     setAddToRecent: (state, { payload }) => {
       state.addToRecent = [...state.addToRecent, ...payload];
     },
+    clrAddToRecent:(state)=>{
+      state.addToRecent = [];
+    },
+    clrMusicPlayer:(state)=>{
+      state.showMusicPlayer=false;
+    }
+  
   },
 
   extraReducers: {
@@ -144,13 +151,11 @@ export const songsSlice = createSlice({
     [getSearch.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
-    // [getLike.fulfilled]: (state, { payload }) => {
-    //   state.likedSong = payload.data;
-    // },
+    
   },
 });
 
-export const { setCurrentSongUrl, setShowMusicPlayer, setAddToRecent } =
+export const { setCurrentSongUrl, setShowMusicPlayer, setAddToRecent,clrAddToRecent,clrMusicPlayer } =
   songsSlice.actions;
 
 export default songsSlice.reducer;

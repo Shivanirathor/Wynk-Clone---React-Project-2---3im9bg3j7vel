@@ -75,21 +75,20 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 20px;
-}
-
-.upi-option {
-  text-align: center;
+  margin: 50px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
 
+
+
 .upi-option:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .card-form {
-  max-width: 400px;
+ width:900%;
+
   margin: 0 auto;
   padding: 20px;
   background-color: #007bff;
@@ -99,7 +98,7 @@ body {
 }
 
 .card-form input {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -113,8 +112,9 @@ body {
 }
 
 .card-expiry input {
+  margin-left: 10px;
   flex: 1;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .card-expiry span {

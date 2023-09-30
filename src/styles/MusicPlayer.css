@@ -56,7 +56,6 @@
 
 
 .control-button {
- 
   max-width: auto;
   background-color: transparent;
   border: none;
@@ -76,7 +75,7 @@
   cursor: pointer;
 }
 
-.slider-container {
+.music-slider-container {
     width: 60%;
   display: flex;
 

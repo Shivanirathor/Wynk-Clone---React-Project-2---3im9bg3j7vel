@@ -3,7 +3,7 @@ import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getLogin } from "../redux/loginSlice";
+import { clearLoginError, getLogin } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
 const Login = () => {
@@ -20,11 +20,11 @@ const Login = () => {
     }
   }, [isLogin]);
 
-  // useEffect(() => {
-  //   if (loginError) {
-  //     alert(loginError);
-  //   }
-  // }, [loginError]);
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(clearLoginError());
+    }, 5000);
+  }, [loginError]);
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -43,14 +43,15 @@ const Login = () => {
 
   return (
     <>
-       {loginError && (
+      {loginError && (
         <Alert
           severity="error"
           sx={{ marginTop: "20px", width: "400px", marginLeft: "35%" }}
         >
-         Login failed. Please check your email and password!!
+          Login failed. Please check your email and password!!
         </Alert>
       )}
+        {/* {loginError && <div style={{color:"white"}}>{loginError}</div>} */}
       <div className="loginSetUp">
         <img
           src={loginImg}

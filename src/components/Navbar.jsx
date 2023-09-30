@@ -6,8 +6,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
-import { setUpdateFalse } from "../redux/loginSlice";
+import { clearUserData, setUpdateFalse } from "../redux/loginSlice";
+
 import {
+  clrAddToRecent,
+  clrMusicPlayer,
   getExcitedSong,
   getHappySong,
   getRomanticSong,
@@ -15,17 +18,18 @@ import {
   getSearch,
 } from "../redux/songsSlice";
 import { Menu, MenuItem } from "@mui/material";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Button from "@mui/material/Button";
+// import Alert from "@mui/material/Alert";
+// import AlertTitle from "@mui/material/AlertTitle";
+// import Button from "@mui/material/Button";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin, name } = useSelector((state) => state.login);
   const [searchInput, setSearchInput] = useState("");
-  const [logoutAlertOpen, setLogoutAlertOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  
+  // const [logoutAlertOpen, setLogoutAlertOpen] = useState(false);
 
   // for navbar smoothly//
   const navbar = document.querySelector(".navbar");
@@ -60,6 +64,8 @@ const Navbar = () => {
     setSearchInput(event.target.value);
   };
   const navigateHome = () => {
+    dispatch(clrAddToRecent());
+    dispatch(clrMusicPlayer());
     window.location.reload();
   };
   const handleLikedSaved = () => {
@@ -70,10 +76,12 @@ const Navbar = () => {
     }
   };
 
+
+
   // const handleLogout = () => {
   //   const confirmed = window.confirm("Are you sure you want to logout?");
   //   if (confirmed) {
-     
+
   //     setLogoutAlertOpen(true);
   //   }
   // };
@@ -85,12 +93,15 @@ const Navbar = () => {
   // const handleConfirmLogout = () => {
   //   window.location.reload();
   // };
+
   const handleLogout = () => {
     const confirmed = window.confirm("Are you sure you want to logout?");
     if (confirmed) {
+      dispatch(clearUserData());
       window.location.reload();
     }
   };
+
   const updatePass = () => {
     navigate("/update");
   };
@@ -194,7 +205,7 @@ const Navbar = () => {
               className="searchIcon"
             />
           </div>
-
+        
           <div>
             <SubscriptionModal />
           </div>
@@ -218,9 +229,10 @@ const Navbar = () => {
               open={open}
               onClose={handleClose}
             >
+              
               <MenuItem>Welcome : {name}</MenuItem>
               <MenuItem onClick={updatePass}>Update Password</MenuItem>
-              <MenuItem onClick={handleLogout} >Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           )}
         </nav>

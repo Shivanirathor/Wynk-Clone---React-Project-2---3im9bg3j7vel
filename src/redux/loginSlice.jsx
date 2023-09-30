@@ -99,12 +99,20 @@ export const loginSlice = createSlice({
     setLoginFalse: (state) => {
       state.isLogin = false;
     },
-    // setPaymentFalse: (state) => {
-    //   state.isLogin = false;
-    // },
+   
     setLoginAlert: (state) => {
       state.showLoginAlert = false;
     },
+
+    clearLoginError:(state)=>{
+      state.loginError="";
+    },
+    clearRegisterError:(state)=>{
+      state.registerError="";
+    },
+    clearUserData:(state)=>{
+      state.isLogin = false;
+    }
   },
 
   extraReducers: {
@@ -128,6 +136,6 @@ export const loginSlice = createSlice({
   },
 });
 
-export const { setUpdateFalse, setLoginFalse, setLoginAlert, setPaymentFalse } =
+export const { setUpdateFalse, setLoginFalse, setLoginAlert ,clearLoginError,clearRegisterError,clearUserData} =
   loginSlice.actions;
 export default loginSlice.reducer;

@@ -1,5 +1,5 @@
 .navbar {
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
   transition: transform 0.3s ease-in-out; 
   z-index: 100; 
@@ -119,10 +119,7 @@ width: 100% ;
   position: absolute;
   left: 25rem;
  }
- /* #root{
-  width: 150%;
-}
-  */
+
 }
 
 
@@ -172,9 +169,7 @@ width: 100% ;
 .loginBtn {
   position: relative; 
 }
-/* .nav-2 select{
-  display: none;
-} */
+
 
 .dropdown {
   position: absolute; 

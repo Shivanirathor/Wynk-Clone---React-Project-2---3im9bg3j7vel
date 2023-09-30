@@ -131,7 +131,7 @@ const MusicPlayer = () => {
             )}
           </div>
         </div>
-        <div className="slider-container">
+        <div className="music-slider-container">
           <Slider
             value={currentTime}
             min={0}

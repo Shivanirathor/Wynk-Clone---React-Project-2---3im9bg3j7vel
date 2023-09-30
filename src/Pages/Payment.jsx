@@ -28,33 +28,33 @@ const Payment = () => {
       errors.cardHolderName = "Card holder's name is required.";
     }
 
-    if (!cardNumber.trim()) {
-      errors.cardNumber = "Card number is required.";
-    } else if (!/^\d{16}$/.test(cardNumber)) {
-      errors.cardNumber = "Card number must be 16 digits.";
+    if (!cardNumber || cardNumber.length !== 16 || isNaN(cardNumber)) {
+      errors.cardNumber = "Card number must be a 16-digit numeric value.";
     }
+    
 
-    if (!cardExpiryMM.trim() || !cardExpiryYY.trim()) {
-      errors.cardExpiry = "Expiry date is required.";
-    } else if (!/^\d{2}$/.test(cardExpiryMM) || !/^\d{2}$/.test(cardExpiryYY)) {
+    if (!cardExpiryMM || !cardExpiryYY || isNaN(cardExpiryMM) || isNaN(cardExpiryYY) || cardExpiryMM.length !== 2 || cardExpiryYY.length !== 2) {
       errors.cardExpiry = "Invalid expiry date format.";
     }
+    
 
-    if (!cvv.trim()) {
-      errors.cvv = "CVV is required.";
-    } else if (!/^\d{3}$/.test(cvv)) {
-      errors.cvv = "CVV must be 3 digits.";
+    if (!cvv || isNaN(cvv) || cvv.length !== 3) {
+      errors.cvv = "CVV must be a 3-digit numeric value.";
     }
+    
 
     setErrors(errors);
-
     if (Object.keys(errors).length === 0) {
       setPaymentAlert(true);
       setTimeout(() => {
         navigate("/");
       }, 2000);
     }
+
+    
   };
+    
+  
 
   return (
     <>

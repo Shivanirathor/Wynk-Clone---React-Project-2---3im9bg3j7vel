@@ -3,7 +3,7 @@ import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getRegister } from "../redux/loginSlice";
+import { clearRegisterError, getRegister } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
 const SignUp = () => {
@@ -20,6 +20,12 @@ const SignUp = () => {
       navigate("/login");
     }
   }, [isRegister]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(clearRegisterError());
+    }, 5000);
+  }, [registerError]);
 
   const handleName = (event) => {
     setName(event.target.value);

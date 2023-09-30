@@ -7,7 +7,9 @@ const RecentPlayed = () => {
 
   return (
     <div className="recent">
-      <h2 style={{ marginLeft: 30, fontSize: 25 }}>Recent Played</h2>
+       {recentSongs.length > 0 && (
+        <h2 style={{ marginLeft: 30, fontSize: 25 }}>Recent Played</h2>
+      )}
       <div className="recent-played-list">
         {recentSongs.map((song) => (
           <div key={song.title} className="recent-played-song">

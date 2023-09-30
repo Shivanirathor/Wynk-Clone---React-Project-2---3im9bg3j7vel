@@ -19,9 +19,9 @@ const UpdatePassword = () => {
       window.location.reload();
       navigate("/");
     }
-    // return () => {
-    //   setUpdateFalse();
-    // };
+    return () => {
+      setUpdateFalse();
+    };
   }, [isUpdate]);
 
   const handleName = (event) => {

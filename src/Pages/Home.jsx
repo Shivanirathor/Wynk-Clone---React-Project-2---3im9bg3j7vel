@@ -42,7 +42,6 @@ const Home = () => {
         {songsList.length > 5 ? (
           <div>
             <RecentPlayed />
-
             <h1 className="textTitle">New Release</h1>
             <Slider2 songsList={songsList} first={0} last={10} />
             <h1 className="textTitle">Retro Hits</h1>

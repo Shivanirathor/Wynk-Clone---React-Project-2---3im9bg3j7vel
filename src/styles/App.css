@@ -6,14 +6,15 @@
 }
 
 .recent-played-list{
-    margin: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content:left;
    align-items: center;
 }
 .recent-played-song p{
 font-size: 15px;
-margin-left: 20px;
+text-align: center;
+
 
 }
 .recent-played-list img {
