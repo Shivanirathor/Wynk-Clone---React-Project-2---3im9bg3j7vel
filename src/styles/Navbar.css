@@ -79,23 +79,26 @@
     flex-wrap: wrap;
   }
   .logoText img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
   .logoText h2{
-    font-size: 20px !important;
+    display: none;
   }
 
   .search{
 position: absolute;
-right: 20px;
+right: 10rem;
   width: 100%;
-  margin-top: -35px;
+
   }
-.searchIcon{
- position: absolute;
- right: 12px;
-}
+  .searchIcon{
+    left:23rem;
+   }
+  
+   .nav-2 div, select{
+    font-size: 15px !important;
+   }
 #root{
   width: 150%;
 }
@@ -110,18 +113,39 @@ right: 20px;
     padding: 10px;
     
   }
-
+  .logoText h2{
+    display: none;
+  }
+ 
   .search input{
 margin: auto;
 width: 100% ;
 }
 .searchIcon{
   position: absolute;
-  left: 25rem;
+  left: 15rem;
  }
 
 }
+@media only screen and (min-width: 700px) and (max-width: 1000px) {
 
+  .nav-1 {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    
+  }
+  .search input{
+    margin: auto;
+    width: 100% ;
+    }
+    .searchIcon{
+      position: absolute;
+      left: 25rem;
+     }
+}
 
 
 /* =================== */

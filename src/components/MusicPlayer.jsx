@@ -16,38 +16,36 @@ const MusicPlayer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const audioRef = useRef(null);
-  const { currentSongUrl } = useSelector((state) => state.songs);
+  const { currentSongUrl,likedSongs } = useSelector((state) => state.songs);
   const { isLogin } = useSelector((state) => state.login);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [like, setLike] = useState(false);
-  const [volume, setVolume] = useState(50);
-  const [isMuted, setIsMuted] = useState(false);
-  const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  // const [volume, setVolume] = useState(50);
+  // const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  // const isMuted = volume === 0;
+  // const toggleMute = () => {
+  //   // Toggle mute state by setting volume to 0 when muted or restoring the original volume
+  //   setVolume(isMuted ? 50 : currentSongUrl.volume);
+  // };
 
-  const toggleMute = () => {
-    setIsMuted(!isMuted);
-    setVolume(isMuted ? 50 : 0);
-  };
+  // const handleVolumeUp = () => {
+  //   // Increase volume (you can adjust this increment as needed)
+  //   setVolume((prevVolume) => Math.min(prevVolume + 10, 100));
+  // };
 
-  const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
-    setIsMuted(event.target.value === "0");
-  };
-  const handleVolumeUp = () => {
-    if (volume < 100) {
-      setVolume(volume + 10);
-      setIsMuted(false);
-    }
-  };
+  // const handleVolumeDown = () => {
+  //   // Decrease volume (you can adjust this decrement as needed)
+  //   setVolume((prevVolume) => Math.max(prevVolume - 10, 0));
+  // };
+  // const handleVolumeChange = (event) => {
+  //   // Update the volume based on the input range value
+  //   const newVolume = parseFloat(event.target.value);
+  //   setVolume(newVolume);
+  // };
 
-  const handleVolumeDown = () => {
-    if (volume > 0) {
-      setVolume(volume - 10);
-      setIsMuted(false);
-    }
-  };
+
   const togglePlayPause = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -79,7 +77,6 @@ const MusicPlayer = () => {
   }, [isPlaying]);
 
   const handleLikedSong = () => {
-    const token = localStorage.getItem("token");
     if (isLogin) {
       const songId = currentSongUrl.id;
       dispatch(getLike(songId));
@@ -89,6 +86,23 @@ const MusicPlayer = () => {
     setLike(!like);
   };
 
+  // const handleLikedSong = () => {
+  //   if (isLogin) {
+  //     const songId = currentSongUrl.id;
+  //     const isSongLiked = likedSongs.some((song) => song.id === songId);
+  
+  //     if (isSongLiked) {
+  //       alert('You have already liked this song.');
+  //     } else {
+  //       dispatch(getLike(songId));
+  //     }
+  //   } else {
+  //     navigate("/login");
+  //   }
+  //   setLike(!like);
+  // };
+  // console.log("current", currentSongUrl);
+  
   return (
     <>
       <div className="music-player-container">
@@ -103,7 +117,7 @@ const MusicPlayer = () => {
           <h2 className="song-title">{currentSongUrl.title}</h2>
           <p className="artist">({currentSongUrl.name})</p>
         </div>
-        <div className="controls">
+        {/* <div className="controls">
           <div className="volume-controls">
             <button
               title="Volume"
@@ -111,9 +125,9 @@ const MusicPlayer = () => {
               onClick={() => setShowVolumeSlider(!showVolumeSlider)}
             >
               {showVolumeSlider ? (
-                <VolumeMuteIcon onClick={toggleMute}/>
+                <VolumeMuteIcon onClick={toggleMute} />
               ) : isMuted ? (
-                <VolumeMuteIcon onClick={toggleMute}/>
+                <VolumeMuteIcon onClick={toggleMute} />
               ) : volume > 50 ? (
                 <VolumeUpIcon onClick={handleVolumeUp} />
               ) : (
@@ -130,7 +144,7 @@ const MusicPlayer = () => {
               />
             )}
           </div>
-        </div>
+        </div> */}
         <div className="music-slider-container">
           <Slider
             value={currentTime}
@@ -162,7 +176,6 @@ const MusicPlayer = () => {
 
         <div
           className={`span ${like && "like-span"}`}
-          title="Add Your Fav Song"
           onClick={handleLikedSong}
         >
           <FavoriteIcon

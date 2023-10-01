@@ -11,10 +11,10 @@ import Logo from "../assets/logo.jpeg";
 import { useSelector } from "react-redux";
 const SubscriptionModal = () => {
   const navigate = useNavigate();
-  const { isLogin} = useSelector((state) => state.login);
+  const { isLogin } = useSelector((state) => state.login);
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
-
+  const [paymentCompleted, setPaymentCompleted] = useState(false); 
   const plans = [
     {
       duration: "Yearly",
@@ -36,37 +36,44 @@ const SubscriptionModal = () => {
     },
   ];
 
-
   const handlePlanSelect = (index) => {
-    setSelectedPlan(index);
+ 
+      setSelectedPlan(index); 
+  
   };
 
   const handleOpen = () => {
-    if(isLogin){
+    if (isLogin) {
       setOpen(true);
-    }else{
+    } else {
       navigate("/login");
     }
   };
 
   const handleClose = () => {
     setOpen(false);
+    setPaymentCompleted(true); 
     navigate("/payment");
   };
 
   return (
     <div>
-      <Button variant="" onClick={handleOpen}>
+      <Button variant="" onClick={handleOpen} className="subscription-text">
         💲Manage Subscription
       </Button>
-   
+
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle style={{textAlign:"center"}} id="alert-dialog-slide-title">{"WYNKMUSIC"}</DialogTitle>
+        <DialogTitle
+          style={{ textAlign: "center" }}
+          id="alert-dialog-slide-title"
+        >
+          {"WYNKMUSIC"}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <div className="crown-logo">
@@ -101,9 +108,12 @@ const SubscriptionModal = () => {
                 {plans.map((plan, index) => (
                   <div
                     key={index}
-                    className="plan"
+                    className={`plan ${selectedPlan === index ? 'selected' : ''}`}
                     style={{
-                      border: selectedPlan === index ? '3px solid green' : '1px solid #ccc',
+                      border:
+                        selectedPlan === index
+                          ? "3px solid green"
+                          : "1px solid #ccc",
                     }}
                     onClick={() => handlePlanSelect(index)}
                   >

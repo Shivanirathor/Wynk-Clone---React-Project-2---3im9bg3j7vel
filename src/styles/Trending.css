@@ -1,19 +1,17 @@
 
 .trending-song {
-    margin-top: 0px;
+  
     display: flex;
-    /* flex-wrap: wrap; */
+   
     gap: 30px;
     width: 100%;
     color: white;
     padding: 10px;
     background-color: rgb(29, 29, 36);
 }
-table{
-    margin-top: 40px;
-}
+
 .item1 {
-    margin-top: 150px;
+
     padding: 30px 40px;
 }
 
@@ -37,7 +35,7 @@ table{
 }
 
 .button-list {
-    margin-top: 50px;
+    /* margin-top: 50px; */
     padding: 20px;
     width: 100%;
     display: flex;
@@ -68,7 +66,7 @@ table{
     cursor: pointer;
 }
 
-/* CSS for the main-menu (table) */
+
 .trending-song .main-menu table {
     width: 100%;
     border-collapse: collapse;
@@ -89,14 +87,13 @@ table{
     border: 1px solid darkgrey;
 }
 
-/* Responsive CSS for smaller screens */
 @media (max-width: 768px) {
     .trending-song {
         flex-direction: column;
     }
 
     .item1 {
-        display: none; /* Hide item1 on phone devices */
+        display: none; 
     }
 
     .item2, .top-menu {

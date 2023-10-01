@@ -6,8 +6,8 @@ margin-top: 50px;
 border-radius: 20px;
 margin-left: 400px;
 box-shadow: 0 0 10px black;
-width: 48%;
-height: 600px;
+width: 50%;
+height: 640px;
 }
 
 .login-signup-container {
@@ -20,7 +20,7 @@ height: 600px;
 
 .login-signup-container h2 {
   font-size: 40px;
-  margin: 30px;
+  margin-bottom: 30px;
    color: white;
 }
 

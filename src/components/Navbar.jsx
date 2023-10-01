@@ -17,6 +17,8 @@ import {
   getSadSong,
   getSearch,
 } from "../redux/songsSlice";
+import MenuIcon from "@mui/icons-material/Menu";
+
 import { Menu, MenuItem } from "@mui/material";
 // import Alert from "@mui/material/Alert";
 // import AlertTitle from "@mui/material/AlertTitle";
@@ -28,8 +30,26 @@ const Navbar = () => {
   const { isLogin, name } = useSelector((state) => state.login);
   const [searchInput, setSearchInput] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // const [logoutAlertOpen, setLogoutAlertOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = (menuItem) => {
+    // Handle menu item click actions here
+    if (menuItem === "Manage Subscription") {
+      // Handle Manage Subscription click
+    } else if (menuItem === "Favourite Songs") {
+      // Handle Favourite Songs click
+    } else if (menuItem === "Login") {
+      // Handle Login click
+    }
+    // Close the menu after handling the click
+    setIsMenuOpen(false);
+  };
 
   // for navbar smoothly//
   const navbar = document.querySelector(".navbar");
@@ -75,8 +95,6 @@ const Navbar = () => {
       navigate("/login");
     }
   };
-
-
 
   // const handleLogout = () => {
   //   const confirmed = window.confirm("Are you sure you want to logout?");
@@ -205,8 +223,8 @@ const Navbar = () => {
               className="searchIcon"
             />
           </div>
-        
-          <div>
+
+          <div className="subscription">
             <SubscriptionModal />
           </div>
           <div title="Favourite Songs" onClick={handleLikedSaved}>
@@ -234,6 +252,7 @@ const Navbar = () => {
               <MenuItem onClick={updatePass}>Update Password</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
+      
           )}
         </nav>
         {/* ================================ */}

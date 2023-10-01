@@ -82,10 +82,10 @@ export const getSearch = createAsyncThunk(
     return res;
   }
 );
-export const getLike = createAsyncThunk("songs/getLike", async (showId) => {
-  console.log("getliked", showId);
+export const getLike = createAsyncThunk(
+  "songs/getLike", async (showId) => {
   const token = localStorage.getItem("token");
-  console.log("token", token);
+
   const res = await axios
     .patch(
       "https://academics.newtonschool.co/api/v1/music/favorites/like",
@@ -101,13 +101,34 @@ export const getLike = createAsyncThunk("songs/getLike", async (showId) => {
 
   return res;
 });
+// export const getLikeShowData = createAsyncThunk(
+//   "songs/getLikeShowData",
+//   async (showId) => {
+//     const token = localStorage.getItem("token");
+
+//     const res = await axios
+//       .get(
+//         "https://academics.newtonschool.co/api/v1/music/favorites/like",
+//         { songId: showId },
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//             projectId: "22pghva8m0p8",
+//           },
+//         }
+//       )
+//       .then((data) => data.json());
+
+//     return res;
+//   }
+// );
 
 const initialState = {
   songsList: [],
   currentSongUrl: {},
   addToRecent: [],
   showMusicPlayer: false,
- 
+  // likedSongs: [],
 };
 
 export const songsSlice = createSlice({
@@ -123,13 +144,14 @@ export const songsSlice = createSlice({
     setAddToRecent: (state, { payload }) => {
       state.addToRecent = [...state.addToRecent, ...payload];
     },
-    clrAddToRecent:(state)=>{
+
+    clrAddToRecent: (state) => {
       state.addToRecent = [];
     },
-    clrMusicPlayer:(state)=>{
-      state.showMusicPlayer=false;
-    }
-  
+    clrMusicPlayer: (state) => {
+      state.showMusicPlayer = false;
+    },
+
   },
 
   extraReducers: {
@@ -151,11 +173,21 @@ export const songsSlice = createSlice({
     [getSearch.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
-    
+    // [getLikeShowData.fulfilled]: (state, { payload }) => {
+    //   state.likedSongs = payload.data;
+    //   console.log("payload", payload.data)
+    //   console.log('likeddata', state.likedSongs)
+    // },
   },
 });
 
-export const { setCurrentSongUrl, setShowMusicPlayer, setAddToRecent,clrAddToRecent,clrMusicPlayer } =
-  songsSlice.actions;
+export const {
+  setCurrentSongUrl,
+  setShowMusicPlayer,
+  setAddToRecent,
+  clrAddToRecent,
+  clrMusicPlayer,
+ 
+} = songsSlice.actions;
 
 export default songsSlice.reducer;

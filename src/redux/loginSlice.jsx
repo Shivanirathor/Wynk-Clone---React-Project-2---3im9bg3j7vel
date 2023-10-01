@@ -18,36 +18,36 @@ export const getLogin = createAsyncThunk("login/getLogin", async (payload) => {
       }
     )
     .then((data) => data);
-
   localStorage.setItem("token", res.data.token);
-  // localStorage.setItem("email", res.data.email);
-  // localStorage.setItem("password", res.data.password);
   return res;
-
 });
 
 export const getRegister = createAsyncThunk(
   "login/getRegister",
-  async (payload) => {
-    const res = await axios
-      .post(
-        "https://academics.newtonschool.co/api/v1/user/signup",
-        {
-          name: payload.name,
-          email: payload.email,
-          password: payload.password,
-          appType: "music",
-        },
-
-        {
-          headers: {
-            projectId: "22pghva8m0p8",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const res = await axios
+        .post(
+          "https://academics.newtonschool.co/api/v1/user/signup",
+          {
+            name: payload.name,
+            email: payload.email,
+            password: payload.password,
+            appType: "music",
           },
-        }
-      )
-      .then((data) => data);
 
-    return res;
+          {
+            headers: {
+              projectId: "22pghva8m0p8",
+            },
+          }
+        )
+        .then((data) => data);
+
+      return res;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
   }
 );
 export const getUpdate = createAsyncThunk(
@@ -99,36 +99,40 @@ export const loginSlice = createSlice({
     setLoginFalse: (state) => {
       state.isLogin = false;
     },
-   
+
     setLoginAlert: (state) => {
       state.showLoginAlert = false;
     },
 
-    clearLoginError:(state)=>{
-      state.loginError="";
+    clearLoginError: (state) => {
+      state.loginError = "";
     },
-    clearRegisterError:(state)=>{
-      state.registerError="";
+    clearRegisterError: (state) => {
+      state.registerError = "";
     },
-    clearUserData:(state)=>{
+    clearUserData: (state) => {
       state.isLogin = false;
-    }
+    },
+    clearRegistered: (state) => {
+      state.isRegister = false;
+    },
   },
 
   extraReducers: {
     [getRegister.fulfilled]: (state) => {
       state.isRegister = true;
+      state.registerError = false;
     },
-    [getRegister.rejected]: (state) => {
-      state.registerError = "Invalid Register detailes";
+    [getRegister.rejected]: (state, action) => {
+      state.registerError = action.payload || "Registered failed";
     },
     [getLogin.fulfilled]: (state, action) => {
       state.isLogin = true;
       state.showLoginAlert = true;
       state.name = action.payload.data.data.name;
     },
-    [getLogin.rejected]: (state) => {
-      state.loginError = "Invalid Login Detailes, Try Again";
+    [getLogin.rejected]: (state,action) => {
+      state.loginError = action.payload || "Invalid Login Detailes, Try Again";
     },
     [getUpdate.fulfilled]: (state) => {
       state.isUpdate = true;
@@ -136,6 +140,13 @@ export const loginSlice = createSlice({
   },
 });
 
-export const { setUpdateFalse, setLoginFalse, setLoginAlert ,clearLoginError,clearRegisterError,clearUserData} =
-  loginSlice.actions;
+export const {
+  setUpdateFalse,
+  setLoginFalse,
+  setLoginAlert,
+  clearLoginError,
+  clearRegisterError,
+  clearUserData,
+  clearRegistered,
+} = loginSlice.actions;
 export default loginSlice.reducer;

@@ -3,22 +3,32 @@ import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearRegisterError, getRegister } from "../redux/loginSlice";
+import { clearRegisterError, clearRegistered, getRegister } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isRegister, registerError } = useSelector((state) => state.login);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formError, setFormError] = useState({
+    nameError: "",
+    emailError: "",
+    passwordError: "",
+  });
+  // useEffect(() => {
+  //   if (isRegister) {
+  //     navigate("/login");
+  //   }
+  // }, [isRegister]);
 
   useEffect(() => {
-    if (isRegister) {
+    setTimeout(() => {
       navigate("/login");
-    }
+      dispatch(clearRegistered());
+    },30000);
   }, [isRegister]);
 
   useEffect(() => {
@@ -37,6 +47,32 @@ const SignUp = () => {
     setPassword(event.target.value);
   };
   const handleSignUp = () => {
+    if (!name || !email || !password) {
+      setFormError({
+        nameError: "All fields are mandatory!!",
+        emailError: "All fields are mandatory!!",
+        passwordError: "All fields are mandatory!!",
+      });
+      return;
+    }
+    let nameError =
+      name.length > 3 ? "" : "name should be atleast 3 character! ";
+    let emailError =
+      email.includes("@") && email.split("@")[0].length >= 3
+        ? ""
+        : "Invalid email,Please enter at least 3 characters before the @ symbol!";
+    let passwordError =
+      password.length >= 6 ? "" : "password should be atleast 6 number! ";
+    if (nameError || emailError || passwordError) {
+      setFormError((prev) => ({
+        ...prev,
+        nameError,
+        emailError,
+        passwordError,
+      }));
+      return;
+    }
+    
     dispatch(
       getRegister({
         name,
@@ -44,6 +80,11 @@ const SignUp = () => {
         password,
       })
     );
+    setFormError({
+      nameError: "",
+      emailError: "",
+      passwordError: "",
+    })
   };
 
   return (
@@ -51,9 +92,18 @@ const SignUp = () => {
       {registerError && (
         <Alert
           severity="info"
-          sx={{ marginTop: "20px",width:"500px", marginLeft:"33%"}}
+          sx={{ marginTop: "20px", width: "500px", marginLeft: "33%" }}
         >
-         Registration failed. Please ensure all fields are filled out correctly.
+          {/* Registration failed. Please ensure all fields are filled out correctly. */}
+          {registerError}
+        </Alert>
+      )}
+      {isRegister && (
+        <Alert
+          severity="info"
+          sx={{ marginTop: "20px", width: "500px", marginLeft: "33%" }}
+        >
+          Registerd Successfully!
         </Alert>
       )}
 
@@ -62,8 +112,8 @@ const SignUp = () => {
           src={loginImg}
           alt="loginImg"
           className="login-image "
-          width={400}
-          height={600}
+          width={350}
+          height={640}
         />
         <div className="login-signup-container">
           <h2>Sign Up</h2>
@@ -77,6 +127,7 @@ const SignUp = () => {
               onChange={handleName}
               required
             />
+            {formError.nameError && <p style={{color:"red"}}>{formError.nameError}</p>}
             <input
               type="email"
               placeholder="Email"
@@ -84,6 +135,7 @@ const SignUp = () => {
               onChange={handleEmail}
               required
             />
+            {formError.emailError && <p style={{color:"red"}}>{formError.emailError}</p>}
             <input
               type="password"
               placeholder="Password"
@@ -91,6 +143,7 @@ const SignUp = () => {
               onChange={handlePassword}
               required
             />
+            {formError.passwordError && <p style={{color:"red"}}>{formError.passwordError}</p>}
             <button onClick={handleSignUp}>Register</button>
           </div>
 

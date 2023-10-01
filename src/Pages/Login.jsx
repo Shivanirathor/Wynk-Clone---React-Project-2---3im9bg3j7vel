@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearLoginError, getLogin } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -13,7 +14,11 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [formError, setFormError] = useState({
+    
+    emailError: "",
+    passwordError: "",
+  });
   useEffect(() => {
     if (isLogin) {
       navigate("/");
@@ -33,14 +38,45 @@ const Login = () => {
     setPassword(event.target.value);
   };
   const handleLogin = () => {
+    if ( !email || !password) {
+      setFormError({
+     
+        emailError: "Email is required!",
+        passwordError: "Password is required!",
+      });
+      return;
+    }
+   
+    let emailError =
+      email.includes("@") && email.split("@")[0].length > 3
+        ? ""
+        : "Invalid email!";
+    let passwordError = password.length >= 6 ? "" : "password should be atleast 6 number! ";
+    if ( emailError || passwordError) {
+      setFormError((prev) => ({
+        ...prev,
+       
+        emailError,
+        passwordError,
+      }));
+      return;
+    }
     dispatch(
       getLogin({
         email,
         password,
       })
     );
+    setFormError({
+   
+      emailError: "",
+      passwordError: "",
+    })
   };
-
+  const handleSignup = () => {
+    navigate("/signup");
+    console.log("signup");
+  };
   return (
     <>
       {loginError && (
@@ -51,14 +87,14 @@ const Login = () => {
           Login failed. Please check your email and password!!
         </Alert>
       )}
-        {/* {loginError && <div style={{color:"white"}}>{loginError}</div>} */}
+    
       <div className="loginSetUp">
         <img
           src={loginImg}
           alt="loginImg"
           className="login-image "
-          width={400}
-          height={600}
+          width={350}
+          height={640}
         />
         <div className="login-signup-container">
           <h2>Login</h2>
@@ -71,22 +107,25 @@ const Login = () => {
               value={email}
               onChange={handleEmail}
             />
+             {formError.emailError && <p style={{color:"red"}}>{formError.emailError}</p>}
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={handlePassword}
             />
+              {formError.passwordError && <p style={{color:"red"}}>{formError.passwordError}</p>}
             <button onClick={handleLogin}>Login</button>
           </div>
 
           <p>To create your account, install Wynk app</p>
-          <a
-            href="/signup"
-            style={{ color: "lightblue", textDecoration: "none" }}
+
+          <p
+            onClick={handleSignup}
+            style={{ cursor: "pointer", color: "lightblue" }}
           >
-            create an account.
-          </a>
+            Create an Account
+          </p>
           <div className="download-links">
             <a
               href="https://www.apple.com/in/app-store/"

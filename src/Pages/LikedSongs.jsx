@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState} from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getLikeShowData } from "../redux/songsSlice";
 
 const LikedSongs = () => {
-  const [likedData, setLikedData] = useState([]);
+//   const dispatch = useDispatch();
+// const {likedSongs} = useSelector((state)=>state.songs);
 
+// useEffect(()=>{
+//   dispatch(getLikeShowData());
+// },[dispatch])
+// console.log("api", likedSongs)
+
+  const [likedData, setLikedData] = useState([]);
   const token = localStorage.getItem("token");
   const jwtToken = token;
   const projectID = "22pghva8m0p8";
@@ -22,7 +30,6 @@ const LikedSongs = () => {
     })
       .then((response) => {
         if (response.ok) {
-        
           return response.json();
         } else {
           throw new Error("Failed to like the song.");
@@ -32,13 +39,11 @@ const LikedSongs = () => {
         console.log("Data from the API:", data);
         setLikedData(data.data.songs);
       })
-      
 
       .catch((error) => {
         console.error("An error occurred:", error);
       });
   }, []);
-
   return (
     <>
       <h1
@@ -51,7 +56,16 @@ const LikedSongs = () => {
       >
         Favourite Songs
       </h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "40px" ,marginLeft:"10rem"}}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          textAlign:"center",
+          cursor:"pointer",
+          gap: "40px",
+          marginLeft: "10rem",
+        }}
+      >
         {likedData.length > 0 ? (
           likedData.map((song, index) => (
             <div key={index}>
