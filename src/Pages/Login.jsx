@@ -5,23 +5,31 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearLoginError, getLogin } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
-
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin, loginError } = useSelector((state) => state.login);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState({
-    
     emailError: "",
     passwordError: "",
   });
   useEffect(() => {
     if (isLogin) {
       navigate("/");
+      toast.success("Login successfully! Welcome to our platform!!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }, [isLogin]);
 
@@ -38,24 +46,26 @@ const Login = () => {
     setPassword(event.target.value);
   };
   const handleLogin = () => {
-    if ( !email || !password) {
+    if (!email || !password) {
       setFormError({
-     
         emailError: "Email is required!",
         passwordError: "Password is required!",
       });
       return;
     }
-   
+
     let emailError =
-      email.includes("@") && email.split("@")[0].length > 3
+      email.includes("@") && email.split("@")[0].length >= 3
         ? ""
         : "Invalid email!";
-    let passwordError = password.length >= 6 ? "" : "password should be atleast 6 number! ";
-    if ( emailError || passwordError) {
+    let passwordError =
+      password.length >= 6
+        ? ""
+        : "password should be atleast 6 characters long! ";
+    if (emailError || passwordError) {
       setFormError((prev) => ({
         ...prev,
-       
+
         emailError,
         passwordError,
       }));
@@ -68,15 +78,15 @@ const Login = () => {
       })
     );
     setFormError({
-   
       emailError: "",
       passwordError: "",
-    })
+    });
   };
+
   const handleSignup = () => {
     navigate("/signup");
-    console.log("signup");
   };
+
   return (
     <>
       {loginError && (
@@ -84,10 +94,10 @@ const Login = () => {
           severity="error"
           sx={{ marginTop: "20px", width: "400px", marginLeft: "35%" }}
         >
-          Login failed. Please check your email and password!!
+          {loginError}
         </Alert>
       )}
-    
+
       <div className="loginSetUp">
         <img
           src={loginImg}
@@ -107,14 +117,18 @@ const Login = () => {
               value={email}
               onChange={handleEmail}
             />
-             {formError.emailError && <p style={{color:"red"}}>{formError.emailError}</p>}
+            {formError.emailError && (
+              <p style={{ color: "red" }}>{formError.emailError}</p>
+            )}
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={handlePassword}
             />
-              {formError.passwordError && <p style={{color:"red"}}>{formError.passwordError}</p>}
+            {formError.passwordError && (
+              <p style={{ color: "red" }}>{formError.passwordError}</p>
+            )}
             <button onClick={handleLogin}>Login</button>
           </div>
 

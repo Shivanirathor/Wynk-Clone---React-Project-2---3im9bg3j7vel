@@ -7,7 +7,17 @@ import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUserData, setUpdateFalse } from "../redux/loginSlice";
-
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Menu,
+  MenuItem,
+  Slide,
+} from "@mui/material";
+import Button from "@mui/material/Button";
+import { toast } from "react-toastify";
 import {
   clrAddToRecent,
   clrMusicPlayer,
@@ -17,41 +27,19 @@ import {
   getSadSong,
   getSearch,
 } from "../redux/songsSlice";
-import MenuIcon from "@mui/icons-material/Menu";
 
-import { Menu, MenuItem } from "@mui/material";
-// import Alert from "@mui/material/Alert";
-// import AlertTitle from "@mui/material/AlertTitle";
-// import Button from "@mui/material/Button";
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin, name } = useSelector((state) => state.login);
   const [searchInput, setSearchInput] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [logoutAlertOpen, setLogoutAlertOpen] = useState(false);
+  const open = Boolean(anchorEl);
 
-  // const [logoutAlertOpen, setLogoutAlertOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleMenuItemClick = (menuItem) => {
-    // Handle menu item click actions here
-    if (menuItem === "Manage Subscription") {
-      // Handle Manage Subscription click
-    } else if (menuItem === "Favourite Songs") {
-      // Handle Favourite Songs click
-    } else if (menuItem === "Login") {
-      // Handle Login click
-    }
-    // Close the menu after handling the click
-    setIsMenuOpen(false);
-  };
-
-  // for navbar smoothly//
   const navbar = document.querySelector(".navbar");
   let prevScrollPos = window.pageYOffset;
   window.addEventListener("scroll", () => {
@@ -63,8 +51,7 @@ const Navbar = () => {
     }
     prevScrollPos = currentScrollPos;
   });
-  // =============== //
-  const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     if (!isLogin) {
       navigate("/login");
@@ -86,7 +73,6 @@ const Navbar = () => {
   const navigateHome = () => {
     dispatch(clrAddToRecent());
     dispatch(clrMusicPlayer());
-    window.location.reload();
   };
   const handleLikedSaved = () => {
     if (isLogin) {
@@ -96,28 +82,27 @@ const Navbar = () => {
     }
   };
 
-  // const handleLogout = () => {
-  //   const confirmed = window.confirm("Are you sure you want to logout?");
-  //   if (confirmed) {
-
-  //     setLogoutAlertOpen(true);
-  //   }
-  // };
-
-  // const handleCloseLogoutAlert = () => {
-  //   setLogoutAlertOpen(false);
-  // };
-
-  // const handleConfirmLogout = () => {
-  //   window.location.reload();
-  // };
-
   const handleLogout = () => {
-    const confirmed = window.confirm("Are you sure you want to logout?");
-    if (confirmed) {
-      dispatch(clearUserData());
-      window.location.reload();
-    }
+    setLogoutAlertOpen(true);
+  };
+
+  const handleCloseLogoutAlert = () => {
+    setLogoutAlertOpen(false);
+  };
+
+  const handleConfirmLogout = () => {
+    dispatch(clearUserData());
+    setLogoutAlertOpen(false);
+    toast.success("Logged out successfully!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   const updatePass = () => {
@@ -136,21 +121,17 @@ const Navbar = () => {
 
   const handleRomanticSongs = () => {
     dispatch(getRomanticSong());
-    console.log("Romantic Songs");
   };
   const handleSadSongs = () => {
     dispatch(getSadSong());
-    console.log("Sad Songs");
   };
 
   const handleExcitedSongs = () => {
     dispatch(getExcitedSong());
-    console.log("Excited Songs");
   };
 
   const handleHappySongs = () => {
     dispatch(getHappySong());
-    console.log("Happy Songs");
   };
 
   const handleSelectChange = (event) => {
@@ -174,36 +155,30 @@ const Navbar = () => {
     }
   };
   const handdleArtistImg = () => {
-    console.log("topArtist");
     navigate("/topArtist");
   };
 
   return (
     <>
-      {/* {logoutAlertOpen && (
-        <Alert
-          open={logoutAlertOpen}
+      {logoutAlertOpen && (
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
           onClose={handleCloseLogoutAlert}
-          severity="warning"
-          variant="outlined"
-          sx={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
+          aria-describedby="alert-dialog-slide-description"
         >
-          <AlertTitle>Logout Confirmation</AlertTitle>
-          Are you sure you want to logout?
-          <Button onClick={handleCloseLogoutAlert} color="inherit" size="small">
-            Cancel
-          </Button>
-          <Button onClick={handleConfirmLogout} color="inherit" size="small">
-            Logout
-          </Button>
-        </Alert>
-        
-      )} */}
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              Are you sure you want to logout?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseLogoutAlert}>Cancel</Button>
+            <Button onClick={handleConfirmLogout}>Logout</Button>
+          </DialogActions>
+        </Dialog>
+      )}
       <div className="navbar">
         <nav className="nav-1">
           <div className="logoText" onClick={navigateHome}>
@@ -247,12 +222,10 @@ const Navbar = () => {
               open={open}
               onClose={handleClose}
             >
-              
               <MenuItem>Welcome : {name}</MenuItem>
               <MenuItem onClick={updatePass}>Update Password</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
-      
           )}
         </nav>
         {/* ================================ */}

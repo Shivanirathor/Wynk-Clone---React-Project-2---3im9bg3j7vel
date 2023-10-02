@@ -85,7 +85,7 @@ const initialState = {
   registerError: "",
   name: "",
   isUpdate: false,
-  showLoginAlert: false,
+ 
 };
 
 export const loginSlice = createSlice({
@@ -100,10 +100,7 @@ export const loginSlice = createSlice({
       state.isLogin = false;
     },
 
-    setLoginAlert: (state) => {
-      state.showLoginAlert = false;
-    },
-
+    
     clearLoginError: (state) => {
       state.loginError = "";
     },
@@ -131,7 +128,7 @@ export const loginSlice = createSlice({
       state.showLoginAlert = true;
       state.name = action.payload.data.data.name;
     },
-    [getLogin.rejected]: (state,action) => {
+    [getLogin.rejected]: (state, action) => {
       state.loginError = action.payload || "Invalid Login Detailes, Try Again";
     },
     [getUpdate.fulfilled]: (state) => {
@@ -143,7 +140,7 @@ export const loginSlice = createSlice({
 export const {
   setUpdateFalse,
   setLoginFalse,
-  setLoginAlert,
+
   clearLoginError,
   clearRegisterError,
   clearUserData,

@@ -21,7 +21,7 @@ function Trending() {
         console.log("Error:", error);
       });
   }, []);
-  console.log(trending);
+
   return (
     <div>
       <Navbar />

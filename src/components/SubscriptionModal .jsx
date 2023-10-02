@@ -13,8 +13,8 @@ const SubscriptionModal = () => {
   const navigate = useNavigate();
   const { isLogin } = useSelector((state) => state.login);
   const [open, setOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [paymentCompleted, setPaymentCompleted] = useState(false); 
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState(null);
+
   const plans = [
     {
       duration: "Yearly",
@@ -35,11 +35,8 @@ const SubscriptionModal = () => {
       savings: "Save 50%",
     },
   ];
-
   const handlePlanSelect = (index) => {
- 
-      setSelectedPlan(index); 
-  
+    setSelectedPlanIndex(index);
   };
 
   const handleOpen = () => {
@@ -52,7 +49,7 @@ const SubscriptionModal = () => {
 
   const handleClose = () => {
     setOpen(false);
-    setPaymentCompleted(true); 
+    // setPaymentCompleted(true);
     navigate("/payment");
   };
 
@@ -108,10 +105,12 @@ const SubscriptionModal = () => {
                 {plans.map((plan, index) => (
                   <div
                     key={index}
-                    className={`plan ${selectedPlan === index ? 'selected' : ''}`}
+                    className={`plan ${
+                      selectedPlanIndex === index ? "selected" : ""
+                    }`}
                     style={{
                       border:
-                        selectedPlan === index
+                      selectedPlanIndex === index
                           ? "3px solid green"
                           : "1px solid #ccc",
                     }}
@@ -121,6 +120,12 @@ const SubscriptionModal = () => {
                     <p>{plan.originalPrice}</p>
                     <p>{plan.discountedPrice}</p>
                     <p>{plan.savings}</p>
+                    <button
+                      onClick={() => handlePlanSelect(index)} // Optional: You can add this to allow the user to change the selected plan
+                      disabled={selectedPlanIndex === index} // Disable the button if it's the selected plan
+                    >
+                      {selectedPlanIndex === index ? "Selected" : "Select"}
+                    </button>
                   </div>
                 ))}
               </div>

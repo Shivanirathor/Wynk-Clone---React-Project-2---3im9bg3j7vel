@@ -9,32 +9,22 @@ import MusicPlayer from "../components/MusicPlayer";
 import RecentPlayed from "../Pages/RecentPlayed";
 import Slider2 from "./Slider2";
 import ArtistImage from "../components/ArtistImage";
-import Alert from "@mui/material/Alert";
-import { setLoginAlert } from "../redux/loginSlice";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { isLogin, showLoginAlert } = useSelector((state) => state.login);
+
   const { songsList, showMusicPlayer } = useSelector((state) => state.songs);
 
   useEffect(() => {
     dispatch(getSongsList());
   }, [dispatch]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(setLoginAlert());
-      console.log("loginTrue")
-    }, 3000);
-  }, [isLogin]);
-
   return (
     <>
-      {showLoginAlert && (
-        <Alert severity="success" sx={{ marginLeft: "40%", width: "350px", marginTop:"20px" }}>
-        Login successfully! Welcome to our platform!!!
-        </Alert>
-      )}
+      <ToastContainer position="top-center" autoClose={3000} />
       <Navbar />
       {showMusicPlayer && <MusicPlayer />}
       <Slider />

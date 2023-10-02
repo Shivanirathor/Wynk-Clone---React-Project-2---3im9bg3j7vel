@@ -16,13 +16,12 @@ const UpdatePassword = () => {
   useEffect(() => {
     if (isUpdate === true) {
       alert("Your password is updated successfully!!");
-      window.location.reload();
       navigate("/");
     }
     return () => {
       setUpdateFalse();
     };
-  }, [isUpdate]);
+  }, [isUpdate, navigate]);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -47,7 +46,7 @@ const UpdatePassword = () => {
       })
     );
   };
-
+  console.log("update");
   return (
     <>
       <div className="loginSetUp">

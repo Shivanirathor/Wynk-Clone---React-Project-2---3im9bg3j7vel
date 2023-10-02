@@ -9,8 +9,8 @@ import paytm from "../assets/paytm.jpeg";
 import phonePay from "../assets/phonePay.jpeg";
 import airtel from "../assets/airtel.jpeg";
 import payPal from "../assets/paypal.jpeg";
-
-
+import loaderImage from "../assets/loader.gif";
+import { ToastContainer, toast } from "react-toastify";
 const Payment = () => {
   const navigate = useNavigate();
   const [cardHolderName, setCardHolderName] = useState("");
@@ -19,7 +19,8 @@ const Payment = () => {
   const [cardExpiryYY, setCardExpiryYY] = useState("");
   const [cvv, setCVV] = useState("");
   const [errors, setErrors] = useState({});
-  const [payementAlert, setPaymentAlert] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlePayment = () => {
     const errors = {};
@@ -31,117 +32,137 @@ const Payment = () => {
     if (!cardNumber || cardNumber.length !== 16 || isNaN(cardNumber)) {
       errors.cardNumber = "Card number must be a 16-digit numeric value.";
     }
-    
 
-    if (!cardExpiryMM || !cardExpiryYY || isNaN(cardExpiryMM) || isNaN(cardExpiryYY) || cardExpiryMM.length !== 2 || cardExpiryYY.length !== 2) {
+    if (
+      !cardExpiryMM ||
+      !cardExpiryYY ||
+      isNaN(cardExpiryMM) ||
+      isNaN(cardExpiryYY) ||
+      cardExpiryMM.length !== 2 ||
+      cardExpiryYY.length !== 2
+    ) {
       errors.cardExpiry = "Invalid expiry date format.";
     }
-    
 
     if (!cvv || isNaN(cvv) || cvv.length !== 3) {
       errors.cvv = "CVV must be a 3-digit numeric value.";
     }
-    
 
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
-      setPaymentAlert(true);
+      setIsLoading(true);
       setTimeout(() => {
-        navigate("/");
-      }, 2000);
+        setIsLoading(false);
+        toast.success("🦄 Wow so easy!", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }, 3000);
     }
-
-    
   };
-    
-  
 
   return (
     <>
-      {payementAlert && (
-        <Alert severity="success" sx={{ marginLeft: "40%", width: "300px" }}>
-          Payment Successfully!!🎉
-        </Alert>
-      )}
- 
-      <div className="payment-summary">
-        <Summary />
-
-        <div className="payment-options">
-          <h2 style={{ marginBottom: 25, fontSize: 40 }}>Payment Options</h2>
-          <div className="upi-options">
-            <div className="upi-option">
-              <img src={googlePay} alt="" />
-            </div>
-            <div className="upi-option">
-              <img src={amazon} alt="" />
-            </div>
-            <div className="upi-option">
-              <img src={paytm} alt="" />
-            </div>
-
-            <div className="upi-option">
-              <img src={phonePay} alt="" width={50} />
-            </div>
-
-            <div className="upi-option">
-              <img src={airtel} alt="" width={50} />
-            </div>
-            <div className="upi-option">
-              <img src={payPal} alt="" width={50} />
-            </div>
+      <ToastContainer position="bottom-center" autoClose={3000} />
+      <div className={`app-container ${isLoading ? "blur" : ""}`}>
+        {isLoading && (
+          <div className="loader">
+            <img src={loaderImage} alt="Loading..." />
           </div>
-          <div className="card-form">
-            <input
-              type="text"
-              placeholder="CARD HOLDER'S NAME"
-              value={cardHolderName}
-              onChange={(e) => setCardHolderName(e.target.value)}
-            />
-            {errors.cardHolderName && (
-              <p className="error">{errors.cardHolderName}</p>
-            )}
+        )}
 
-            <input
-              type="text"
-              placeholder="CARD NUMBER"
-              value={cardNumber}
-              onChange={(e) => setCardNumber(e.target.value)}
-            />
-            {errors.cardNumber && <p className="error">{errors.cardNumber}</p>}
+        <div className="payment-summary">
+          <Summary />
 
-            <div className="card-expiry">
+          <div className="payment-options">
+            <h2 style={{ marginBottom: 25, fontSize: 40 }}>Payment Options</h2>
+            <div className="upi-options">
+              <div className="upi-option">
+                <img src={googlePay} alt="googlepay" />
+              </div>
+              <div className="upi-option">
+                <img src={amazon} alt="amazonpay" />
+              </div>
+              <div className="upi-option">
+                <img src={paytm} alt="paytm" />
+              </div>
+
+              <div className="upi-option">
+                <img src={phonePay} alt="phonepay" width={50} />
+              </div>
+
+              <div className="upi-option">
+                <img src={airtel} alt="airtal" width={50} />
+              </div>
+              <div className="upi-option">
+                <img src={payPal} alt="paypal" width={50} />
+              </div>
+            </div>
+            <div className="card-form">
               <input
                 type="text"
-                placeholder="M M"
-                value={cardExpiryMM}
-                onChange={(e) => setCardExpiryMM(e.target.value)}
+                placeholder="CARD HOLDER'S NAME"
+                value={cardHolderName}
+                onChange={(e) => setCardHolderName(e.target.value)}
               />
-              <span>/</span>
+              {errors.cardHolderName && (
+                <p className="error">{errors.cardHolderName}</p>
+              )}
+
               <input
                 type="text"
-                placeholder="Y Y"
-                value={cardExpiryYY}
-                onChange={(e) => setCardExpiryYY(e.target.value)}
+                placeholder="CARD NUMBER"
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
               />
-            </div>
-            {errors.cardExpiry && <p className="error">{errors.cardExpiry}</p>}
+              {errors.cardNumber && (
+                <p className="error">{errors.cardNumber}</p>
+              )}
 
-            <input
-              type="text"
-              placeholder="CVV"
-              value={cvv}
-              onChange={(e) => setCVV(e.target.value)}
-            />
-            {errors.cvv && <p className="error">{errors.cvv}</p>}
+              <div className="card-expiry">
+                <input
+                  type="text"
+                  placeholder="M M"
+                  value={cardExpiryMM}
+                  onChange={(e) => setCardExpiryMM(e.target.value)}
+                />
+                <span>/</span>
+                <input
+                  type="text"
+                  placeholder="Y Y"
+                  value={cardExpiryYY}
+                  onChange={(e) => setCardExpiryYY(e.target.value)}
+                />
+              </div>
+              {errors.cardExpiry && (
+                <p className="error">{errors.cardExpiry}</p>
+              )}
+
+              <input
+                type="text"
+                placeholder="CVV"
+                value={cvv}
+                onChange={(e) => setCVV(e.target.value)}
+              />
+              {errors.cvv && <p className="error">{errors.cvv}</p>}
+            </div>
+            <button className="save-card">Save card</button>
+            <label>
+              <input type="checkbox" className="auto-renew-label" /> Auto-renew
+            </label>
+            <button className="pay-securely" onClick={handlePayment}>
+              PAY SECURELY
+            </button>
           </div>
-          <button className="save-card">Save card</button>
-          <label>
-            <input type="checkbox" className="auto-renew-label" /> Auto-renew
-          </label>
-          <button className="pay-securely" onClick={handlePayment}>
-            PAY SECURELY
-          </button>
         </div>
       </div>
     </>

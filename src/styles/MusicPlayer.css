@@ -34,15 +34,17 @@
   font-size: 13px;
   color: black;
 }
-
-.span {
+.red-like {
+  color: red;
+}
+/* .span {
   font-size: 25px;
   cursor: pointer;
 }
 
 .like-span {
   color: red;
-}
+} */
 .volume-control {
   display: flex;
   align-items: center;

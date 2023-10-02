@@ -3,7 +3,11 @@ import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearRegisterError, clearRegistered, getRegister } from "../redux/loginSlice";
+import {
+  clearRegisterError,
+  clearRegistered,
+  getRegister,
+} from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
 const SignUp = () => {
@@ -18,17 +22,11 @@ const SignUp = () => {
     emailError: "",
     passwordError: "",
   });
-  // useEffect(() => {
-  //   if (isRegister) {
-  //     navigate("/login");
-  //   }
-  // }, [isRegister]);
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/login");
       dispatch(clearRegistered());
-    },30000);
+    }, 5000);
   }, [isRegister]);
 
   useEffect(() => {
@@ -56,7 +54,7 @@ const SignUp = () => {
       return;
     }
     let nameError =
-      name.length > 3 ? "" : "name should be atleast 3 character! ";
+      name.length >= 3 ? "" : "name should be atleast 3 character! ";
     let emailError =
       email.includes("@") && email.split("@")[0].length >= 3
         ? ""
@@ -72,7 +70,7 @@ const SignUp = () => {
       }));
       return;
     }
-    
+
     dispatch(
       getRegister({
         name,
@@ -80,11 +78,12 @@ const SignUp = () => {
         password,
       })
     );
+    navigate("/login");
     setFormError({
       nameError: "",
       emailError: "",
       passwordError: "",
-    })
+    });
   };
 
   return (
@@ -94,16 +93,7 @@ const SignUp = () => {
           severity="info"
           sx={{ marginTop: "20px", width: "500px", marginLeft: "33%" }}
         >
-          {/* Registration failed. Please ensure all fields are filled out correctly. */}
           {registerError}
-        </Alert>
-      )}
-      {isRegister && (
-        <Alert
-          severity="info"
-          sx={{ marginTop: "20px", width: "500px", marginLeft: "33%" }}
-        >
-          Registerd Successfully!
         </Alert>
       )}
 
@@ -127,7 +117,9 @@ const SignUp = () => {
               onChange={handleName}
               required
             />
-            {formError.nameError && <p style={{color:"red"}}>{formError.nameError}</p>}
+            {formError.nameError && (
+              <p style={{ color: "red" }}>{formError.nameError}</p>
+            )}
             <input
               type="email"
               placeholder="Email"
@@ -135,7 +127,9 @@ const SignUp = () => {
               onChange={handleEmail}
               required
             />
-            {formError.emailError && <p style={{color:"red"}}>{formError.emailError}</p>}
+            {formError.emailError && (
+              <p style={{ color: "red" }}>{formError.emailError}</p>
+            )}
             <input
               type="password"
               placeholder="Password"
@@ -143,7 +137,9 @@ const SignUp = () => {
               onChange={handlePassword}
               required
             />
-            {formError.passwordError && <p style={{color:"red"}}>{formError.passwordError}</p>}
+            {formError.passwordError && (
+              <p style={{ color: "red" }}>{formError.passwordError}</p>
+            )}
             <button onClick={handleSignUp}>Register</button>
           </div>
 

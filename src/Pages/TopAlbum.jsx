@@ -20,7 +20,7 @@ function TopAlbum() {
         console.log("Error:", error);
       });
   }, []);
-  console.log(trending);
+ 
   return (
     <div>
       <Navbar />

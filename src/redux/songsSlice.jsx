@@ -101,34 +101,33 @@ export const getLike = createAsyncThunk(
 
   return res;
 });
-// export const getLikeShowData = createAsyncThunk(
-//   "songs/getLikeShowData",
-//   async (showId) => {
-//     const token = localStorage.getItem("token");
+export const getLikeShowData = createAsyncThunk(
+  "songs/getLikeShowData",
+  async () => {
+    const token = localStorage.getItem("token");
 
-//     const res = await axios
-//       .get(
-//         "https://academics.newtonschool.co/api/v1/music/favorites/like",
-//         { songId: showId },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//             projectId: "22pghva8m0p8",
-//           },
-//         }
-//       )
-//       .then((data) => data.json());
+    const res = await fetch(
+        "https://academics.newtonschool.co/api/v1/music/favorites/like",
+        // { songId: showId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            projectId: "22pghva8m0p8",
+          },
+        }
+      )
+      .then((data) => data.json());
 
-//     return res;
-//   }
-// );
+    return res;
+  }
+);
 
 const initialState = {
   songsList: [],
   currentSongUrl: {},
   addToRecent: [],
   showMusicPlayer: false,
-  // likedSongs: [],
+  likedSongs: [],
 };
 
 export const songsSlice = createSlice({
@@ -173,11 +172,11 @@ export const songsSlice = createSlice({
     [getSearch.fulfilled]: (state, { payload }) => {
       state.songsList = payload.data;
     },
-    // [getLikeShowData.fulfilled]: (state, { payload }) => {
-    //   state.likedSongs = payload.data;
-    //   console.log("payload", payload.data)
-    //   console.log('likeddata', state.likedSongs)
-    // },
+    [getLikeShowData.fulfilled]: (state, { payload }) => {
+   
+      state.likedSongs = payload.data.songs;
+    
+    },
   },
 });
 

@@ -1,49 +1,15 @@
-import React, { useEffect, useState} from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getLikeShowData } from "../redux/songsSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getLikeShowData } from "../redux/songsSlice";
 
 const LikedSongs = () => {
-//   const dispatch = useDispatch();
-// const {likedSongs} = useSelector((state)=>state.songs);
-
-// useEffect(()=>{
-//   dispatch(getLikeShowData());
-// },[dispatch])
-// console.log("api", likedSongs)
-
-  const [likedData, setLikedData] = useState([]);
-  const token = localStorage.getItem("token");
-  const jwtToken = token;
-  const projectID = "22pghva8m0p8";
-
-  const apiUrl =
-    "https://academics.newtonschool.co/api/v1/music/favorites/like";
-  const headers = {
-    Authorization: `Bearer ${jwtToken}`,
-    projectID: projectID,
-  };
+  const dispatch = useDispatch();
+  const { likedSongs } = useSelector((state) => state.songs);
 
   useEffect(() => {
-    fetch(apiUrl, {
-      method: "GET",
-      headers: headers,
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Failed to like the song.");
-        }
-      })
-      .then((data) => {
-        console.log("Data from the API:", data);
-        setLikedData(data.data.songs);
-      })
-
-      .catch((error) => {
-        console.error("An error occurred:", error);
-      });
+    dispatch(getLikeShowData());
   }, []);
+  
   return (
     <>
       <h1
@@ -60,14 +26,14 @@ const LikedSongs = () => {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          textAlign:"center",
-          cursor:"pointer",
+          textAlign: "center",
+          cursor: "pointer",
           gap: "40px",
           marginLeft: "10rem",
         }}
       >
-        {likedData.length > 0 ? (
-          likedData.map((song, index) => (
+        {likedSongs?.length > 0 ? (
+          likedSongs?.map((song, index) => (
             <div key={index}>
               <img
                 style={{ borderRadius: "20px" }}

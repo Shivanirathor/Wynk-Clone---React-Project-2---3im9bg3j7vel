@@ -9,19 +9,22 @@ import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { getLike } from "../redux/songsSlice";
+import { getLike, getLikeShowData } from "../redux/songsSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const MusicPlayer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const audioRef = useRef(null);
-  const { currentSongUrl,likedSongs } = useSelector((state) => state.songs);
+  const { currentSongUrl, likedSongs } = useSelector((state) => state.songs);
   const { isLogin } = useSelector((state) => state.login);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [like, setLike] = useState(false);
+  // const [present, setPresent] = useState(false);
+
   // const [volume, setVolume] = useState(50);
   // const [showVolumeSlider, setShowVolumeSlider] = useState(false);
   // const isMuted = volume === 0;
@@ -45,6 +48,17 @@ const MusicPlayer = () => {
   //   setVolume(newVolume);
   // };
 
+  useEffect(() => {
+    dispatch(getLikeShowData());
+  }, []);
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -68,41 +82,32 @@ const MusicPlayer = () => {
     audioRef.current.currentTime = value;
   };
 
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-  }, [isPlaying]);
-
   const handleLikedSong = () => {
     if (isLogin) {
       const songId = currentSongUrl.id;
-      dispatch(getLike(songId));
+      const isSongLiked = likedSongs.some(
+        (likedSong) => likedSong._id === songId
+      );
+      if (isSongLiked) {
+        toast.info("Song is already saved to Liked Songs!", {
+          position: "top-center",
+          autoClose: 2000,
+          
+        });
+      } else {
+        dispatch(getLike(songId));
+        setLike(true);
+        toast.success("Song added to Liked Songs!", {
+          position: "top-center",
+          autoClose: 2000,
+          theme: "light",
+        });
+      }
     } else {
       navigate("/login");
     }
-    setLike(!like);
   };
 
-  // const handleLikedSong = () => {
-  //   if (isLogin) {
-  //     const songId = currentSongUrl.id;
-  //     const isSongLiked = likedSongs.some((song) => song.id === songId);
-  
-  //     if (isSongLiked) {
-  //       alert('You have already liked this song.');
-  //     } else {
-  //       dispatch(getLike(songId));
-  //     }
-  //   } else {
-  //     navigate("/login");
-  //   }
-  //   setLike(!like);
-  // };
-  // console.log("current", currentSongUrl);
-  
   return (
     <>
       <div className="music-player-container">
@@ -174,13 +179,10 @@ const MusicPlayer = () => {
           <source src={currentSongUrl.audio} type="audio/mpeg" />
         </audio>
 
-        <div
-          className={`span ${like && "like-span"}`}
-          onClick={handleLikedSong}
-        >
+        <div onClick={handleLikedSong}>
           <FavoriteIcon
             title="Add to favorite page"
-            className={`span ${like && "like-span"}`}
+            className={`span ${like ? "like-span red-like" : "like-span"}`}
             style={{ cursor: "pointer" }}
           />
         </div>
