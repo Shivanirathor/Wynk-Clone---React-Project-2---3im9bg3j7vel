@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PauseIcon from "@mui/icons-material/Pause";
-import VolumeDownIcon from "@mui/icons-material/VolumeDown";
-import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
-import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { getLike, getLikeShowData } from "../redux/songsSlice";
@@ -23,30 +20,6 @@ const MusicPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [like, setLike] = useState(false);
-  // const [present, setPresent] = useState(false);
-
-  // const [volume, setVolume] = useState(50);
-  // const [showVolumeSlider, setShowVolumeSlider] = useState(false);
-  // const isMuted = volume === 0;
-  // const toggleMute = () => {
-  //   // Toggle mute state by setting volume to 0 when muted or restoring the original volume
-  //   setVolume(isMuted ? 50 : currentSongUrl.volume);
-  // };
-
-  // const handleVolumeUp = () => {
-  //   // Increase volume (you can adjust this increment as needed)
-  //   setVolume((prevVolume) => Math.min(prevVolume + 10, 100));
-  // };
-
-  // const handleVolumeDown = () => {
-  //   // Decrease volume (you can adjust this decrement as needed)
-  //   setVolume((prevVolume) => Math.max(prevVolume - 10, 0));
-  // };
-  // const handleVolumeChange = (event) => {
-  //   // Update the volume based on the input range value
-  //   const newVolume = parseFloat(event.target.value);
-  //   setVolume(newVolume);
-  // };
 
   useEffect(() => {
     dispatch(getLikeShowData());
@@ -92,7 +65,6 @@ const MusicPlayer = () => {
         toast.info("Song is already saved to Liked Songs!", {
           position: "top-center",
           autoClose: 2000,
-          
         });
       } else {
         dispatch(getLike(songId));
@@ -122,34 +94,7 @@ const MusicPlayer = () => {
           <h2 className="song-title">{currentSongUrl.title}</h2>
           <p className="artist">({currentSongUrl.name})</p>
         </div>
-        {/* <div className="controls">
-          <div className="volume-controls">
-            <button
-              title="Volume"
-              className="control-button"
-              onClick={() => setShowVolumeSlider(!showVolumeSlider)}
-            >
-              {showVolumeSlider ? (
-                <VolumeMuteIcon onClick={toggleMute} />
-              ) : isMuted ? (
-                <VolumeMuteIcon onClick={toggleMute} />
-              ) : volume > 50 ? (
-                <VolumeUpIcon onClick={handleVolumeUp} />
-              ) : (
-                <VolumeDownIcon onClick={handleVolumeDown} />
-              )}
-            </button>
-            {showVolumeSlider && (
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={volume}
-                onChange={handleVolumeChange}
-              />
-            )}
-          </div>
-        </div> */}
+
         <div className="music-slider-container">
           <Slider
             value={currentTime}

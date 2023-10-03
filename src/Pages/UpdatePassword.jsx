@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/LoginSignUp.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getUpdate, setUpdateFalse } from "../redux/loginSlice";
-
+import { useDispatch } from "react-redux";
+import { getUpdate } from "../redux/loginSlice";
+import { ToastContainer, toast } from "react-toastify";
 const UpdatePassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isUpdate } = useSelector((state) => state.login);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [currPassword, setCurrPassword] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (isUpdate === true) {
-      alert("Your password is updated successfully!!");
-      navigate("/");
-    }
-    return () => {
-      setUpdateFalse();
-    };
-  }, [isUpdate, navigate]);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -37,19 +27,48 @@ const UpdatePassword = () => {
   };
 
   const handleUpdate = () => {
-    dispatch(
-      getUpdate({
-        name,
-        email,
-        currPassword,
-        password,
-      })
-    );
+    if (!name || !email || !currPassword || !password) {
+      toast.error("Please fill in all fields.", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      dispatch(
+        getUpdate({
+          name,
+          email,
+          currPassword,
+          password,
+        })
+      );
+    
+      toast.success("Password Updated successfully!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(()=>{
+        navigate("/");
+      },5000);
+    }
+
   };
-  console.log("update");
+
   return (
     <>
-      <div className="loginSetUp">
+      <ToastContainer />
+      <div className="update-form">
         <div className="login-signup-container">
           <h2>Update Password</h2>
 

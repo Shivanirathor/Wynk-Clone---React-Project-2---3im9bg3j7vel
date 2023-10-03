@@ -53,7 +53,7 @@ const Payment = () => {
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
-        toast.success("🦄 Wow so easy!", {
+        toast.success("Payment Successfully Done!", {
           position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,

@@ -9,13 +9,11 @@ import MusicPlayer from "../components/MusicPlayer";
 import RecentPlayed from "../Pages/RecentPlayed";
 import Slider2 from "./Slider2";
 import ArtistImage from "../components/ArtistImage";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const dispatch = useDispatch();
-
   const { songsList, showMusicPlayer } = useSelector((state) => state.songs);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <ToastContainer position="top-center" autoClose={3000} />
+      <ToastContainer />
       <Navbar />
       {showMusicPlayer && <MusicPlayer />}
       <Slider />

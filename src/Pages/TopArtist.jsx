@@ -12,7 +12,7 @@ const TopArtist = () => {
       <div className="artistImg">
         <div
           style={{
-            marginTop: "120px",
+            // marginTop: "120px",
             color: "white",
             display: "flex",
             justifyContent: "space-between",

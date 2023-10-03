@@ -85,22 +85,18 @@ const initialState = {
   registerError: "",
   name: "",
   isUpdate: false,
- 
 };
 
 export const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    setUpdateFalse: (state) => {
-      state.isUpdate = false;
-    },
+    
 
     setLoginFalse: (state) => {
       state.isLogin = false;
     },
 
-    
     clearLoginError: (state) => {
       state.loginError = "";
     },
@@ -138,9 +134,7 @@ export const loginSlice = createSlice({
 });
 
 export const {
-  setUpdateFalse,
   setLoginFalse,
-
   clearLoginError,
   clearRegisterError,
   clearUserData,

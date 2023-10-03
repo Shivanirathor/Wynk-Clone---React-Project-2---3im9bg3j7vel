@@ -6,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUserData, setUpdateFalse } from "../redux/loginSlice";
+import { clearUserData} from "../redux/loginSlice";
 import {
   Dialog,
   DialogActions,
@@ -62,10 +62,6 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  useEffect(() => {
-    setUpdateFalse();
-  }, []);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);

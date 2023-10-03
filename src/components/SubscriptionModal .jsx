@@ -49,7 +49,6 @@ const SubscriptionModal = () => {
 
   const handleClose = () => {
     setOpen(false);
-    // setPaymentCompleted(true);
     navigate("/payment");
   };
 
@@ -110,7 +109,7 @@ const SubscriptionModal = () => {
                     }`}
                     style={{
                       border:
-                      selectedPlanIndex === index
+                        selectedPlanIndex === index
                           ? "3px solid green"
                           : "1px solid #ccc",
                     }}
@@ -121,8 +120,8 @@ const SubscriptionModal = () => {
                     <p>{plan.discountedPrice}</p>
                     <p>{plan.savings}</p>
                     <button
-                      onClick={() => handlePlanSelect(index)} // Optional: You can add this to allow the user to change the selected plan
-                      disabled={selectedPlanIndex === index} // Disable the button if it's the selected plan
+                      onClick={() => handlePlanSelect(index)}
+                      disabled={selectedPlanIndex === index}
                     >
                       {selectedPlanIndex === index ? "Selected" : "Select"}
                     </button>

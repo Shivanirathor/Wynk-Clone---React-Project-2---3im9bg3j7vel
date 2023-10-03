@@ -10,6 +10,7 @@ width: 50%;
 height: 640px;
 }
 
+
 .login-signup-container {
  padding: 20px;
   color: white;
@@ -80,10 +81,20 @@ margin: 20px;
   
 
 }
-
+.update-form{
+  display: flex;
+  justify-content:center;
+align-items: center;
+margin-top: 50px;
+border-radius: 20px;
+margin-left: 450px;
+box-shadow: 0 0 10px black;
+width: 40%;
+height: 400px;
+}
 
 @media (max-width: 768px) {
-  .loginSetUp {
+  .loginSetUp, .update-form {
     width: 80% !important;
     margin-left: 50px;
   
@@ -98,7 +109,7 @@ margin: 20px;
 }
 
 @media (max-width: 1300px) {
-  .loginSetUp {
+  .loginSetUp ,.update-form{
     width: 50%;
     margin-right: 30px;
   }
