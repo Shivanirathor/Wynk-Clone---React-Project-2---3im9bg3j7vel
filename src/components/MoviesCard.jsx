@@ -19,7 +19,7 @@ const MoviesCard = ({ title, image, audio, name, id ,volume}) => {
   return (
     <>
       <div className="cards" onClick={musicCardHandler}>
-        <img title={title} src={image} alt={title} width={207} height={215} />
+        <img title={title} src={image} alt={title} width={190} height={200} />
         <div className="cards-body">
           <button className="control-button-centerM">
             <NotStartedIcon />

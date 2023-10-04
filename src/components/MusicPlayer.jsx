@@ -83,7 +83,7 @@ const MusicPlayer = () => {
   return (
     <>
       <div className="music-player-container">
-        <div>
+        <div className="player-item">
           <img
             className="image"
             src={currentSongUrl.image}
@@ -91,6 +91,8 @@ const MusicPlayer = () => {
             width={50}
             height={50}
           />
+        </div>
+        <div className="player-item-text">
           <h2 className="song-title">{currentSongUrl.title}</h2>
           <p className="artist">({currentSongUrl.name})</p>
         </div>
@@ -124,7 +126,7 @@ const MusicPlayer = () => {
           <source src={currentSongUrl.audio} type="audio/mpeg" />
         </audio>
 
-        <div onClick={handleLikedSong}>
+        <div onClick={handleLikedSong} className="saved-icon">
           <FavoriteIcon
             title="Add to favorite page"
             className={`span ${like ? "like-span red-like" : "like-span"}`}

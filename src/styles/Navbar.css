@@ -1,19 +1,19 @@
 .navbar {
-  /* position: fixed; */
   width: 100%;
   transition: transform 0.3s ease-in-out; 
   z-index: 100; 
+  
 }
 
 .nav-1 {
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   align-items: center;
   background-color: rgb(30, 29, 29);
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px 120px;
 
 }
 
@@ -24,14 +24,14 @@
 
 .logoText img {
   border-radius: 50px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   margin-right: 10px;
 }
 
 .logoText h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .search {
@@ -40,18 +40,20 @@
   justify-content: center;
   align-items: center;
   margin-left: 20px;
+ 
 }
+
 .searchIcon{
   position:absolute;
-  right: 21rem;
+  right: 34rem;
 
 }
 .search input {
   color: white;
-  background-color: transparent;
+  background-color: rgb(41, 41, 41);
   font-size: 17px;
-  width: 40%;
-  height: 45px;
+  width: 42%;
+  height: 40px;
   border: 1px solid rgb(104, 102, 102);
   border-radius: 50px;
   padding-left: 20px;
@@ -95,9 +97,15 @@ right: 10rem;
   .searchIcon{
     left:23rem;
    }
-  
+  .navbar .nav-2{
+    padding: 10px 5px;
+    
+   }
    .nav-2 div, select{
     font-size: 15px !important;
+   }
+   .navbar .nav-2 div {
+    padding: 0px 15px;
    }
 #root{
   width: 150%;
@@ -125,7 +133,15 @@ width: 100% ;
   position: absolute;
   left: 15rem;
  }
-
+ .nav-2{
+  padding: 10px 5px;
+ }
+ .navbar .nav-2 div {
+  padding: 0px 10px;
+ }
+ #root{
+  width: 100%;
+}
 }
 @media only screen and (min-width: 700px) and (max-width: 1000px) {
 
@@ -148,38 +164,35 @@ width: 100% ;
 }
 
 
-/* =================== */
+
 .nav-2 {
-  margin-bottom: auto;
-  height: 50px;
+  height: 30px;
   background-color: rgb(29, 29, 36);
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  padding: 10px 110px;
+   
 }
 
 .nav-2 select {
   margin-right: 15px;
   background: transparent;
-  color: white;
+  color: rgb(179, 175, 175);
   font-size: 18px;
   border: none;
+
   cursor: pointer;
 }
 
-.nav-2 select option {
-  cursor: pointer !important;
-  color: black;
-  border: none;
-
-}
 
 .nav-2 div {
   cursor: pointer;
   text-decoration: none;
-  color: white;
+  color: rgb(179, 175, 175);
   padding: 0px 20px;
   font-size: 18px; 
+  
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 

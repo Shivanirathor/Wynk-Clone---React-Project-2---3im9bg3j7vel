@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   height: 60px;
-  background-color: rgb(82, 80, 80);
+  background-color: rgb(82, 80, 83);
   color: #fff;
   padding: 15px 5px 15px 0;
   display: flex;
@@ -15,19 +15,25 @@
   z-index: 1;
   cursor: pointer;
 }
+.player-item img{
+  margin-left: 20px;
+}
+.player-item-text{
+margin-left: -80px;
 
+}
 .image {
   border-radius: 20%;
-
   max-width: 50px; 
   max-height: 50px; 
+
 }
 
 .song-title {
   font-size: 15px;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis;
+ font-family: Arial, Helvetica, sans-serif;
+
+
 }
 
 .artist {
@@ -37,14 +43,10 @@
 .red-like {
   color: red;
 }
-/* .span {
-  font-size: 25px;
-  cursor: pointer;
+.like-span{
+  position: absolute;
 }
 
-.like-span {
-  color: red;
-} */
 .volume-control {
   display: flex;
   align-items: center;
@@ -78,8 +80,9 @@
 }
 
 .music-slider-container {
-    width: 60%;
+    width: 50%;
   display: flex;
+  margin-left: 120px;
 
 }
 
@@ -87,6 +90,9 @@
   display: flex;
   font-size: 12px;
 margin-left: 20px;
+}
+.saved-icon{
+  margin-top: -20px;
 }
 
 .rc-slider-handle {
@@ -101,18 +107,40 @@ margin-left: 20px;
 .rc-slider-rail {
   background-color: #333;
 }
-@media (max-width: 600px) {
+@media (max-width: 400px) {
+  .music-slider-container{
+display: none;
+  }
   .slider-container {
     flex-direction: column; 
     align-items: center; 
   }
 
+}
+@media (max-width: 600px) {
+  .music-slider-container{
+    display: none;
+      }
+      .player-item-text{
+        margin-left: -40px;
+        
+        }
+  .slider-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
 
 }
 @media (max-width: 1000px) {
+  /* .player-item-text{
+    margin-left: 50px !important;
+    
+    } */
   .slider-container {
     flex-direction: column; 
     align-items: center; 
   }
-
+  .music-slider-container {
+position: absolute;
+  }
 }

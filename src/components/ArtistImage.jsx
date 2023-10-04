@@ -12,8 +12,8 @@ const ArtistImage = ({ songsList, first, last }) => {
                 title={songs?.artist[0]?.name}
                 src={songs?.artist[0]?.image}
                 alt="artist"
-                width={210}
-                height={210}
+                width={190}
+                height={190}
               />
               <h2 className="artistName">{songs?.artist[0]?.name}</h2>
             </div>

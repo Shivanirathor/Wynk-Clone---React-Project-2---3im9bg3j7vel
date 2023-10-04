@@ -11,6 +11,7 @@ import Slider2 from "./Slider2";
 import ArtistImage from "../components/ArtistImage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavigationBar from "../components/NavigationBar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,42 +24,44 @@ const Home = () => {
   return (
     <>
       <ToastContainer />
+      {/* <NavigationBar/> */}
+
       <Navbar />
       {showMusicPlayer && <MusicPlayer />}
       <Slider />
       <div style={{ background: "rgb(29, 29, 36)", color: "white" }}>
-        {songsList.length > 5 ? (
+        {songsList && songsList.length > 5 ? (
           <div>
             <RecentPlayed />
-            <h1 className="textTitle">New Release</h1>
+            <h2 className="textTitle">New Release</h2>
             <Slider2 songsList={songsList} first={0} last={10} />
-            <h1 className="textTitle">Retro Hits</h1>
+            <h2 className="textTitle">Retro Hits</h2>
             <Slider2 songsList={songsList} first={10} last={20} />
             <ArtistImage songsList={songsList} first={0} last={6} />
-            <h1 className="textTitle">Top Charts</h1>
+            <h2 className="textTitle">Top Charts</h2>
             <Slider2 songsList={songsList} first={20} last={30} />
-            <h1 className="textTitle">Indie Music</h1>
+            <h2 className="textTitle">Indie Music</h2>
             <Slider2 songsList={songsList} first={30} last={40} />
             <ArtistImage songsList={songsList} first={6} last={12} />
-            <h1 className="textTitle">Top Podcasts on Wynk</h1>
+            <h2 className="textTitle">Top Podcasts on Wynk</h2>
             <Slider2 songsList={songsList} first={40} last={50} />
-            <h1 className="textTitle">International Top Hits</h1>
+            <h2 className="textTitle">International Top Hits</h2>
             <Slider2 songsList={songsList} first={50} last={60} />
             <ArtistImage songsList={songsList} first={12} last={18} />
-            <h1 className="textTitle">Hindi Top 50</h1>
+            <h2 className="textTitle">Hindi Top 50</h2>
             <Slider2 songsList={songsList} first={60} last={70} />
-            <h1 className="textTitle">Trending English</h1>
+            <h2 className="textTitle">Trending English</h2>
             <Slider2 songsList={songsList} first={70} last={80} />
             <ArtistImage songsList={songsList} first={18} last={24} />
-            <h1 className="textTitle">Latest Hindi</h1>
+            <h2 className="textTitle">Latest Hindi</h2>
             <Slider2 songsList={songsList} first={80} last={90} />
-            <h1 className="textTitle">Latest English</h1>
+            <h2 className="textTitle">Latest English</h2>
             <Slider2 songsList={songsList} first={90} last={100} />
             <ArtistImage songsList={songsList} first={24} last={30} />
           </div>
         ) : (
           <div>
-            <h1 className="textTitle">Search Result</h1>
+            <h2 className="textTitle">Search Result</h2>
             <Slider2 songsList={songsList} />
           </div>
         )}

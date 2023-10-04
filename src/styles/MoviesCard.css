@@ -1,4 +1,4 @@
-.cards,  .artistImg{
+.cards{
     border-radius:16px;
     display: flex;
     justify-content:center;
@@ -6,16 +6,41 @@
     position: relative;
     margin: 5px 0 10px 10px;
     cursor: pointer;
-    box-shadow: 0 2px 5px white;
+    /* box-shadow: 0 2px 5px white; */
+}
+.recentCards img{
+    border-radius:16px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    overflow: hidden;
+    position: relative;
+    margin: 5px 0 10px 10px;
+    cursor: pointer;
+    /* box-shadow: 0 2px 5px white; */
+}
+.artistImg{
+    display: flex;
+    justify-content:center;
+    cursor: pointer;
 }
 .title ,.artistName{
     font-size: 17px;
     text-align: center;
-    font-family: Cambria;
-    margin-top: 15px;
+    font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 20px;
     font-weight: 100;
 }
+.artistImg img{
+
+    margin: 13px;
+    border-radius: 50%;
+    
+      }
+    
+      .artistImg img:hover{
+        transform: scale(1.1);
+      }
 .cards-body{
     width: 100%;
     height: 100%;
@@ -26,20 +51,20 @@
     background-color: rgb(59, 57, 57);
     backdrop-filter: blur(5px);
     border-radius: 15px;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: 1s;
+    transition: 1s ease-in-out;
 }
-.cards :hover{
 
-   transform: scale(1.1);
-}
+
 .cards:hover .cards-body{
     right: 0;
     background-color: transparent;
 
+}
+.recentCards img:hover{
+transform: scale(1.02);
 }
 .control-button-centerM{
     width: 40px;
@@ -52,3 +77,12 @@
     padding: 5px;   
   }
  
+
+  @media (max-width:320px) {
+    .artistImg img{
+      width: 100px;
+        height: 100px;
+        display:flex;
+        flex-wrap: wrap;
+          }
+  }

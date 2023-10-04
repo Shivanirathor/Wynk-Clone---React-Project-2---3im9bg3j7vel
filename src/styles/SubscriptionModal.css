@@ -1,13 +1,20 @@
 
 .crown-logo img {
   width: 50px;
+ 
 position: absolute;
 margin-top: -55px;
 margin-left: 150px;
   border-radius: 50px;
 
 }
-
+.MuiPaper-root{
+  max-width: 1000px !important;
+ 
+}
+.css-ypiqx9-MuiDialogContent-root{
+overflow-y: hidden !important;
+}
 .premium-offer {
   background-color: #f5f5f5;
   padding: 20px;

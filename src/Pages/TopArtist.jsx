@@ -12,23 +12,23 @@ const TopArtist = () => {
       <div className="artistImg">
         <div
           style={{
-            // marginTop: "120px",
             color: "white",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             flexWrap: "wrap",
+          
             backgroundColor: "rgb(29, 29, 36)",
           }}
         >
           {songsList &&
             songsList.slice(0, 20).map((songs, index) => {
               return (
-                <div key={songs.id || index}>
+                <div key={songs.id || index} style={{  marginLeft:"20px",marginRight:"20px"}}>
                   <img
                     src={songs?.artist[0]?.image}
                     alt="artist"
-                    width={210}
-                    height={210}
+                    width={190}
+                    height={190}
                   />
                   <h2 className="artistName">{songs?.artist[0]?.name}</h2>
                 </div>

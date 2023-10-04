@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/Navbar.css";
 import Logo from "../assets/logo.jpeg";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
+import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import { useNavigate } from "react-router-dom";
 import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUserData} from "../redux/loginSlice";
+import { clearUserData } from "../redux/loginSlice";
 import {
   Dialog,
   DialogActions,
@@ -198,9 +199,21 @@ const Navbar = () => {
           <div className="subscription">
             <SubscriptionModal />
           </div>
-          <div title="Favourite Songs" onClick={handleLikedSaved}>
-            🤍
-          </div>
+          {isLogin && (
+            <div
+              title="Favourite Songs"
+              onClick={handleLikedSaved}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "10px",
+              }}
+            >
+              <LibraryMusicIcon style={{ marginRight: "5px" }} />
+              My Music
+            </div>
+          )}
+
           <div
             title="Login"
             className="loginBtn"
@@ -245,3 +258,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

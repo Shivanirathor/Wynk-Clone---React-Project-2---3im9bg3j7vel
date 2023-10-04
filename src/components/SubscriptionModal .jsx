@@ -5,6 +5,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import "../styles/SubscriptionModal.css";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.jpeg";
@@ -54,8 +55,9 @@ const SubscriptionModal = () => {
 
   return (
     <div>
-      <Button variant="" onClick={handleOpen} className="subscription-text">
-        💲Manage Subscription
+      <Button variant="" onClick={handleOpen} className="subscription-text" style={{textDecoration:"lowerCase"}}>
+      <LocalAtmIcon sx={{marginRight:"5px"}}/>
+        Manage Subscription
       </Button>
 
       <Dialog

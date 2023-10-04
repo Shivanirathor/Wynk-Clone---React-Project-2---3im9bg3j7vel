@@ -40,7 +40,7 @@ function Slider2({ songsList, first = 0, last = 10 }) {
             slideLeft2();
             stopAutoScroll();
           }}
-          className="slider-icon-2 left"
+          className="slider-icon-2-L left"
         />
       )}
 
@@ -76,7 +76,7 @@ function Slider2({ songsList, first = 0, last = 10 }) {
           slideRight2();
           stopAutoScroll();
         }}
-        className="slider-icon-2 right"
+        className="slider-icon-2-R right"
       />
     </div>
   );
