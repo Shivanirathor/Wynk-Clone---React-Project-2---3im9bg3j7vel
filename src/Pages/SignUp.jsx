@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,6 +13,7 @@ import {
 } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
 
+
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,6 +21,7 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [formError, setFormError] = useState({
     nameError: "",
     emailError: "",
@@ -43,6 +48,9 @@ const SignUp = () => {
   };
   const handlePassword = (event) => {
     setPassword(event.target.value);
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
   const handleSignUp = () => {
     if (!name || !email || !password) {
@@ -120,6 +128,7 @@ const SignUp = () => {
             {formError.nameError && (
               <p style={{ color: "red" }}>{formError.nameError}</p>
             )}
+
             <input
               type="email"
               placeholder="Email"
@@ -130,13 +139,21 @@ const SignUp = () => {
             {formError.emailError && (
               <p style={{ color: "red" }}>{formError.emailError}</p>
             )}
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePassword}
-              required
-            />
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={handlePassword}
+                required
+              />
+              <IconButton
+                className="password-toggle-button"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </IconButton>
+            </div>
             {formError.passwordError && (
               <p style={{ color: "red" }}>{formError.passwordError}</p>
             )}

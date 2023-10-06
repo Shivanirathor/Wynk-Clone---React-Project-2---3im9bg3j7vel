@@ -189,7 +189,7 @@ const Footer = () => {
 
         <p className="footer-description">
           Wynk Music is the one-stop music app for the latest to the greatest
-          songs that you love. Play your favorite music online for free or
+          songs that you love.<br/> Play your favorite music online for free or
           download mp3. Enjoy from over 22 Million Hindi, English, Bollywood,
           Regional, Latest, Old songs and more.
         </p>

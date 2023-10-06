@@ -85,5 +85,17 @@ margin: 0px !important;
     display: none;
   }
 
+  @media screen and (max-width: 368px) {
+  .image-container-2{
+    margin-left: 0;
+    margin-right: 0;
+  }
 
+  }
+  @media screen and (max-width: 668px) {
+  .image-container-2{
+    margin-left: 0;
+    margin-right: 0;
+  }
 
+  }

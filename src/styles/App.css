@@ -32,7 +32,8 @@ text-align: center;
       cursor: pointer;
 }
 .textTitle{
-    margin-left: 120px;
+    /* margin-top: 20px; */
+    margin-left: 135px;
     font-size: 25px;
     font-weight: bold;
    

@@ -11,7 +11,7 @@ import Slider2 from "./Slider2";
 import ArtistImage from "../components/ArtistImage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NavigationBar from "../components/NavigationBar";
+import MuiNav from "../components/MuiNav";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -24,8 +24,6 @@ const Home = () => {
   return (
     <>
       <ToastContainer />
-      {/* <NavigationBar/> */}
-
       <Navbar />
       {showMusicPlayer && <MusicPlayer />}
       <Slider />
@@ -42,12 +40,12 @@ const Home = () => {
             <Slider2 songsList={songsList} first={20} last={30} />
             <h2 className="textTitle">Indie Music</h2>
             <Slider2 songsList={songsList} first={30} last={40} />
-            <ArtistImage songsList={songsList} first={6} last={12} />
+            {/* <ArtistImage songsList={songsList} first={6} last={12} /> */}
             <h2 className="textTitle">Top Podcasts on Wynk</h2>
             <Slider2 songsList={songsList} first={40} last={50} />
             <h2 className="textTitle">International Top Hits</h2>
             <Slider2 songsList={songsList} first={50} last={60} />
-            <ArtistImage songsList={songsList} first={12} last={18} />
+            {/* <ArtistImage songsList={songsList} first={12} last={18} /> */}
             <h2 className="textTitle">Hindi Top 50</h2>
             <Slider2 songsList={songsList} first={60} last={70} />
             <h2 className="textTitle">Trending English</h2>

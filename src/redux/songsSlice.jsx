@@ -128,6 +128,7 @@ const initialState = {
   addToRecent: [],
   showMusicPlayer: false,
   likedSongs: [],
+  currentSongIndex :0,
 };
 
 export const songsSlice = createSlice({
@@ -142,6 +143,10 @@ export const songsSlice = createSlice({
     },
     setAddToRecent: (state, { payload }) => {
       state.addToRecent = [...state.addToRecent, ...payload];
+    },
+    setCurrentSongIndex: (state, {payload}) => {
+      console.log('Payload:', payload); 
+      state.currentSongIndex = payload;
     },
 
     clrAddToRecent: (state) => {
@@ -173,7 +178,6 @@ export const songsSlice = createSlice({
       state.songsList = payload.data;
     },
     [getLikeShowData.fulfilled]: (state, { payload }) => {
-   
       state.likedSongs = payload.data.songs;
     
     },
@@ -184,6 +188,7 @@ export const {
   setCurrentSongUrl,
   setShowMusicPlayer,
   setAddToRecent,
+  setCurrentSongIndex,
   clrAddToRecent,
   clrMusicPlayer,
  

@@ -79,10 +79,32 @@ transform: scale(1.02);
  
 
   @media (max-width:320px) {
-    .artistImg img{
-      width: 100px;
-        height: 100px;
-        display:flex;
-        flex-wrap: wrap;
-          }
+    /* .artistImg{
+      display: flex;
+      justify-content:center;
+      flex-wrap: wrap;
+    } */
+  
+    .artistImg{
+      display: none !important;
+    }
+          .recent{
+            display: none;
+        }
   }
+  @media (max-width:720px) {
+    /* .artistImg{
+      display: flex;
+      justify-content:center;
+      flex-wrap: wrap;
+    }
+   */
+   .artistImg{
+    display: none !important;
+  }
+          .recent{
+            display: none;
+        }
+       
+  }
+  

@@ -129,7 +129,9 @@
     justify-content: center;
    
   }
-
+  .footer-description {
+    font-size: 14px; 
+  }
   .footer-links a {
     margin: 0 15px;
     padding: 0 10px;

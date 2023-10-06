@@ -4,9 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PauseIcon from "@mui/icons-material/Pause";
+import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+import SkipNextIcon from "@mui/icons-material/SkipNext";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { getLike, getLikeShowData } from "../redux/songsSlice";
+import {
+  getLike,
+  getLikeShowData,
+  setCurrentSongIndex,
+  setCurrentSongUrl,
+} from "../redux/songsSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -14,7 +21,8 @@ const MusicPlayer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const audioRef = useRef(null);
-  const { currentSongUrl, likedSongs } = useSelector((state) => state.songs);
+  const { currentSongUrl, likedSongs, currentSongIndex, songsList } =
+    useSelector((state) => state.songs);
   const { isLogin } = useSelector((state) => state.login);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -24,23 +32,32 @@ const MusicPlayer = () => {
   useEffect(() => {
     dispatch(getLikeShowData());
   }, []);
+  useEffect(() => {
+    // Update the audio source when the currentSongUrl changes
+    audioRef.current.src = currentSongUrl.audio;
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  }, [currentSongUrl, isPlaying]);
 
   useEffect(() => {
+    // Update the audio source and start playback when the currentSongIndex changes
+    audioRef.current.src = currentSongUrl.audio;
     if (isPlaying) {
       audioRef.current.play();
-    } else {
-      audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [currentSongIndex]);
 
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
+ const togglePlayPause = () => {
+  if (isPlaying) {
+    audioRef.current.pause();
+  } else {
+    setCurrentTime(audioRef.current.currentTime);
+    audioRef.current.play();
+  }
+  setIsPlaying(!isPlaying);
+};
+
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
@@ -55,6 +72,34 @@ const MusicPlayer = () => {
     audioRef.current.currentTime = value;
   };
 
+  const playPreviousSong = () => {
+    if (currentSongIndex > 0) {
+      const newIndex = currentSongIndex - 1;
+      dispatch(setCurrentSongIndex(newIndex));
+      dispatch(
+        setCurrentSongUrl({
+          audio: songsList[currentSongIndex].audio_url,
+          title: songsList[currentSongIndex].title,
+          name: songsList[currentSongIndex]?.artist[0]?.name,
+          image: songsList[currentSongIndex].thumbnail,
+          id: songsList[currentSongIndex]._id,
+        })
+      );
+    }
+  };
+  const playNextSong = () => {
+    const newIndex = currentSongIndex + 1;
+    dispatch(setCurrentSongIndex(newIndex));
+    dispatch(
+      setCurrentSongUrl({
+        audio: songsList[currentSongIndex].audio_url,
+        title: songsList[currentSongIndex].title,
+        name: songsList[currentSongIndex]?.artist[0]?.name,
+        image: songsList[currentSongIndex].thumbnail,
+        id: songsList[currentSongIndex]._id,
+      })
+    );
+  };
   const handleLikedSong = () => {
     if (isLogin) {
       const songId = currentSongUrl.id;
@@ -96,7 +141,13 @@ const MusicPlayer = () => {
           <h2 className="song-title">{currentSongUrl.title}</h2>
           <p className="artist">({currentSongUrl.name})</p>
         </div>
-
+        <div onClick={handleLikedSong} className="saved-icon">
+          <FavoriteIcon
+            title="Add to favorite page"
+            className={`span ${like ? "like-span red-like" : "like-span"}`}
+            style={{ cursor: "pointer" }}
+          />
+        </div>
         <div className="music-slider-container">
           <Slider
             value={currentTime}
@@ -126,20 +177,27 @@ const MusicPlayer = () => {
           <source src={currentSongUrl.audio} type="audio/mpeg" />
         </audio>
 
-        <div onClick={handleLikedSong} className="saved-icon">
-          <FavoriteIcon
-            title="Add to favorite page"
-            className={`span ${like ? "like-span red-like" : "like-span"}`}
-            style={{ cursor: "pointer" }}
-          />
-        </div>
         <div className="controls">
           <button
-            title="Play Song"
+            title="Previous Song"
+            className="control-button"
+            onClick={playPreviousSong}
+          >
+            <SkipPreviousIcon />
+          </button>
+          <button
+            title={isPlaying ? "Pause Song" : "Play Song"}
             className="control-button-center"
             onClick={togglePlayPause}
           >
             {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+          </button>
+          <button
+            title="Next Song"
+            className="control-button"
+            onClick={playNextSong}
+          >
+            <SkipNextIcon />
           </button>
         </div>
       </div>

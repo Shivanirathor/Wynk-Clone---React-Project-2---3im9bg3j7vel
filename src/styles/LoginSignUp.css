@@ -30,6 +30,19 @@ height: 640px;
   color:  white;
   margin-bottom: 20px;
 } 
+.password-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+width: 88%;
+}
+
+.password-toggle-button {
+  color: rgb(27, 26, 26) !important;
+  background: none !important;
+  position: absolute !important;
+ margin-left: 15rem !important;
+}
 
 
 

@@ -59,11 +59,11 @@ function Slider2({ songsList, first = 0, last = 10 }) {
                   image={songs.thumbnail}
                   mood={songs.mood}
                   name={songs?.artist[0]?.name}
-                  volume={songs.__v}
                   audio={
                     songs?.audio_url ||
                     "https://newton-project-resume-backend.s3.amazonaws.com/audio/64cf90b747ae38c3e33a1d37.mp3"
                   }
+                  index={index}
                 />
               </div>
             );

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../styles/LoginSignUp.css";
 import loginImg from "../assets/loginImg.jpeg";
 import { useNavigate } from "react-router-dom";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { clearLoginError, getLogin } from "../redux/loginSlice";
 import Alert from "@mui/material/Alert";
@@ -13,6 +16,7 @@ const Login = () => {
   const { isLogin, loginError } = useSelector((state) => state.login);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [formError, setFormError] = useState({
     emailError: "",
     passwordError: "",
@@ -44,6 +48,9 @@ const Login = () => {
   };
   const handlePassword = (event) => {
     setPassword(event.target.value);
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
   const handleLogin = () => {
     if (!email || !password) {
@@ -120,12 +127,21 @@ const Login = () => {
             {formError.emailError && (
               <p style={{ color: "red" }}>{formError.emailError}</p>
             )}
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePassword}
-            />
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={handlePassword}
+                required
+              />
+              <IconButton
+                className="password-toggle-button"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </IconButton>
+            </div>
             {formError.passwordError && (
               <p style={{ color: "red" }}>{formError.passwordError}</p>
             )}
