@@ -10,7 +10,6 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import {
   getLike,
-  getLikeShowData,
   setCurrentSongIndex,
   setCurrentSongUrl,
 } from "../redux/songsSlice";
@@ -30,9 +29,6 @@ const MusicPlayer = () => {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    dispatch(getLikeShowData());
-  }, []);
-  useEffect(() => {
     // Update the audio source when the currentSongUrl changes
     audioRef.current.src = currentSongUrl.audio;
     if (isPlaying) {
@@ -48,16 +44,27 @@ const MusicPlayer = () => {
     }
   }, [currentSongIndex]);
 
- const togglePlayPause = () => {
-  if (isPlaying) {
-    audioRef.current.pause();
-  } else {
-    setCurrentTime(audioRef.current.currentTime);
-    audioRef.current.play();
-  }
-  setIsPlaying(!isPlaying);
-};
+  const togglePlayPause = (e) => {
+    e.preventDefault();
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+  
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.onpause = () => {
+        setCurrentTime(audioRef.current.currentTime);
+      };
+    }
+  }, [audioRef]);
+  
 
+  
+  
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);

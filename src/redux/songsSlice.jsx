@@ -82,8 +82,7 @@ export const getSearch = createAsyncThunk(
     return res;
   }
 );
-export const getLike = createAsyncThunk(
-  "songs/getLike", async (showId) => {
+export const getLike = createAsyncThunk("songs/getLike", async (showId) => {
   const token = localStorage.getItem("token");
 
   const res = await axios
@@ -107,16 +106,15 @@ export const getLikeShowData = createAsyncThunk(
     const token = localStorage.getItem("token");
 
     const res = await fetch(
-        "https://academics.newtonschool.co/api/v1/music/favorites/like",
-        // { songId: showId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            projectId: "22pghva8m0p8",
-          },
-        }
-      )
-      .then((data) => data.json());
+      "https://academics.newtonschool.co/api/v1/music/favorites/like",
+   
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          projectId: "22pghva8m0p8",
+        },
+      }
+    ).then((data) => data.json());
 
     return res;
   }
@@ -128,7 +126,7 @@ const initialState = {
   addToRecent: [],
   showMusicPlayer: false,
   likedSongs: [],
-  currentSongIndex :0,
+  currentSongIndex: 0,
 };
 
 export const songsSlice = createSlice({
@@ -144,8 +142,8 @@ export const songsSlice = createSlice({
     setAddToRecent: (state, { payload }) => {
       state.addToRecent = [...state.addToRecent, ...payload];
     },
-    setCurrentSongIndex: (state, {payload}) => {
-      console.log('Payload:', payload); 
+    setCurrentSongIndex: (state, { payload }) => {
+      console.log("Payload:", payload);
       state.currentSongIndex = payload;
     },
 
@@ -155,7 +153,14 @@ export const songsSlice = createSlice({
     clrMusicPlayer: (state) => {
       state.showMusicPlayer = false;
     },
-
+  
+    deleteLikedSong: (state, { payload }) => {
+      const songIdToDelete = payload;
+      state.likedSongs = state.likedSongs.filter(
+        (song) => song._id !== songIdToDelete
+      );
+    },
+ 
   },
 
   extraReducers: {
@@ -179,7 +184,6 @@ export const songsSlice = createSlice({
     },
     [getLikeShowData.fulfilled]: (state, { payload }) => {
       state.likedSongs = payload.data.songs;
-    
     },
   },
 });
@@ -191,7 +195,8 @@ export const {
   setCurrentSongIndex,
   clrAddToRecent,
   clrMusicPlayer,
- 
+  deleteLikedSong,
+  clrAlllikedData,
 } = songsSlice.actions;
 
 export default songsSlice.reducer;

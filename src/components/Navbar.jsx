@@ -230,7 +230,7 @@ const Navbar = () => {
                   background: "rgb(30, 29, 29)",
                   color: "white",
                   padding: "20px 10px",
-                  
+
                   filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
                   "& .MuiAvatar-root": {
@@ -279,7 +279,13 @@ const Navbar = () => {
                 <ArrowCircleDownIcon
                   sx={{ marginRight: "10px", color: "white" }}
                 />
-                Download App
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.bsbportal.music&hl=en&gl=US"
+                  target="_blank"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Download App
+                </a>
               </MenuItem>
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
@@ -294,11 +300,15 @@ const Navbar = () => {
               <MenuItem>
                 <div
                   title="Playstore"
-                  style={{ width: "200px", fontSize: "11px", alignItems:"center" }}
+                  style={{
+                    width: "200px",
+                    fontSize: "11px",
+                    alignItems: "center",
+                  }}
                 >
                   <h2>
                     <a
-                      href="https://play.google.com/store/apps/details?id=com.bsbportal.music&hl=en&gl=US"
+                      href="https://studio.wynk.in/"
                       target="_blank"
                       style={{ textDecoration: "none", color: "white" }}
                     >
@@ -309,7 +319,7 @@ const Navbar = () => {
                     </a>
                   </h2>
                   <p>
-                    Sign up as an Artist on Wynk Studio and 
+                    Sign up as an Artist on Wynk Studio and
                     <p>release your original songs on Wynk.</p>
                   </p>
                 </div>

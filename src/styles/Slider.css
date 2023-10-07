@@ -54,7 +54,6 @@ margin: 0px !important;
    cursor: pointer;
    color: white;
    position: absolute;
-   
    transform: translateY(-50%);
  }
  .slider-icon-2-L{
@@ -85,17 +84,20 @@ margin: 0px !important;
     display: none;
   }
 
-  @media screen and (max-width: 368px) {
-  .image-container-2{
-    margin-left: 0;
-    margin-right: 0;
-  }
 
-  }
-  @media screen and (max-width: 668px) {
-  .image-container-2{
-    margin-left: 0;
-    margin-right: 0;
-  }
-
+  @media screen and (max-width: 480px) {
+    .image-container-2{
+      margin-left: 10px;
+      margin-right:20px;
+    }
+    .left{
+     margin-left: 8px;
+     z-index: 1;
+    }
+    .slider-icon-2-L{
+      margin-left: 0px;
+     }
+     .slider-icon-2-R{
+      margin-right: 0px;
+     }
   }

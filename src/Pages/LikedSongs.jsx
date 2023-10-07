@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useDispatch, useSelector } from "react-redux";
-import { getLikeShowData } from "../redux/songsSlice";
+import { deleteLikedSong, getLikeShowData } from "../redux/songsSlice";
 
 const LikedSongs = () => {
   const dispatch = useDispatch();
@@ -9,15 +10,20 @@ const LikedSongs = () => {
   useEffect(() => {
     dispatch(getLikeShowData());
   }, []);
-  
+
+  const handleDeleteSong = (songId) => {
+    dispatch(deleteLikedSong(songId));
+  };
   return (
     <>
       <h1
         style={{
           color: "white",
           textAlign: "center",
-          fontSize: 50,
-          margin: 20,
+          fontSize: 40,
+          display: "flex",
+          justifyContent: "center",
+          margin: "40px",
         }}
       >
         Favourite Songs
@@ -42,8 +48,21 @@ const LikedSongs = () => {
                 width={200}
                 height={210}
               />
-
-              <p style={{ color: "white" }}>{song.title}</p>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <p style={{ color: "white" }}>{song.title}</p>
+                <RemoveCircleIcon
+                  title="Remove Song"
+                  onClick={() => handleDeleteSong(song._id)}
+                  style={{ cursor: "pointer", color: "white" }}
+                />
+              </div>
             </div>
           ))
         ) : (

@@ -50,13 +50,11 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-section footerImg">
-          <img src={Logo} alt="img" width={60} />
+        <img src={Logo} alt="img" width={60} />
         <h2>
-       
           Best way to Listen to Music!
-        <p>Don’t forget to install Wynk Music on your mobile phones</p>
+          <p>Don’t forget to install Wynk Music on your mobile phones</p>
         </h2>
-     
       </div>
 
       <div className="footer-section">
@@ -185,13 +183,12 @@ const Footer = () => {
       </div>
 
       <div className="footer-section">
-      
-
         <p className="footer-description">
           Wynk Music is the one-stop music app for the latest to the greatest
-          songs that you love.<br/> Play your favorite music online for free or
-          download mp3. Enjoy from over 22 Million Hindi, English, Bollywood,
-          Regional, Latest, Old songs and more.
+          songs that you love.
+          <br /> Play your favorite music online for free or download mp3. Enjoy
+          from over 22 Million Hindi, English, Bollywood, Regional, Latest, Old
+          songs and more.
         </p>
 
         <p className="copyright">

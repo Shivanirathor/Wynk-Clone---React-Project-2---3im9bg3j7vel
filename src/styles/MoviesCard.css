@@ -79,11 +79,6 @@ transform: scale(1.02);
  
 
   @media (max-width:320px) {
-    /* .artistImg{
-      display: flex;
-      justify-content:center;
-      flex-wrap: wrap;
-    } */
   
     .artistImg{
       display: none !important;
@@ -93,12 +88,7 @@ transform: scale(1.02);
         }
   }
   @media (max-width:720px) {
-    /* .artistImg{
-      display: flex;
-      justify-content:center;
-      flex-wrap: wrap;
-    }
-   */
+
    .artistImg{
     display: none !important;
   }
