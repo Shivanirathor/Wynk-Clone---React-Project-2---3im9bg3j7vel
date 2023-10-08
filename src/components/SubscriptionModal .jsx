@@ -10,12 +10,12 @@ import "../styles/SubscriptionModal.css";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.jpeg";
 import { useSelector } from "react-redux";
+
 const SubscriptionModal = () => {
   const navigate = useNavigate();
   const { isLogin } = useSelector((state) => state.login);
   const [open, setOpen] = useState(false);
-  const [selectedPlanIndex, setSelectedPlanIndex] = useState(null);
-
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState(null)
   const plans = [
     {
       duration: "Yearly",
