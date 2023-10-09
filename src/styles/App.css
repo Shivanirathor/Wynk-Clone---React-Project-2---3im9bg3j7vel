@@ -4,9 +4,7 @@
     font-family:Arial, Helvetica, sans-serif;
 
 }
-/* .MuiAppBar-root {
-    width: 100%;
-  } */
+
 .recent-played-list{
     margin-bottom: 20px;
     display: flex;
@@ -32,23 +30,9 @@ text-align: center;
       cursor: pointer;
 }
 .textTitle{
-   
     margin-left: 135px;
     font-size: 25px;
     font-weight: bold;
    
-}
-@media (max-width: 480px) {
-    .textTitle{
-        margin-left: 35px;
-    }
-}
-@media (max-width: 768px) {
-    .recent{
-        display: none;
-    }
-}
-.liked-container{
-    display: flex;
 }
 

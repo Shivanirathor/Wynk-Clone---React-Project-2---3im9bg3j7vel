@@ -118,17 +118,24 @@
   display: block !important;
 }
 .logoText{
-  margin-right: 250px;
+  margin-right: 300px;
 }
 .search{
   position: relative;
 }
 .search input{
-  margin-right: 250px;
+  margin-right: 400px;
   width: auto;
   position: absolute;
 }
+.searchIcon{
+  right: 100px;
 
+}
+.loginBtn{
+  position:absolute;
+  right: 20px;
+}
 .nav-2 {
 position: relative;
 padding: 0 18px;
@@ -141,30 +148,97 @@ padding: 0 18px;
  
 }
 }
-/* @media only screen and (min-width: 400px) and (max-width: 700px) { */
-  /* .subscription{
+@media screen and (min-width: 481px) and (max-width: 719px) {
+  .subscription{
     display: none ;
   }
   .music-list{
     display: none !important;
   }
   .mobile_myList{
-    margin-left:-18px !important;
-
+    margin:20px !important;
     display: block !important;
   }
   .mobile_model{
-   
-    margin-left:-18px !important;
     display: block !important;
   }
-  .nav-1 {
-    max-width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-    
+  .logoText{
+    margin-right: 310px;
+  }
+  .search{
+    position: relative;
+  }
+  .search input{
+    margin-right: 320px;
+    width: auto;
+    position: absolute;
+  }
+  .searchIcon{
+    right: 75px;
+  }
+  .loginBtn{
+    position:absolute;
+    right: 20px;
+  }
+  .nav-2 {
+  position: relative;
+  padding: 0 18px;
+  
+  }
+  .nav-2 div, .nav-2 select{
+    font-size: 15px;
+    margin: 20px;
+   padding: 0;
+   
+  }
+}
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+  .subscription {
+    display: none;
   }
   
+  .music-list {
+    display: none !important;
+  }
+  .mobile_model{
+    display: block !important;
+  }
+  .mobile_myList {
+  display: block !important;
+  }
+  
+  .mobile_model {
+   display: none;
+  }
+  .logoText{
+ 
+    margin-left: -30px;
+  }
+  .search{
+    position: relative;
+  }
+  .search input{
+   margin-right: 150px;
+    width: auto;
+    position: absolute;
+  }
+  .searchIcon{
+right: 60px;
+  }
+  .loginBtn{
+    position:absolute;
+    right: 80px;
+  }
+  .nav-2 {
+    position: relative;
+    padding: 0 60px;
+    
+    }
+    .nav-2 div, .nav-2 select{
+    
+      margin: 20px;
+     padding: 0;
+     
+    }
+
 }

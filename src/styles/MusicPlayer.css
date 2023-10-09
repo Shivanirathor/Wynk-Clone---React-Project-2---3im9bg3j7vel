@@ -107,7 +107,7 @@
   }
   .song-title,
   .artist {
- margin-left: -30px;
+ margin-left: -40px;
     font-size: 15px;
   }
   .music-slider-container {
@@ -118,44 +118,27 @@
   }
 
 }
-/* @media (max-width: 375px) {
-  .music-slider-container{
-display: none;
-  }
- .music-player-container {
-display: flex;
-justify-content: space-evenly;
-margin: 0px 25px;
-  }
+@media screen and (min-width: 481px) and (max-width: 719px) {
+  .song-title,
   .artist {
-margin-left: 0;
+ margin-left: -40px;
+    font-size: 15px;
   }
-.song-title {
-  margin-left: 0;
-  font-size: 15px !important;
-}
-.control-button{
-  display: none;
-}
-} */
-/* @media (max-width: 700px) {
-  .music-slider-container{
+  .music-slider-container {
     display: none;
-      }
-      .music-player-container {
-        display: flex;
-        justify-content: space-evenly;
-        margin: 0px 1px;
-          }
-        
-      .control-button{
-        display: none;
-      }
-      .artist {
-        margin-left: 0;
-          }
-        .song-title {
-          margin-left: 0;
-          font-size: 15px !important;
-        }
-} */
+  }
+  .control-button {
+    display: none;
+  }
+
+}
+@media screen and (min-width: 720px) and (max-width: 1024px){
+ 
+
+  .music-slider-container {
+    display: none !important;
+  }
+  .control-button {
+    display: block;
+  }
+}

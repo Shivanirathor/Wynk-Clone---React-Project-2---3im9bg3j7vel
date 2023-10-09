@@ -130,20 +130,15 @@
     display: none;
   }
 }
-/* @media screen and (max-width: 768px) {
-  .footer-links {
-    flex-direction: row;
-    justify-content: center;
-   
-  }
+@media screen and (min-width: 481px) and (max-width: 1024px){
   .footer-description {
-    font-size: 14px; 
+    display: none;
   }
-  .footer-links a {
-    margin: 0 15px;
-    padding: 0 10px;
+  .social-icons{
+    display: none;
   }
-} */
+}
+
 
 
 

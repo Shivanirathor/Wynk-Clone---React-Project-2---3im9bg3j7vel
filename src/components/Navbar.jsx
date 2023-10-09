@@ -13,7 +13,7 @@ import SubscriptionModal from "./SubscriptionModal ";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUserData } from "../redux/loginSlice";
 import {
-  Avatar,
+ 
   Dialog,
   DialogActions,
   DialogContent,
