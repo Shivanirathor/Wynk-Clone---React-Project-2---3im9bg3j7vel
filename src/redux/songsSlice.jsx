@@ -100,6 +100,7 @@ export const getLike = createAsyncThunk("songs/getLike", async (showId) => {
 
   return res;
 });
+
 export const getLikeShowData = createAsyncThunk(
   "songs/getLikeShowData",
   async () => {
@@ -107,7 +108,7 @@ export const getLikeShowData = createAsyncThunk(
 
     const res = await fetch(
       "https://academics.newtonschool.co/api/v1/music/favorites/like",
-   
+
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -153,14 +154,6 @@ export const songsSlice = createSlice({
     clrMusicPlayer: (state) => {
       state.showMusicPlayer = false;
     },
-  
-    deleteLikedSong: (state, { payload }) => {
-      const songIdToDelete = payload;
-      state.likedSongs = state.likedSongs.filter(
-        (song) => song._id !== songIdToDelete
-      );
-    },
- 
   },
 
   extraReducers: {
@@ -195,7 +188,7 @@ export const {
   setCurrentSongIndex,
   clrAddToRecent,
   clrMusicPlayer,
-  deleteLikedSong,
+
   clrAlllikedData,
 } = songsSlice.actions;
 

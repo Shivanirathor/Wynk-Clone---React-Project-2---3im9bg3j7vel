@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteLikedSong, getLikeShowData } from "../redux/songsSlice";
+import {getLike, getLikeShowData } from "../redux/songsSlice";
 
 const LikedSongs = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,8 @@ const LikedSongs = () => {
   }, []);
 
   const handleDeleteSong = (songId) => {
-    dispatch(deleteLikedSong(songId));
+    dispatch(getLike(songId));
+    dispatch(getLikeShowData());
   };
   return (
     <>
@@ -24,6 +25,7 @@ const LikedSongs = () => {
           display: "flex",
           justifyContent: "center",
           margin: "40px",
+          textShadow:"2px 4px 3px red",
         }}
       >
         Favourite Songs

@@ -7,6 +7,7 @@ import PauseIcon from "@mui/icons-material/Pause";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import Slider from "rc-slider";
+import AudioPlayer from "react-h5-audio-player";
 import "rc-slider/assets/index.css";
 import {
   getLike,
@@ -29,7 +30,6 @@ const MusicPlayer = () => {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    // Update the audio source when the currentSongUrl changes
     audioRef.current.src = currentSongUrl.audio;
     if (isPlaying) {
       audioRef.current.play();
@@ -37,7 +37,6 @@ const MusicPlayer = () => {
   }, [currentSongUrl, isPlaying]);
 
   useEffect(() => {
-    // Update the audio source and start playback when the currentSongIndex changes
     audioRef.current.src = currentSongUrl.audio;
     if (isPlaying) {
       audioRef.current.play();
@@ -46,6 +45,8 @@ const MusicPlayer = () => {
 
   const togglePlayPause = (e) => {
     e.preventDefault();
+    setCurrentTime(audioRef.current.currentTime);
+
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -53,18 +54,12 @@ const MusicPlayer = () => {
     }
     setIsPlaying(!isPlaying);
   };
-  
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.onpause = () => {
-        setCurrentTime(audioRef.current.currentTime);
-      };
-    }
-  }, [audioRef]);
-  
 
-  
-  
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  }, [currentTime]);
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
@@ -183,6 +178,20 @@ const MusicPlayer = () => {
         >
           <source src={currentSongUrl.audio} type="audio/mpeg" />
         </audio>
+        {/* <AudioPlayer
+          autoPlay // Equivalent to the HTML 'autoplay' attribute
+          preload="auto" // Equivalent to the HTML 'preload' attribute
+          loop // Equivalent to the HTML 'loop' attribute
+          src={currentSongUrl.audio} // The audio source
+          onListen={handleTimeUpdate} // Callback for time update
+          onLoadedMetadata={handleLoadedMetadata} // Callback for metadata loaded
+          elevation={1}
+          width="100%"
+          variation="default"
+          spacing={30}
+          download // Add download button
+          order="standart"
+        /> */}
 
         <div className="controls">
           <button
