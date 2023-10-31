@@ -34,14 +34,7 @@ const MusicPlayer = () => {
     if (isPlaying) {
       audioRef.current.play();
     }
-  }, [currentSongUrl, isPlaying]);
-
-  useEffect(() => {
-    audioRef.current.src = currentSongUrl.audio;
-    if (isPlaying) {
-      audioRef.current.play();
-    }
-  }, [currentSongIndex]);
+  }, [currentSongUrl, currentSongIndex]);
 
   const togglePlayPause = (e) => {
     e.preventDefault();
